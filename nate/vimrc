@@ -1,0 +1,33 @@
+
+" Don't do the stupid wrapping line junk
+set nowrap
+
+" smartcase means ignore case unless i type a capITal letter in my search, mmk?
+" From http://www.linuxjournal.com/article/3805
+set smartcase
+set ignorecase
+
+" Tell Vim to quit whining about unsaved buffers 
+" when I want to open a new buffer
+set hidden
+
+" Set directory for swap files.
+" see :h swap
+if has('win32')
+    set dir=c:\nate\vimswapfiles
+else
+    set dir=~/tmp
+endif
+
+" Back up files to $HOME/vimbackups
+" If that doesn't exist, try one of the $TEMP directories.
+" Might need to create a directory, if Vim whines about not being able to
+" make backups.
+
+set backup
+set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
+
+" Source other configfiles
+so ~/.vim/nate/menus.vim
+so ~/.vim/nate/mappings.vim
+so ~/.vim/nate/functions.vim
