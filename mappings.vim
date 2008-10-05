@@ -85,9 +85,12 @@ map <F2> <leader>be
 imap <F2> <ESC><leader>be
 
 " Map F3
-nnoremap <silent> <F3> :FuzzyFinderFile<CR>
+nnoremap <silent> <F3> :TSelectFilesInSubdirs<CR>
 nnoremap <silent> <S-F3> :FuzzyFinderBuffer<CR>
 nnoremap <silent> <C-F3> :FuzzyFinderMruFile<CR>
+" nnoremap <silent> <F3> :FuzzyFinderFile<CR>
+" nnoremap <silent> <S-F3> :FuzzyFinderBuffer<CR>
+" nnoremap <silent> <C-F3> :FuzzyFinderMruFile<CR>
 
 " Press Space to toggle search highlighting
 " From http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
