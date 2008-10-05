@@ -1,0 +1,52 @@
+===== dookie =====
+CTRL-W s
+CTRL-W S
+CTRL-W CTRL-S
+:[N]sp[lit]
+    Split current window in two. The result is two viewports on the same file. Make new window N high (default is to use half the height of the current window). Reduces the current window height to create room (and others, if the 'equalalways' option is set). 
+CTRL-W n
+CTRL-W CTRL_N p-
+
+
+Inserting the output of a command into the file.
+This is done as follows :
+
+    :r! command 
+
+Example
+
+    :r! date 
+
+yy - Yank line into main buffer
+
+							*:hide*
+:hid[e]		Quit current window, unless it is the last window on the
+		window editing it or 'bufhidden' is "unload" or "delete").
+		If the window is the last one in the current tab page the tab
+		page is closed. |tab-page|
+		The value of 'hidden' is irrelevant for this command.
+		Changes to the buffer are not written and won't get lost, so
+		this is a "safe" command.
+"ayy - Yank line into a buffer
+"ap  - Paste from "a" bufer
+
+"byy - Yank line into "b" buffer
+"bp  - Paste from "b" buffer.
+
+You can have a-z buffers.
+
+"byy - Yank line into "b" buffer
+
+TODO: find out how to use A and B buffers -- those can be pasted from
+one window to the other.
+Special Resisters:
+  
+	"%	Contains the name of the current file.
+vim.txt
+ddd
+Jump to a subject:  Position the cursor on a tag (e.g. |bars|) and hit CTRL-].
+   With the mouse:  ":set mouse=a" to enable the mouse (in xterm or GUI).
+		    Double-click the left mouse button on a tag, e.g. |bars|.
+	Jump back:  Type CTRL-T or CTRL-O (repeat to go further back).
+
+
