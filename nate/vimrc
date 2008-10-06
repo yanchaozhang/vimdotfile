@@ -11,6 +11,14 @@ set ignorecase
 " when I want to open a new buffer
 set hidden
 
+" ------------- tab labels ---------------
+" Set the tab labels to just the filename, and not the abbreviated directories
+" that are the default setting
+set guitablabel=%N\ %t
+" Show entire filename on mouseover of tabs
+set guitabtooltip=%N\ %F
+
+" ------------- Swap files/Backup Directory ------------
 " Set directory for swap files.
 " see :h swap
 if has('win32')
@@ -27,7 +35,8 @@ endif
 set backup
 set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
 
-" Source other configfiles
+" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
 so ~/.vim/nate/functions.vim
+so ~/.vim/nate/fonts_and_syntax.vim
