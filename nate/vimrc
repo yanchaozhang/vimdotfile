@@ -1,4 +1,3 @@
-
 " Don't do the stupid wrapping line junk
 set nowrap
 
@@ -8,8 +7,18 @@ set smartcase
 set ignorecase
 
 " Tell Vim to quit whining about unsaved buffers 
-" when I want to open a new buffer
+" when I want to open a new buffer.  Vim just hides
+" the unsaved buffer, instead of trying to close it.
 set hidden
+
+" ------------ Tab and indent settings ------------  
+set smartindent
+set autoindent
+
+" Softtabstop is shiftwidth is how many spaces are used for auto-indenting
+set softtabstop=4
+set shiftwidth=4
+
 
 " ------------- tab labels ---------------
 " Set the tab labels to just the filename, and not the abbreviated directories
