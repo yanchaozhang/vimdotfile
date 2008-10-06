@@ -58,9 +58,17 @@ map <C-Left> :tabp<CR>
 
 " Buffer Mappings
 map <C-N> :bn<CR>
-imap <C-N> <C-O>:bn<CR>
 map <C-P> :bp<CR>
-imap <C-P> <C-O>:bp<CR>
 
+map <F4> :bd<CR>
+imap <F4> <C-O>:bd<CR>
 
+" Window Mappings
+" Window up/down are same as up/down in Vim
+map <C-J> <C-W>j
+map <C-K> <C-W>k
 
+" Make / error list / search list
+" mappings
+map <C-Down> :cn<Enter>
+map <C-Up> :cp<Enter>
