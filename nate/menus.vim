@@ -4,10 +4,10 @@
 " Un-rem the unmenu thingys when you're working on the menu
 " nunmenu <silent> Helpful
 " vunmenu <silent> Helpful
-nmenu &Bookmarks.mappings<Tab><leader>ma :e ~/.vim/mappings.vim<Enter>
-nmenu &Bookmarks.menus<Tab><leader>me :e ~/.vim/menus.vim<Enter>
-nmenu &Bookmarks.customizations<Tab><leader>p :e ~/.vim/plugin_customizations.vim<Enter>
-nmenu &Bookmarks.vimrc<Tab><leader>v :e ~/.vim/vimrc.vim<Enter>
+nmenu &Bookmarks.mappings<Tab><leader>nma :e ~/.vim/nate/mappings.vim<Enter>
+nmenu &Bookmarks.menus<Tab><leader>nme :e ~/.vim/nate/menus.vim<Enter>
+nmenu &Bookmarks.functions<Tab><leader>nf :e ~/.vim/nate/functions.vim<Enter>
+nmenu &Bookmarks.vimrc<Tab><leader>v :e ~/.vimrc<Enter>
 nmenu Helpful.Find.List\ Occurrences<Tab><leader>s <leader>s
 nmenu Helpful.Find.Word\ Under\ Cursor<Tab><leader>j <leader>j
 nmenu Helpful.Groovy.Help<Tab><leader>gsh <leader>gsh
