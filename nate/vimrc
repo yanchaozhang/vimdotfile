@@ -1,3 +1,6 @@
+"" Enable filetype-specific indenting and plugins
+filetype plugin indent on 
+
 " Don't do the stupid wrapping line junk
 set nowrap
 
@@ -35,6 +38,10 @@ if has('win32')
 else
     set dir=~/tmp
 endif
+" Status Line
+" The %= means right-align.  The %Y means filetype
+set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
+set laststatus=2
 
 " Back up files to $HOME/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
