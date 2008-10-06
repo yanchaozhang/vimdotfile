@@ -11,6 +11,8 @@ else
     map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 endif
 
+" Toggle highlighting of found search terms on/off
+map <Space> :set hlsearch!<Enter>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 map <F1> :Ex<CR>
