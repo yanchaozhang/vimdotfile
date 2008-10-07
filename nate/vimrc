@@ -59,6 +59,7 @@ let s:os = system("uname")
 if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
+let g:BufKillCommandWhenLastBufferKilled = ''
 
 " ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim

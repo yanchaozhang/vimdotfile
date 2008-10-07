@@ -46,3 +46,16 @@ function! s:DisplayHelpfulShortcuts()
 endfunction
 nnoremap <Leader>dhs :call <SID>DisplayHelpfulShortcuts()<CR>
   
+" Handles the stupid :bd versus :BD debate
+" :BD uses the bufkill thingy, where it will keep the window
+" open if there are other buffers in the dam window.
+" Problem is that if I open a help file, and issue a :BD, then
+" it tries to find the last used buffer, and I want to blast the help window.
+function! s:BlastBuffer()
+    if &filetype == 'help'
+	:bd
+    else
+	:BD
+    endif
+endfunction
+map <silent> <F4> :call <SID>BlastBuffer()<Enter>
