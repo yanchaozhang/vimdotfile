@@ -59,7 +59,10 @@ let s:os = system("uname")
 if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
-
+" Tell BufKill just to zap the window if there's
+" no other buffers open in a window
+let g:BufKillCommandWhenLastBufferKilled = ''
+let g:BufKillFunctionSelectingValidBuffersToDisplay = 'bufexists' 
 " ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
