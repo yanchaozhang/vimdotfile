@@ -55,7 +55,31 @@ function! s:BlastBuffer()
     if &filetype == 'help'
 	:bd
     else
-	:BD
+	let a:ret_val = confirm("Save changes?", "&Yes\n&No\n&Cancel")
+	if a:ret_val == 1
+	    :w
+	    :BD
+	elseif a:ret_val == 2
+	    :BD!
+	endif
     endif
 endfunction
 map <silent> <F4> :call <SID>BlastBuffer()<Enter>
+imap <silent> <F4> <C-O>:call <SID>BlastBuffer()<Enter>
+
+function! s:CopyFilePath()
+    " Use \cf to copy the filename of the current buffer into the clipboard
+    " Use this feature by entering \ff in normal mode (I guess that's
+    " what <Leader> means
+    if has('win32')
+	let @+=substitute(expand("%:p"), "/", "\\", "g")
+	let @0=substitute(expand("%:p"), "/", "\\", "g")
+    else
+	" Copy file/pathname, and echo it on line
+	let @+=expand("%:p")
+	let @0=expand("%:p")
+    endif
+    echo expand("%:p") . " was copied to the system clipboard."
+
+endfunction
+nnoremap <leader>cf :call <SID>CopyFilePath()<Enter>
