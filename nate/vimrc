@@ -8,6 +8,7 @@ set nowrap
 " From http://www.linuxjournal.com/article/3805
 set smartcase
 set ignorecase
+set incsearch
 
 " When no beep or flash is wanted
 " Note: This is also needed in gvimrc, or Gvim will "beep"
