@@ -3,8 +3,8 @@
 " @Website:     http://members.a1.net/t.link/
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-05-01.
-" @Last Change: 2008-10-04.
-" @Revision:    0.1.471
+" @Last Change: 2008-10-06.
+" @Revision:    0.1.476
 
 " :filedoc:
 " A prototype used by |tlib#input#List|.
@@ -515,9 +515,12 @@ function! s:prototype.DisplayHelp() dict "{{{3
                 \ '',
                 \ 'Press any key to continue.',
                 \ ]
-    norm! ggdG
+    " call tlib#normal#WithRegister('gg"tdG', 't')
+    call tlib#buffer#DeleteRange('1', '$')
     call append(0, help)
-    norm! Gddgg
+    " call tlib#normal#WithRegister('G"tddgg', 't')
+    call tlib#buffer#DeleteRange('$', '$')
+    1
     call self.Resize(len(help), 0)
 endf
 
@@ -562,14 +565,14 @@ function! s:prototype.DisplayList(query, ...) dict "{{{3
             let resize = min([resize, (&lines * g:tlib_inputlist_pct / 100)])
             " TLogVAR resize, ll, &lines
             call self.Resize(resize, get(self, 'resize_vertical', 0))
-            norm! ggdG
+            call tlib#normal#WithRegister('gg"tdG', 't')
             let w = winwidth(0) - &fdc
             " let w = winwidth(0) - &fdc - 1
             let lines = copy(list)
             let lines = map(lines, 'printf("%-'. w .'.'. w .'s", substitute(v:val, ''[[:cntrl:][:space:]]'', " ", "g"))')
             " TLogVAR lines
             call append(0, lines)
-            norm! Gddgg
+            call tlib#normal#WithRegister('G"tddgg', 't')
         endif
         " TLogVAR self.prefidx
         let base_pref = self.GetBaseIdx(self.prefidx)

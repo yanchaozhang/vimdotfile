@@ -2,14 +2,14 @@
 UseVimball
 finish
 plugin/02tlib.vim	[[[1
-459
+463
 " tlib.vim -- Some utility functions
 " @Author:      Thomas Link (micathom AT gmail com?subject=[vim])
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-04-10.
-" @Last Change: 2008-10-04.
-" @Revision:    470
+" @Last Change: 2008-10-06.
+" @Revision:    474
 " GetLatestVimScripts: 1863 1 tlib.vim
 "
 " Please see also ../test/tlib.vim for usage examples.
@@ -33,7 +33,7 @@ if v:version < 700 "{{{2
     echoerr "tlib requires Vim >= 7"
     finish
 endif
-let loaded_tlib = 25
+let loaded_tlib = 26
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -461,6 +461,10 @@ messages (contributed by Erik Falor)
 - NEW: tlib#notify#Echo()
 - FIX: World.CloseScratch(): Set window
 - FIX: tlib#input#ListW(): Set initial_display = 1 on reset
+
+0.26
+- NEW: tlib#normal#WithRegister()
+- FIX: Try not to change numbered registers
 
 doc/tlib.txt	[[[1
 1504
@@ -2404,14 +2408,14 @@ function! s:prototype.Dummy() dict "{{{3
 endf
 
 autoload/tlib/World.vim	[[[1
-714
+717
 " World.vim -- The World prototype for tlib#input#List()
 " @Author:      Thomas Link (micathom AT gmail com?subject=[vim])
 " @Website:     http://members.a1.net/t.link/
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-05-01.
-" @Last Change: 2008-10-04.
-" @Revision:    0.1.471
+" @Last Change: 2008-10-06.
+" @Revision:    0.1.476
 
 " :filedoc:
 " A prototype used by |tlib#input#List|.
@@ -2922,9 +2926,12 @@ function! s:prototype.DisplayHelp() dict "{{{3
                 \ '',
                 \ 'Press any key to continue.',
                 \ ]
-    norm! ggdG
+    " call tlib#normal#WithRegister('gg"tdG', 't')
+    call tlib#buffer#DeleteRange('1', '$')
     call append(0, help)
-    norm! Gddgg
+    " call tlib#normal#WithRegister('G"tddgg', 't')
+    call tlib#buffer#DeleteRange('$', '$')
+    1
     call self.Resize(len(help), 0)
 endf
 
@@ -2969,14 +2976,14 @@ function! s:prototype.DisplayList(query, ...) dict "{{{3
             let resize = min([resize, (&lines * g:tlib_inputlist_pct / 100)])
             " TLogVAR resize, ll, &lines
             call self.Resize(resize, get(self, 'resize_vertical', 0))
-            norm! ggdG
+            call tlib#normal#WithRegister('gg"tdG', 't')
             let w = winwidth(0) - &fdc
             " let w = winwidth(0) - &fdc - 1
             let lines = copy(list)
             let lines = map(lines, 'printf("%-'. w .'.'. w .'s", substitute(v:val, ''[[:cntrl:][:space:]]'', " ", "g"))')
             " TLogVAR lines
             call append(0, lines)
-            norm! Gddgg
+            call tlib#normal#WithRegister('G"tddgg', 't')
         endif
         " TLogVAR self.prefidx
         let base_pref = self.GetBaseIdx(self.prefidx)
@@ -3718,14 +3725,14 @@ endf
 let &cpo = s:save_cpo
 unlet s:save_cpo
 autoload/tlib/buffer.vim	[[[1
-325
+330
 " buffer.vim
 " @Author:      Thomas Link (micathom AT gmail com?subject=[vim])
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-06-30.
-" @Last Change: 2008-08-19.
-" @Revision:    0.0.252
+" @Last Change: 2008-10-06.
+" @Revision:    0.0.255
 
 if &cp || exists("loaded_tlib_buffer_autoload")
     finish
@@ -3904,7 +3911,12 @@ endf
 
 " Delete the lines in the current buffer. Wrapper for |:delete|.
 function! tlib#buffer#DeleteRange(line1, line2) "{{{3
-    exec a:line1.','.a:line2.'delete'
+    let r = @t
+    try
+        exec a:line1.','.a:line2.'delete t'
+    finally
+        let @t = r
+    endtry
 endf
 
 
@@ -4003,7 +4015,7 @@ function! tlib#buffer#InsertText(text, ...) "{{{3
         " TLogVAR text
     endif
     " exec 'norm! '. lineno .'Gdd'
-    norm! dd
+    call tlib#normal#WithRegister('"tdd', 't')
     call append(lineno - 1, text)
     let tlen = len(text)
     let posshift = matchstr(pos, '\d\+')
@@ -4594,14 +4606,14 @@ endf
 
 
 autoload/tlib/input.vim	[[[1
-660
+656
 " input.vim
 " @Author:      Thomas Link (micathom AT gmail com?subject=[vim])
 " @Website:     http://www.vim.org/account/profile.php?user_id=4037
 " @License:     GPL (see http://www.gnu.org/licenses/gpl.txt)
 " @Created:     2007-06-30.
-" @Last Change: 2008-10-04.
-" @Revision:    0.0.503
+" @Last Change: 2008-10-15.
+" @Revision:    0.0.508
 
 if &cp || exists("loaded_tlib_input_autoload")
     finish
@@ -4771,7 +4783,76 @@ function! tlib#input#ListW(world, ...) "{{{3
                 " TLogVAR world.filter
                 if world.state =~ 'display'
                     if world.state =~ '^display'
-                        let dlist = s:GetDList(world)
+
+                        call world.BuildTable()
+                        " TLogDBG 2
+                        " TLogDBG len(world.table)
+                        " TLogVAR world.table
+                        let world.list  = map(copy(world.table), 'world.GetBaseItem(v:val)')
+                        " TLogDBG 3
+                        let world.llen = len(world.list)
+                        " TLogVAR world.index_table
+                        if empty(world.index_table)
+                            let dindex = range(1, world.llen)
+                            let world.index_width = len(world.llen)
+                        else
+                            let dindex = world.index_table
+                            let world.index_width = len(max(dindex))
+                        endif
+                        if world.llen == 0 && !world.show_empty
+                            call world.ReduceFilter()
+                            let world.offset = 1
+                            " TLogDBG 'ReduceFilter'
+                            continue
+                        else
+                            if world.llen == 1
+                                let world.last_item = world.list[0]
+                                if world.pick_last_item
+                                    echom 'Pick last item: '. world.list[0]
+                                    let world.prefidx = '1'
+                                    " TLogDBG 'pick last item'
+                                    throw 'pick'
+                                endif
+                            else
+                                let world.last_item = ''
+                            endif
+                        endif
+                        " TLogDBG 4
+                        " TLogVAR world.idx, world.llen, world.state
+                        " TLogDBG world.FilterIsEmpty()
+                        if world.state == 'display'
+                            if world.idx == '' && world.llen < g:tlib_sortprefs_threshold && !world.FilterIsEmpty()
+                                let s:world = world
+                                let pref    = sort(range(1, world.llen), 's:SortPrefs')
+                                let world.prefidx = get(pref, 0, world.initial_index)
+                            else
+                                let world.prefidx = world.idx == '' ? world.initial_index : world.idx
+                            endif
+                            if world.prefidx > world.llen
+                                let world.prefidx = world.llen
+                            elseif world.prefidx < 1
+                                let world.prefidx = 1
+                            endif
+                        endif
+                        " TLogVAR world.initial_index, world.prefidx
+                        " TLogDBG 5
+                        " TLogDBG len(world.list)
+                        " TLogVAR world.list
+                        let dlist = copy(world.list)
+                        if !empty(world.display_format)
+                            let display_format = world.display_format
+                            " TLogVAR display_format
+                            call map(dlist, 'eval(call(function("printf"), world.FormatArgs(display_format, v:val)))')
+                        endif
+                        " TLogVAR world.prefidx
+                        " TLogDBG 6
+                        if world.offset_horizontal > 0
+                            call map(dlist, 'v:val[world.offset_horizontal:-1]')
+                        endif
+                        " TLogVAR dindex
+                        let dlist = map(range(0, world.llen - 1), 'printf("%0'. world.index_width .'d", dindex[v:val]) .": ". dlist[v:val]')
+                        " TLogVAR dlist
+
                     endif
                     " TLogDBG 7
                     " TLogVAR world.prefidx, world.offset
@@ -4991,80 +5072,6 @@ function! s:Init(world, cmd) "{{{3
 endf
 
 
-function! s:GetDList(world) "{{{3
-    call a:world.BuildTable()
-    " TLogDBG 2
-    " TLogDBG len(a:world.table)
-    " TLogVAR a:world.table
-    let a:world.list  = map(copy(a:world.table), 'a:world.GetBaseItem(v:val)')
-    " TLogDBG 3
-    let a:world.llen = len(a:world.list)
-    " TLogVAR a:world.index_table
-    if empty(a:world.index_table)
-        let dindex = range(1, a:world.llen)
-        let a:world.index_width = len(a:world.llen)
-    else
-        let dindex = a:world.index_table
-        let a:world.index_width = len(max(dindex))
-    endif
-    if a:world.llen == 0 && !a:world.show_empty
-        call a:world.ReduceFilter()
-        let a:world.offset = 1
-        " TLogDBG 'ReduceFilter'
-        continue
-    else
-        if a:world.llen == 1
-            let a:world.last_item = a:world.list[0]
-            if a:world.pick_last_item
-                echom 'Pick last item: '. a:world.list[0]
-                let a:world.prefidx = '1'
-                " TLogDBG 'pick last item'
-                throw 'pick'
-            endif
-        else
-            let a:world.last_item = ''
-        endif
-    endif
-    " TLogDBG 4
-    " TLogVAR a:world.idx, a:world.llen, a:world.state
-    " TLogDBG a:world.FilterIsEmpty()
-    if a:world.state == 'display'
-        if a:world.idx == '' && a:world.llen < g:tlib_sortprefs_threshold && !a:world.FilterIsEmpty()
-            let s:world = a:world
-            let pref    = sort(range(1, a:world.llen), 's:SortPrefs')
-            let a:world.prefidx = get(pref, 0, a:world.initial_index)
-        else
-            let a:world.prefidx = a:world.idx == '' ? a:world.initial_index : a:world.idx
-        endif
-        if a:world.prefidx > a:world.llen
-            let a:world.prefidx = a:world.llen
-        elseif a:world.prefidx < 1
-            let a:world.prefidx = 1
-        endif
-    endif
-    " TLogVAR a:world.initial_index, a:world.prefidx
-    " TLogDBG 5
-    " TLogDBG len(a:world.list)
-    " TLogVAR a:world.list
-    let dlist = copy(a:world.list)
-    if !empty(a:world.display_format)
-        let display_format = a:world.display_format
-        let world = a:world
-        " TLogVAR display_format
-        call map(dlist, 'eval(call(function("printf"), a:world.FormatArgs(display_format, v:val)))')
-    endif
-    " TLogVAR a:world.prefidx
-    " TLogDBG 6
-    if a:world.offset_horizontal > 0
-        call map(dlist, 'v:val[a:world.offset_horizontal:-1]')
-    endif
-    " TLogVAR dindex
-    let dlist = map(range(0, a:world.llen - 1), 'printf("%0'. a:world.index_width .'d", dindex[v:val]) .": ". dlist[v:val]')
-    " TLogVAR dlist
-    return dlist
-endf
-
-
 function! s:AssessName(name) "{{{3
     let xa  = 0
     for fltl in s:world.filter
@@ -5212,7 +5219,8 @@ function! tlib#input#Edit(name, value, callback, ...) "{{{3
     imap <buffer> <c-s> <c-o>call <SID>EditCallback(1)<cr>
     map <buffer> <c-w><cr> :call <SID>EditCallback(1)<cr>
     imap <buffer> <c-w><cr> <c-o>call <SID>EditCallback(1)<cr>
-    norm! ggdG
+    call tlib#normal#WithRegister('gg"tdG', 't')
+    norm
     call append(1, split(a:value, "\<c-j>", 1))
     " let hrm = 'DON''T DELETE THIS HEADER'
     " let hr3 = repeat('"', (tlib#win#Width(0) - len(hrm)) / 2)
@@ -5220,7 +5228,7 @@ function! tlib#input#Edit(name, value, callback, ...) "{{{3
     " hr3.hrm.hr3
     let hd  = ['Keys: <c-s>, <c-w><cr> ... save/accept; <c-w>c ... cancel', s:horizontal_line]
     call append(1, hd)
-    norm! ggdd
+    call tlib#normal#WithRegister('gg"tdd', 't')
     syntax match TlibEditComment /^\%1l.*/
     syntax match TlibEditComment /^```.*/
     hi link TlibEditComment Comment
