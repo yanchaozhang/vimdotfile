@@ -18,5 +18,6 @@ vmenu Helpful.Insert.Line\ Numbers :s/^/\=line(".")." "/ <CR>
 nmenu Helpful.List.Changes<Tab>:changes :changes<CR>
 nmenu Helpful.List.Jumps<Tab>jumps :jumps<CR>
 nmenu Helpful.Copy\ File\ Path<Tab>cf <leader>cf
+nmenu Helpful.Recent\ Files<Tab><F7> :FuzzyFinderMruFile<CR>
 nmenu Helpful.Format\ File<Tab><leader>f <leader>f
 nmenu Helpful.HTML\ Tidy<Tab><leader>t :call ReadEx("!tidy -xml --indent-spaces 4 -im %")<CR>
