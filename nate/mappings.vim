@@ -12,15 +12,32 @@ else
 endif
 
 " Toggle highlighting of found search terms on/off
-map <Space> :set hlsearch!<Enter>
+" Use Control-Space because a bunch of other things use Space
+map <C-Space> :set hlsearch!<Enter>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
-map <F1> :Ex<CR>
-imap <F1> <C-O>:Ex<CR>
+" Hexplore means to open it in the upper left new window
+map <F1> :Hexplore!<CR>
+imap <F1> <C-O>:Hexplore!<CR>
 
 " Use F2 to show buffers
 map <F2> <leader>be
 imap <F2> <ESC><leader>be
+
+map <S-F2> :FuzzyFinderBuffer<CR>
+imap <S-F2> :FuzzyFinderBuffer<CR>
+
+" Use F5 for running stuff
+map <F5> :w<Bar>:!./%<CR>
+" Use F7 for favorite files, recent files, etc.
+map <F7> :FuzzyFinderFavFile<CR>
+map <S-F7> :FuzzyFinderMruFile<CR>
+
+" Insert date by pressing <leader>nd
+" from http://www.vim.org/tips/tip.php?tip_id=97
+map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
+" Insert time by pressing <leader>nt
+map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>gP
 
 " -------------- Window and Tab Navigation --------------
 " Textmate like mappings for tabs
