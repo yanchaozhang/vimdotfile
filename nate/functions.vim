@@ -43,9 +43,12 @@ function! s:JumpFind()
     endif
 endfunction
 nnoremap <Leader>s :call <SID>JumpFind()<CR>
+" use / mapping, kinda like regular / command
+nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 
 function! s:DisplayHelpfulShortcuts()
-    echo "Hello World"
+    e ~/.vim/README.TXT
+    /shortcuts<CR>
 endfunction
 nnoremap <Leader>dhs :call <SID>DisplayHelpfulShortcuts()<CR>
   
@@ -55,16 +58,21 @@ nnoremap <Leader>dhs :call <SID>DisplayHelpfulShortcuts()<CR>
 " Problem is that if I open a help file, and issue a :BD, then
 " it tries to find the last used buffer, and I want to blast the help window.
 function! s:BlastBuffer()
-    if &filetype == 'help'
+    if &filetype == 'help' || &filetype == 'netrw'
+	" Just close it.
 	:bd
     else
-	let a:ret_val = confirm("Save changes?", "&Yes\n&No\n&Cancel")
-	if a:ret_val == 1
-	    :w
-	    :BD
-	elseif a:ret_val == 2
-	    :BD!
+	" We're going to use :BD from BufKill plugin
+	" Check for modifications
+	if &modified
+	    let a:ret_val = confirm("Save changes?", "&Yes\n&No\n&Cancel")
+	    if a:ret_val == 1
+		:w
+	    elseif a:ret_val == 3
+		return
+	    endif
 	endif
+	:BD!
     endif
 endfunction
 map <silent> <F4> :call <SID>BlastBuffer()<Enter>
