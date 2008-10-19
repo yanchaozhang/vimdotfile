@@ -51,6 +51,12 @@ set laststatus=2
 set backup
 set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
 
+" set the directory of the explorer = to the directory
+" of the current buffer
+set bsdir=buffer
+
+" Automatically lcd whenever me enter a buffer
+autocmd BufEnter * :lcd %:p:h
 " ------------- Plugin Customizations ---------------
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
 " Previously used has("mac"), except this doesn't work in 
@@ -61,7 +67,25 @@ if s:os =~ "Darwin"
 endif
 let g:BufKillCommandWhenLastBufferKilled = ''
 
-" ------------- Source other configfiles -------------
+
+" Map ctrl-t to open in tab, like other plugins
+" Initializes g:FuzzyFinderOptions.
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions.Base.abbrev_map  = {
+            \   "^;" : [
+            \    getcwd() . '/**/'
+            \   ],
+            \ } 
+let g:FuzzyFinderOptions.Base.key_open_tab = '<C-t>'
+let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
+
+" As an example, if you want to launch file-mode Fuzzyfinder with the full
+" path of current buffer's directory, map like below:
+" The fancy modifiers tell the filename to reduce to homedir or current dir,
+" if possible
+" See :help filename-modifiers
+nnoremap <F3> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+"" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
 so ~/.vim/nate/functions.vim
