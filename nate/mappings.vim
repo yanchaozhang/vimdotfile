@@ -89,3 +89,10 @@ map <C-K> <C-W>k
 " mappings
 map <C-Down> :cn<Enter>
 map <C-Up> :cp<Enter>
+
+" Map the [[ and ]],etc to be able to actually
+" jump to previous/next methods
+map ]] ]m
+map ][ ]M
+map [[ [m
+map [] [M
