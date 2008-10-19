@@ -9,6 +9,13 @@ set nowrap
 set smartcase
 set ignorecase
 
+" When no beep or flash is wanted
+" Note: This is also needed in gvimrc, or Gvim will "beep"
+set vb t_vb=
+
+" Don't show the toolbar
+:set guioptions-=T
+
 " Tell Vim to quit whining about unsaved buffers 
 " when I want to open a new buffer.  Vim just hides
 " the unsaved buffer, instead of trying to close it.
