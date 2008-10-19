@@ -13,6 +13,7 @@ command! -nargs=+ -complete=command ReadEx call ReadEx(<q-args>)
 
 " List occurrences of keyword under cursor, and
 " jump to selected occurrence.
+" Like the * and gd commands, except it lists the occurrences
 function! s:JumpOccurrence()
     let v:errmsg = ""
     exe "normal [I"
