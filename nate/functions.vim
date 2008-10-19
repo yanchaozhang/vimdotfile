@@ -94,3 +94,27 @@ function! s:CopyFilePath()
 
 endfunction
 nnoremap <leader>cf :call <SID>CopyFilePath()<Enter>
+
+function! s:DiffWithFileFromDisk()
+    let filename=expand('%')
+    let diffname = filename.'.withedits'
+    exec 'saveas! '.diffname
+    diffthis
+    vsplit
+    exec 'edit '.filename
+    diffthis
+endfun
+" What's Changed ("wc")
+nnoremap <leader>wc :call <SID>DiffWithFileFromDisk()<Enter>
+
+function! s:ChangeFuzzyDir()
+let g:FuzzyFinderOptions.Base.abbrev_map  = {
+            \   "^;" : [
+            \    getcwd() . '/**/'
+            \   ],
+            \ } 
+FuzzyFinderRemoveCache
+endfun
+" What's Changed ("wc")
+nnoremap <leader>ncd :call <SID>ChangeFuzzyDir()<CR>
+
