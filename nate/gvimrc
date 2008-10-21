@@ -1,0 +1,6 @@
+" When no beep or flash is wanted
+" Note: This is also needed in gvimrc, or Gvim will "beep"
+set vb t_vb=
+
+" Don't show the toolbar
+:set guioptions-=T
