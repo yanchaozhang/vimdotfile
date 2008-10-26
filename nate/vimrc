@@ -1,0 +1,109 @@
+"" Enable filetype-specific indenting and plugins
+filetype plugin indent on 
+syntax enable
+" Don't do the stupid wrapping line junk
+set nowrap
+
+" smartcase means ignore case unless i type a capITal letter in my search, mmk?
+" From http://www.linuxjournal.com/article/3805
+set smartcase
+set ignorecase
+set incsearch
+
+"
+set completeopt=menu,preview,longest
+" set statusline=%{g:buftabs_list}Hello%=%l,%c 
+set wildmode=list:longest,full
+"
+" When no beep or flash is wanted
+" Note: This is also needed in gvimrc, or Gvim will "beep"
+set vb t_vb=
+
+" Don't show the toolbar
+:set guioptions-=T
+
+" Tell Vim to quit whining about unsaved buffers 
+" when I want to open a new buffer.  Vim just hides
+" the unsaved buffer, instead of trying to close it.
+set hidden
+
+" ------------ Tab and indent settings ------------  
+set smartindent
+set autoindent
+
+" Softtabstop is shiftwidth is how many spaces are used for auto-indenting
+set softtabstop=4
+set shiftwidth=4
+" Expand tabs to spaces, mmk?
+set expandtab
+
+" ------------- tab labels ---------------
+" Set the tab labels to just the filename, and not the abbreviated directories
+" that are the default setting
+set guitablabel=%N\ %t
+" Show entire filename on mouseover of tabs
+set guitabtooltip=%N\ %F
+
+" ------------- Swap files/Backup Directory ------------
+" Set directory for swap files.
+" see :h swap
+if has('win32')
+    set dir=c:\nate\vimswapfiles
+else
+    set dir=~/tmp
+endif
+" Status Line
+" The %= means right-align.  The %Y means filetype
+" set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
+set laststatus=2
+
+" Back up files to $HOME/vimbackups
+" If that doesn't exist, try one of the $TEMP directories.
+" Might need to create a directory, if Vim whines about not being able to
+" make backups.
+
+set backup
+set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
+
+" set the directory of the explorer = to the directory
+" of the current buffer
+set bsdir=buffer
+
+" Automatically lcd whenever me enter a buffer
+autocmd BufEnter * :lcd %:p:h
+" ------------- Plugin Customizations ---------------
+" Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
+" Previously used has("mac"), except this doesn't work in 
+" a terminal, and fubars the grep.vim plugin
+let s:os = system("uname")
+if s:os =~ "Darwin"
+    let g:Grep_Xargs_Options='-0'
+endif
+let g:BufKillCommandWhenLastBufferKilled = ''
+
+
+" Map ctrl-t to open in tab, like other plugins
+" Initializes g:FuzzyFinderOptions.
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions.Base.abbrev_map  = {
+            \   "^;" : [
+            \    getcwd() . '/**/'
+            \   ],
+            \ } 
+let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
+let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
+
+let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
+" As an example, if you want to launch file-mode Fuzzyfinder with the full
+" path of current buffer's directory, map like below:
+" The fancy modifiers tell the filename to reduce to homedir or current dir,
+" if possible
+" See :help filename-modifiers
+nnoremap <F3> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+let g:buftabs_in_statusline=0
+let g:buftabs_only_basename=1
+"" ------------- Source other configfiles -------------
+so ~/.vim/nate/menus.vim
+so ~/.vim/nate/mappings.vim
+so ~/.vim/nate/functions.vim
+so ~/.vim/nate/fonts_and_syntax.vim
