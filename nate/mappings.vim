@@ -47,15 +47,15 @@ imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
-" map <D-1> :tabn 1<CR>
-" map <D-2> :tabn 2<CR>
-" map <D-3> :tabn 3<CR>
-" map <D-4> :tabn 4<CR>
-" map <D-5> :tabn 5<CR>
-" map <D-6> :tabn 6<CR>
-" map <D-7> :tabn 7<CR>
-" map <D-8> :tabn 8<CR>
-" map <D-9> :tabn 9<CR>
+map <D-1> :tabn 1<CR>
+map <D-2> :tabn 2<CR>
+map <D-3> :tabn 3<CR>
+map <D-4> :tabn 4<CR>
+map <D-5> :tabn 5<CR>
+map <D-6> :tabn 6<CR>
+map <D-7> :tabn 7<CR>
+map <D-8> :tabn 8<CR>
+map <D-9> :tabn 9<CR>
 
 map! <D-1> <C-O>:tabn 1<CR>
 map! <D-2> <C-O>:tabn 2<CR>
@@ -76,11 +76,7 @@ map <C-Left> :tabp<CR>
 " Buffer Mappings
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
-" Also use old-school F6
-map <F6> :bn<CR>
-map <S-F6> :bp<CR>
 
-" Use <F4> as a universal, "close file" command
 map <F4> :bd<CR>
 imap <F4> <C-O>:bd<CR>
 
@@ -100,7 +96,3 @@ map ]] ]m
 map ][ ]M
 map [[ [m
 map [] [M
-
-" External program mappings
-" Open in Textmate
-map <leader>ma :!mate %:p<CR>
