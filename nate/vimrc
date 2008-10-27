@@ -94,13 +94,10 @@ let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
-" As an example, if you want to launch file-mode Fuzzyfinder with the full
-" path of current buffer's directory, map like below:
-" The fancy modifiers tell the filename to reduce to homedir or current dir,
-" if possible
-" See :help filename-modifiers
-nnoremap <F3> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-let g:buftabs_in_statusline=0
+
+" buftabs_in_statusline will display tabs in statusline, rather than the flaky
+" command line.
+let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
