@@ -1,4 +1,5 @@
 " Set font.  Use Monaco on OSX, and Courier on Linux/Windoze 
+hi CursorLine guibg=#2d2d2d
 if has('mac')
 	set guifont=DejaVu\ Sans\ Mono:h14
 	" set guifont=Monaco:h14
