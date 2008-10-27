@@ -20,19 +20,36 @@ map <C-Space> :set hlsearch!<Enter>
 map <F1> :Hexplore!<CR>
 imap <F1> <C-O>:Hexplore!<CR>
 
+" Map Shift-F1 to be the fuzzy version of Explorer
+" As an example, if you want to launch file-mode Fuzzyfinder with the full
+" path of current buffer's directory, map like below:
+" The fancy modifiers tell the filename to reduce to homedir or current dir,
+" if possible
+map <S-F1> <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>:FuzzyFinderFile<CR>
+nnoremap <S-F1> <ESC> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+
 " Use F2 to show buffers
 map <F2> <leader>be
 imap <F2> <ESC><leader>be
 
+" Map Shift-F2 to be the fuzzy version of BufExplorer
 map <S-F2> :FuzzyFinderBuffer<CR>
-imap <S-F2> :FuzzyFinderBuffer<CR>
+imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
+
+" Map F3 to be like "project explorer" in Textmate
+" The ; is a shortcut to go to the directory that was defined
+" when Vim was started.  See vimrc
+nnoremap <F3> :FuzzyFinderFile ;
+" See functions.vim for mapping of C-F3, which changes
+" the directory of the Fuzzy Finder's ";" shortcut
 
 " Use F5 for running stuff
 map <F5> :w<Bar>:!./%<CR>
 " Use F7 for favorite files, recent files, etc.
 map <F7> :FuzzyFinderFavFile<CR>
 map <S-F7> :FuzzyFinderMruFile<CR>
-
+" Use F9 for running stuff
+" See ftplugins
 " Insert date by pressing <leader>nd
 " from http://www.vim.org/tips/tip.php?tip_id=97
 map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
@@ -47,25 +64,25 @@ imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
-map <D-1> :tabn 1<CR>
-map <D-2> :tabn 2<CR>
-map <D-3> :tabn 3<CR>
-map <D-4> :tabn 4<CR>
-map <D-5> :tabn 5<CR>
-map <D-6> :tabn 6<CR>
-map <D-7> :tabn 7<CR>
-map <D-8> :tabn 8<CR>
-map <D-9> :tabn 9<CR>
+" map <D-1> :tabn 1<CR>
+" map <D-2> :tabn 2<CR>
+" map <D-3> :tabn 3<CR>
+" map <D-4> :tabn 4<CR>
+" map <D-5> :tabn 5<CR>
+" map <D-6> :tabn 6<CR>
+" map <D-7> :tabn 7<CR>
+" map <D-8> :tabn 8<CR>
+" map <D-9> :tabn 9<CR>
 
-map! <D-1> <C-O>:tabn 1<CR>
-map! <D-2> <C-O>:tabn 2<CR>
-map! <D-3> <C-O>:tabn 3<CR>
-map! <D-4> <C-O>:tabn 4<CR>
-map! <D-5> <C-O>:tabn 5<CR>
-map! <D-6> <C-O>:tabn 6<CR>
-map! <D-7> <C-O>:tabn 7<CR>
-map! <D-8> <C-O>:tabn 8<CR>
-map! <D-9> <C-O>:tabn 9<CR>
+" map! <D-1> <C-O>:tabn 1<CR>
+" map! <D-2> <C-O>:tabn 2<CR>
+" map! <D-3> <C-O>:tabn 3<CR>
+" map! <D-4> <C-O>:tabn 4<CR>
+" map! <D-5> <C-O>:tabn 5<CR>
+" map! <D-6> <C-O>:tabn 6<CR>
+" map! <D-7> <C-O>:tabn 7<CR>
+" map! <D-8> <C-O>:tabn 8<CR>
+" map! <D-9> <C-O>:tabn 9<CR>
 
 " Ctrl-Tab tab mappings
 map <C-Tab> :tabn<CR>

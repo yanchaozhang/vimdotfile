@@ -117,4 +117,5 @@ FuzzyFinderRemoveCache
 endfun
 " What's Changed ("wc")
 nnoremap <leader>ncd :call <SID>ChangeFuzzyDir()<CR>
+nnoremap <C-F3>ncd :call <SID>ChangeFuzzyDir()<CR>
 
