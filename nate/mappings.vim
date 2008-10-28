@@ -39,16 +39,32 @@ imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
 " Map F3 to be like "project explorer" in Textmate
 " The ; is a shortcut to go to the directory that was defined
 " when Vim was started.  See vimrc
-nnoremap <F3> :FuzzyFinderFile ;
+map <F3> :FuzzyFinderFile;<CR>
+
+" Tried this textmate version, but it sucks
+" because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
+" nnoremap <F3> :FuzzyFinderTextMate<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
 
 " Use F5 for running stuff
 map <F5> :w<Bar>:!./%<CR>
+
+" Use F6 for switching bufers
+map <F6> :bn<CR>
+map <S-F6> :bp<CR>
+
 " Use F7 for favorite files, recent files, etc.
 map <F7> :FuzzyFinderFavFile<CR>
 map <S-F7> :FuzzyFinderMruFile<CR>
+
 " Use F9 for running stuff
+" See the related ftplugin files
+"
+" Use F10 for virtual edit
+" virtual edit is useful when selecting columns
+map <F10> :set virtualedit!<CR>
+
 " See ftplugins
 " Insert date by pressing <leader>nd
 " from http://www.vim.org/tips/tip.php?tip_id=97
