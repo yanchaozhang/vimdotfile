@@ -14,11 +14,12 @@ endif
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
+map <S-Space> :cursorline!<Enter>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
-map <F1> :Hexplore!<CR>
-imap <F1> <C-O>:Hexplore!<CR>
+map <F1> :Explore!<CR>
+imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
 " As an example, if you want to launch file-mode Fuzzyfinder with the full
