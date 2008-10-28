@@ -109,3 +109,7 @@ map ]] ]m
 map ][ ]M
 map [[ [m
 map [] [M
+
+" -------------- Experimental --------------
+" Remap enter key to insert a new blank line (kinda)
+map <Enter> o<ESC>
