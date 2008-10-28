@@ -79,6 +79,14 @@ let s:os = system("uname")
 if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
+
+" For grep.vim, tell it to ignore .svn directories and log files
+:let Grep_Skip_Dirs = '.svn log vendor' 
+" Ignore case
+:let Grep_Default_Options = '-i'
+
+" BufKill customization not to default to a blank buffer
+" if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 
 
@@ -92,6 +100,7 @@ let g:FuzzyFinderOptions.Base.abbrev_map  = {
             \ } 
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
+let g:fuzzy_roots=[getcwd()]
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
 
