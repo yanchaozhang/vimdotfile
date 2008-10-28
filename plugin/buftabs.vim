@@ -120,9 +120,9 @@ function! Buftabs_show()
 			" is the active buffer, it is enclosed in square brackets. If it is
 			" modified, it is appended with an exclaimation mark
 
-			if bufwinnr(l:i) != -1
-				let l:list = l:list . '['
-				let l:start = strlen(l:list)
+			if bufwinnr(l:i) != -1 && winnr() == bufwinnr(l:i)
+          let l:list = l:list . '['
+          let l:start = strlen(l:list)
 			else
 				let l:list = l:list . ' '
 			endif
@@ -139,7 +139,7 @@ function! Buftabs_show()
 				let l:list = l:list . "!"
 			endif
 			
-			if bufwinnr(l:i) != -1
+			if bufwinnr(l:i) != -1 && winnr() == bufwinnr(l:i)
 				let l:list = l:list . ']'
 				let l:end = strlen(l:list)
 			else
