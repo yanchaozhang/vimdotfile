@@ -101,11 +101,17 @@ let g:FuzzyFinderOptions.Base.abbrev_map  = {
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 let g:fuzzy_roots=[getcwd()]
+let g:fuzzy_root=getcwd()
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
-
+" buftabs plugin shows the buffers in the statusline.  Define what I want
+" statusline to be
 " buftabs_in_statusline will display tabs in statusline, rather than the flaky
 " command line.
+" Status Line.  Set a variable which is used by buftab plugin when
+" we're setting any statusline except the bottom one.
+" The %= means right-align.  The %Y means filetype
+let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
 "" ------------- Source other configfiles -------------
