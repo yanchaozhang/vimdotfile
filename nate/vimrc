@@ -10,9 +10,9 @@ set smartcase
 set ignorecase
 set incsearch
 
-"
+" TODO: Document what the heck this does.
+" Document it on Notesmine
 set completeopt=menu,preview,longest
-" set statusline=%{g:buftabs_list}Hello%=%l,%c 
 set wildmode=list:longest,full
 "
 " When no beep or flash is wanted
