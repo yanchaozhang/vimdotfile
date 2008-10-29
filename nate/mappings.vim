@@ -14,7 +14,7 @@ endif
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
-map <S-Space> :cursorline!<Enter>
+map <S-Space> :set cursorline!<Enter>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
