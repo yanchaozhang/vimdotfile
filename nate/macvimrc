@@ -17,9 +17,13 @@ nnoremap <D-b> :FuzzyFinderFavFile<CR>
 colorscheme koehler
 hi CursorLine guibg=#121212
 hi Visual gui=none guibg=#222222
-
+" highlight sr does something to inverse the status line, 
+" which makes it look better
+" See help status-line
+set highlight+=sr
 set columns=90 lines=65
 set transparency=2
+set cursorline
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
