@@ -2,12 +2,12 @@
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Pipes the output of an Ex command to a new tab
 function! ReadEx(cmd)
-    redir => message
-    silent execute a:cmd
-    redir END
-    tabnew
-    silent put=message
-    set nomodified
+ redir => message
+ silent execute a:cmd
+ redir END
+ tabnew
+ silent put=message
+ set nomodified
 endfunction
 command! -nargs=+ -complete=command ReadEx call ReadEx(<q-args>)
 
@@ -18,10 +18,10 @@ function! s:JumpOccurrence()
     let v:errmsg = ""
     exe "normal [I"
     if strlen(v:errmsg) == 0
-        let nr = input("Which one: ")
-        if nr =~ '\d\+'
-            exe "normal! " . nr . "[\t"
-        endif
+	let nr = input("Which one: ")
+	if nr =~ '\d\+'
+	    exe "normal! " . nr . "[\t"
+	endif
     endif
 endfunction
 nnoremap <Leader>j :call <SID>JumpOccurrence()<CR>
@@ -108,14 +108,26 @@ endfun
 nnoremap <leader>wc :call <SID>DiffWithFileFromDisk()<Enter>
 
 function! s:ChangeFuzzyDir()
-let g:FuzzyFinderOptions.Base.abbrev_map  = {
-            \   "^;" : [
-            \    getcwd() . '/**/'
-            \   ],
-            \ } 
-FuzzyFinderRemoveCache
+    let g:FuzzyFinderOptions.Base.abbrev_map  = {
+                \   "^;" : [
+                \    getcwd() . '/**/'
+                \   ],
+                \ } 
+    FuzzyFinderRemoveCache
 endfun
 " What's Changed ("wc")
 nnoremap <leader>ncd :call <SID>ChangeFuzzyDir()<CR>
 nnoremap <C-F3>ncd :call <SID>ChangeFuzzyDir()<CR>
 
+" Turn virtual edit on/off
+function! s:ToggleVirtualEdit()
+    if &virtualedit == 'all'
+        " Un-let the setting
+        set virtualedit=
+        echo "Virtual edit turned off."
+    else
+        set virtualedit=all
+        echo "Virtual edit setting is 'all'."
+    endif
+endfunction
+map <F10> :call <SID>ToggleVirtualEdit()<CR>

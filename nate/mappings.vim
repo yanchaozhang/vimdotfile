@@ -63,8 +63,7 @@ map <S-F7> :FuzzyFinderMruFile<CR>
 " See the related ftplugin files
 "
 " Use F10 for virtual edit
-" virtual edit is useful when selecting columns
-map <F10> :set virtualedit!<CR>
+" See functions.vim
 
 " See ftplugins
 " Insert date by pressing <leader>nd
