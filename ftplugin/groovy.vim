@@ -202,6 +202,8 @@ endif
 if !hasmapto("<SID>CompileNoPrompt()")
 	nmap <buffer><unique><silent> <S-F9> :call <SID>CompileNoPrompt()<CR>
 endif
+" Test current groovy scripts.
+nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
 
 " Display a help key reminder when first loading Vim (with a Groovy file)
 au VimEnter *.groovy echo "F2 for Groovy plugin help"
@@ -239,5 +241,10 @@ let b:undo_ftplugin = "setlocal suffixes< suffixesadd<" .
 		\     " autoindent<" .
 		\     " | unlet! b:browsefilter"
 
+function! s:RunTests()
+    let l:filename=expand("%:t:r")
+    let l:filename=substitute(l:filename, 'Tests', '','')
+    exe '!grails test-app ' . l:filename
+endfunction
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
