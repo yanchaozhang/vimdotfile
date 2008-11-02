@@ -102,6 +102,9 @@ let g:FuzzyFinderOptions.Base.abbrev_map  = {
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 let g:fuzzy_roots=[getcwd()]
+" Used to tell my version of fuzzy finder what
+" the global directory is so that it can remove it from
+" search results to trim down menu a bit.
 let g:fuzzy_root=getcwd()
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
