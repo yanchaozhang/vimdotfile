@@ -22,8 +22,8 @@ hi Visual gui=none guibg=#222222
 " See help status-line
 set highlight+=sr
 set columns=90 lines=65
-set transparency=2
-set cursorline
+set transparency=1
+set nocursorline
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
