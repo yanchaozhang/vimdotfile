@@ -3,7 +3,6 @@ filetype plugin indent on
 syntax enable
 " Don't do the stupid wrapping line junk
 set nowrap
-
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
 " From http://www.linuxjournal.com/article/3805
 set smartcase
@@ -12,7 +11,9 @@ set incsearch
 
 " TODO: Document what the heck this does.
 " Document it on Notesmine
-set completeopt=menu,preview,longest
+" I ditched longest, because it only completes *up to* the longest common
+" characters.  This results in a lot of tabbing/Ctrl-Ning
+set completeopt=menu " ,preview,longest
 set wildmode=list:longest,full
 "
 " When no beep or flash is wanted
@@ -70,7 +71,7 @@ set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
 set bsdir=buffer
 
 " Automatically lcd whenever me enter a buffer
-autocmd BufEnter * :lcd %:p:h
+" autocmd BufEnter * :lcd %:p:h
 " ------------- Plugin Customizations ---------------
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
 " Previously used has("mac"), except this doesn't work in 
