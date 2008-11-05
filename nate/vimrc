@@ -15,6 +15,7 @@ set incsearch
 " characters.  This results in a lot of tabbing/Ctrl-Ning
 set completeopt=menu " ,preview,longest
 set wildmode=list:longest,full
+set dictionary=/usr/share/dict/words
 "
 " When no beep or flash is wanted
 " Note: This is also needed in gvimrc, or Gvim will "beep"
