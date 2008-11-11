@@ -4,16 +4,3 @@ set vb t_vb=
 
 " Don't show the toolbar
 :set guioptions-=T
-
-colorscheme koehler
-set columns=90 lines=65
-
-" Added by me to avoid headache when viewing folded code.
-" And Fuzzy Menus
-hi Folded       guifg=#E6E1DC guibg=#000000
-hi Pmenu        guibg=#000000 guifg=#c0c0c0
-hi PmenuSel     guibg=#3465a4 guifg=#ffffff
-hi PmenuSbar    guibg=#444444 guifg=#444444
-hi PmenuThumb   guibg=#888888 guifg=#888888 
-
-
