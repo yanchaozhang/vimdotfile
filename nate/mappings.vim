@@ -14,11 +14,12 @@ endif
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
+map <S-Space> :set cursorline!<Enter>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
-map <F1> :Hexplore!<CR>
-imap <F1> <C-O>:Hexplore!<CR>
+map <F1> :Explore!<CR>
+imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
 " As an example, if you want to launch file-mode Fuzzyfinder with the full
@@ -39,16 +40,31 @@ imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
 " Map F3 to be like "project explorer" in Textmate
 " The ; is a shortcut to go to the directory that was defined
 " when Vim was started.  See vimrc
-nnoremap <F3> :FuzzyFinderFile ;
+map <F3> :FuzzyFinderFile;<CR>
+
+" Tried this textmate version, but it sucks
+" because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
+" nnoremap <F3> :FuzzyFinderTextMate<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
 
 " Use F5 for running stuff
 map <F5> :w<Bar>:!./%<CR>
+
+" Use F6 for switching bufers
+map <F6> :bn<CR>
+map <S-F6> :bp<CR>
+
 " Use F7 for favorite files, recent files, etc.
 map <F7> :FuzzyFinderFavFile<CR>
 map <S-F7> :FuzzyFinderMruFile<CR>
+
 " Use F9 for running stuff
+" See the related ftplugin files
+"
+" Use F10 for virtual edit
+" See functions.vim
+
 " See ftplugins
 " Insert date by pressing <leader>nd
 " from http://www.vim.org/tips/tip.php?tip_id=97
@@ -63,26 +79,6 @@ map <D-M-Left> :tabp<Enter>
 imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
-
-" map <D-1> :tabn 1<CR>
-" map <D-2> :tabn 2<CR>
-" map <D-3> :tabn 3<CR>
-" map <D-4> :tabn 4<CR>
-" map <D-5> :tabn 5<CR>
-" map <D-6> :tabn 6<CR>
-" map <D-7> :tabn 7<CR>
-" map <D-8> :tabn 8<CR>
-" map <D-9> :tabn 9<CR>
-
-" map! <D-1> <C-O>:tabn 1<CR>
-" map! <D-2> <C-O>:tabn 2<CR>
-" map! <D-3> <C-O>:tabn 3<CR>
-" map! <D-4> <C-O>:tabn 4<CR>
-" map! <D-5> <C-O>:tabn 5<CR>
-" map! <D-6> <C-O>:tabn 6<CR>
-" map! <D-7> <C-O>:tabn 7<CR>
-" map! <D-8> <C-O>:tabn 8<CR>
-" map! <D-9> <C-O>:tabn 9<CR>
 
 " Ctrl-Tab tab mappings
 map <C-Tab> :tabn<CR>
@@ -113,3 +109,7 @@ map ]] ]m
 map ][ ]M
 map [[ [m
 map [] [M
+
+" -------------- Experimental --------------
+" Remap enter key to insert a new blank line (kinda)
+map <Enter> o<ESC>

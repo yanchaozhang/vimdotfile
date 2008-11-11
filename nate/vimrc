@@ -3,17 +3,19 @@ filetype plugin indent on
 syntax enable
 " Don't do the stupid wrapping line junk
 set nowrap
-
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
 " From http://www.linuxjournal.com/article/3805
 set smartcase
 set ignorecase
 set incsearch
 
-"
-set completeopt=menu,preview,longest
-" set statusline=%{g:buftabs_list}Hello%=%l,%c 
+" TODO: Document what the heck this does.
+" Document it on Notesmine
+" I ditched longest, because it only completes *up to* the longest common
+" characters.  This results in a lot of tabbing/Ctrl-Ning
+set completeopt=menu " ,preview,longest
 set wildmode=list:longest,full
+set dictionary=/usr/share/dict/words
 "
 " When no beep or flash is wanted
 " Note: This is also needed in gvimrc, or Gvim will "beep"
@@ -71,7 +73,7 @@ set backupdir=$HOME/tmp/vimbackups
 set bsdir=buffer
 
 " Automatically lcd whenever me enter a buffer
-autocmd BufEnter * :lcd %:p:h
+" autocmd BufEnter * :lcd %:p:h
 " ------------- Plugin Customizations ---------------
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
 " Previously used has("mac"), except this doesn't work in 
@@ -80,6 +82,14 @@ let s:os = system("uname")
 if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
+
+" For grep.vim, tell it to ignore .svn directories and log files
+:let Grep_Skip_Dirs = '.svn log vendor' 
+" Ignore case
+:let Grep_Default_Options = '-i'
+
+" BufKill customization not to default to a blank buffer
+" if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 
 
@@ -93,11 +103,21 @@ let g:FuzzyFinderOptions.Base.abbrev_map  = {
             \ } 
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
+let g:fuzzy_roots=[getcwd()]
+" Used to tell my version of fuzzy finder what
+" the global directory is so that it can remove it from
+" search results to trim down menu a bit.
+let g:fuzzy_root=getcwd()
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
-
+" buftabs plugin shows the buffers in the statusline.  Define what I want
+" statusline to be
 " buftabs_in_statusline will display tabs in statusline, rather than the flaky
 " command line.
+" Status Line.  Set a variable which is used by buftab plugin when
+" we're setting any statusline except the bottom one.
+" The %= means right-align.  The %Y means filetype
+let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
 "" ------------- Source other configfiles -------------

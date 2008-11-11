@@ -567,9 +567,13 @@ function! s:FormatCompletionItem(expr, number, abbr, trim_len, time, base_patter
   else
     let rate = s:EvaluateMatchingRate(a:expr, a:base_pattern)
   endif
+  " Trim off the common g:fuzzy_root directory, to abbreviate better.
+  " could perhaps improve this to only be one or two parent directories of
+  " each selection?
+  let myabbr = substitute(a:abbr, g:fuzzy_root, '', '') 
   return  {
         \   'word'  : a:expr,
-        \   'abbr'  : s:TrimLast((a:number >= 0 ? printf('%2d: ', a:number) : '') . a:abbr, a:trim_len),
+        \   'abbr'  : s:TrimLast((a:number >= 0 ? printf('%2d: ', a:number) : '') . myabbr, a:trim_len),
         \   'menu'  : printf('%s[%s]', (len(a:time) ? a:time . ' ' : ''), s:MakeRateStar(rate, 5)),
         \   'ranks' : [-rate, (a:number >= 0 ? a:number : a:expr)]
         \ }
