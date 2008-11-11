@@ -17,7 +17,7 @@ hi PmenuThumb   guibg=#888888 guifg=#888888
 if has('mac')
 	" set guifont=DejaVu\ Sans\ Mono:h14
 	set guifont=Monaco:h14
-	" set guifont=Bitstream\ Vera\ Sans\ Mono\ 18
+	" set guifont=Bitstream\ Vera\ Sans\ Mono:h14
 elseif has('gui_win32')
 	set guifont=courier_new:h10 
 elseif has('gui_gtk')
