@@ -61,11 +61,12 @@ set laststatus=2
 
 " Back up files to $HOME/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
-" Might need to create a directory, if Vim whines about not being able to
+" User will need to create a backup directory if Vim whines about not being able to
 " make backups.
+" e.g. mkdir -p ~/tmp/vimbackups
 
 set backup
-set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
+set backupdir=$HOME/tmp/vimbackups
 
 " set the directory of the explorer = to the directory
 " of the current buffer
