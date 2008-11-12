@@ -1,6 +1,7 @@
 " These settings are for MacVim
 " where I removed the various MacVim menus that conflicted 
 " with the Apple-key mappings that I wanted
+colorscheme koehler
 iunmenu File.Save
 imenu <silent> File.Save <Esc> :if expand("%") == "" <Bar> browse confirm w<Bar>else<Bar>confirm w<Bar>endif<CR>
 

@@ -1,4 +1,4 @@
-colorscheme koehler
+" colorscheme koehler
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
