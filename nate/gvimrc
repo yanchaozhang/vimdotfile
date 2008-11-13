@@ -1,6 +1,3 @@
-" Set colorscheme here, versus in vimrc
-" to avoid weird stuff
-colorscheme koehler
 " When no beep or flash is wanted
 " Note: This is also needed in gvimrc, or Gvim will "beep"
 set vb t_vb=

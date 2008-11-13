@@ -1,10 +1,12 @@
-" colorscheme koehler
+if has("gui_running")
+    colorscheme koehler
+endif
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
 highlight Folded                    guifg=#E6E1DC   guibg=#000000
 " Tame down cursorline
-hi CursorLine   guibg=#121212
+hi CursorLine   guibg=#222222
 hi Visual       gui=none guibg=#222222
 hi Pmenu        guibg=#000000 guifg=#c0c0c0
 hi PmenuSel     guibg=#3465a4 guifg=#ffffff
