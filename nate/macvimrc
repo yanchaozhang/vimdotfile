@@ -20,5 +20,5 @@ nnoremap <D-b> :FuzzyFinderFavFile<CR>
 " See help status-line
 set highlight+=sr
 set columns=90 lines=65
-set transparency=1
+" set transparency=1
 set nocursorline
