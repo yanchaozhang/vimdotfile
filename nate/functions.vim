@@ -108,11 +108,7 @@ endfun
 nnoremap <leader>wc :call <SID>DiffWithFileFromDisk()<Enter>
 
 function! s:ChangeFuzzyDir()
-    let g:FuzzyFinderOptions.Base.abbrev_map  = {
-                \   "^;" : [
-                \    getcwd() . '/**/'
-                \   ],
-                \ } 
+    let g:fuzzy_root = getcwd()
     FuzzyFinderRemoveCache
 endfun
 " What's Changed ("wc")
