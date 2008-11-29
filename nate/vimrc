@@ -64,7 +64,7 @@ set laststatus=2
 " make backups.
 
 set backup
-set backupdir=$HOME/vimbackups,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
+set backupdir=$HOME/tmp,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
 
 " set the directory of the explorer = to the directory
 " of the current buffer
@@ -72,6 +72,8 @@ set bsdir=buffer
 
 " Automatically lcd whenever me enter a buffer
 " autocmd BufEnter * :lcd %:p:h
+" Use CSS for TOhtml command
+:let html_use_css = 1
 " ------------- Plugin Customizations ---------------
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
 " Previously used has("mac"), except this doesn't work in 
