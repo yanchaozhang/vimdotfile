@@ -113,3 +113,19 @@ map [] [M
 " -------------- Experimental --------------
 " Remap enter key to insert a new blank line (kinda)
 map <Enter> o<ESC>
+" Get rid of useless '' and 'a, 'e, wich take you to the start of the line
+" that you were at, instead of the exact place where you were just at
+" http://www.vim.org/htmldoc/tips.html
+:map ' `
+
+" For Emacs-style editing on the command-line
+" start of line
+:cnoremap <C-A> <Home>
+" back one character
+:cnoremap <C-B> <Left>
+" delete character under cursor
+:cnoremap <C-D> <Del>
+" end of line
+:cnoremap <C-E> <End>
+" forward one character
+
