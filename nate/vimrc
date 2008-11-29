@@ -15,6 +15,7 @@ set incsearch
 " characters.  This results in a lot of tabbing/Ctrl-Ning
 set completeopt=menu " ,preview,longest
 set wildmode=list:longest,full
+set dictionary=/usr/share/dict/words
 "
 " When no beep or flash is wanted
 " Note: This is also needed in gvimrc, or Gvim will "beep"
@@ -60,11 +61,12 @@ set laststatus=2
 
 " Back up files to $HOME/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
-" Might need to create a directory, if Vim whines about not being able to
+" User will need to create a backup directory if Vim whines about not being able to
 " make backups.
+" e.g. mkdir -p ~/tmp/vimbackups
 
 set backup
-set backupdir=$HOME/tmp,$TEMP/vimbackups,/temp/vimbackups,/tmp/vimbackups
+set backupdir=$HOME/tmp/vimbackups
 
 " set the directory of the explorer = to the directory
 " of the current buffer
