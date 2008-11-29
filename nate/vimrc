@@ -9,6 +9,22 @@ set smartcase
 set ignorecase
 set incsearch
 
+" use confirm instead of aborting an action
+set confirm
+
+" http://items.sjbach.com/319/configuring-vim-right
+" current directory is always matching the
+" content of the active window
+set autochdir
+
+" remember some stuff after quiting vim:
+" marks, registers, searches, buffer list
+set viminfo='20,<50,s10,h,%
+
+" use console dialogs instead of popup
+" dialogs for simple choices
+set guioptions+=c
+
 " TODO: Document what the heck this does.
 " Document it on Notesmine
 " I ditched longest, because it only completes *up to* the longest common
