@@ -140,8 +140,6 @@ let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$
 let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
-" Most of the time, I use dark backgrounds on terminal
-set bg=dark
 let mapleader = ","
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
