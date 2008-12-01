@@ -46,12 +46,6 @@ nnoremap <Leader>s :call <SID>JumpFind()<CR>
 " use / mapping, kinda like regular / command
 nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 
-function! s:DisplayHelpfulShortcuts()
-    e ~/.vim/README.TXT
-    /shortcuts<CR>
-endfunction
-nnoremap <Leader>dhs :call <SID>DisplayHelpfulShortcuts()<CR>
-
 " Handles the stupid :bd versus :BD debate
 " :BD uses the bufkill thingy, where it will keep the window
 " open if there are other buffers in the dam window.
