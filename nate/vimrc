@@ -15,7 +15,9 @@ set confirm
 " http://items.sjbach.com/319/configuring-vim-right
 " current directory is always matching the
 " content of the active window
-set autochdir
+" Not a fan of this, due to non-backward compatibility
+" set autochdir
+autocmd BufEnter * lcd %:p:h
 
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
@@ -140,6 +142,7 @@ let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
 " Most of the time, I use dark backgrounds on terminal
 set bg=dark
+let mapleader = ","
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
