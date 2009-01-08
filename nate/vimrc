@@ -73,9 +73,18 @@ else
     set dir=~/tmp
 endif
 " Status Line
+
 " The %= means right-align.  The %Y means filetype
 " set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
 set laststatus=2
+set statusline=%F%m%r%h%w
+set statusline+=%h      "help file flag
+set statusline+=%r      "read only flag
+set statusline+=%=      "left/right separator
+set statusline+=(%l,\ %v)\ of\ %L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+" Show a pending Vim command like "c" or "d" under the status bar
+set showcmd
 
 " Back up files to $HOME/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
