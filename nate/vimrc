@@ -17,7 +17,7 @@ set confirm
 " content of the active window
 " Not a fan of this, due to non-backward compatibility
 " set autochdir
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
