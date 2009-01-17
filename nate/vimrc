@@ -121,22 +121,11 @@ endif
 " if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 
-
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
-let g:FuzzyFinderOptions.Base.abbrev_map  = {
-            \   "^;" : [
-            \    getcwd() . '/**/'
-            \   ],
-            \ } 
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
-let g:fuzzy_roots=[getcwd()]
-" Used to tell my version of fuzzy finder what
-" the global directory is so that it can remove it from
-" search results to trim down menu a bit.
-let g:fuzzy_root=getcwd()
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
 " buftabs plugin shows the buffers in the statusline.  Define what I want
