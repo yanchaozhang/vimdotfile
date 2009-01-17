@@ -1,24 +1,35 @@
 " This file contains keyboard mappings for Vim
 " Help file mappings are located in ~/.vim/ftplugin/help.vim
+let mapleader = ","
 
 " -------------- General Mappings ---------------
-",v brings up my .vimrc
-",V reloads it -- making all changes active (have to save first)
+" Map the overwritten "," character to call itself, if I ever
+" need it, I just press ,,
+nnoremap <leader>, ,
+
+",v reloads vimrc
 if has('win32')
-    map <leader>v :e c:\njn\_vimrc<Enter>
-    map <silent> <leader>V :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    map <silent> <leader>v :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 else
-    map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    map <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 endif
 
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
+" Mnemonic: (h)ighlight (s)earch
+map <leader>hs :set hlsearch!<Enter>
+
+" Mnemonic: (h)ighlight (c)ursorline
 map <S-Space> :set cursorline!<Enter>
+map <leader>hc :set cursorline!<Enter>
+
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
 map <F1> :Explore!<CR>
+map <leader>e :Explore!<CR>
+
 imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
