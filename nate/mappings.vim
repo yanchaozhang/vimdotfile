@@ -1,24 +1,35 @@
 " This file contains keyboard mappings for Vim
 " Help file mappings are located in ~/.vim/ftplugin/help.vim
+let mapleader = ","
 
 " -------------- General Mappings ---------------
-",v brings up my .vimrc
-",V reloads it -- making all changes active (have to save first)
+" Map the overwritten "," character to call itself, if I ever
+" need it, I just press ,,
+nnoremap <leader>, ,
+
+",v reloads vimrc
 if has('win32')
-    map <leader>v :e c:\njn\_vimrc<Enter>
-    map <silent> <leader>V :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    map <silent> <leader>v :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 else
-    map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+    map <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 endif
 
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
+" Mnemonic: (h)ighlight (s)earch
+map <leader>hs :set hlsearch!<Enter>
+
+" Mnemonic: (h)ighlight (c)ursorline
 map <S-Space> :set cursorline!<Enter>
+map <leader>hc :set cursorline!<Enter>
+
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
 map <F1> :Explore!<CR>
+map <leader>e :Explore!<CR>
+
 imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
@@ -41,6 +52,7 @@ imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
 " The ; is a shortcut to go to the directory that was defined
 " when Vim was started.  See vimrc
 map <F3> :FuzzyFinderFile;<CR>
+map <leader>t :FuzzyFinderFile\*\*/<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -56,8 +68,11 @@ map <F6> :bn<CR>
 map <S-F6> :bp<CR>
 
 " Use F7 for favorite files, recent files, etc.
-map <F7> :FuzzyFinderFavFile<CR>
-map <S-F7> :FuzzyFinderMruFile<CR>
+map <F7> :FuzzyFinderBookmark<CR>
+map <leader>bm :FuzzyFinderBookmark<CR>
+map <S-F7> :FuzzyFinderAddBookmark<CR>
+
+map <leader>r :FuzzyFinderMruFile<CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
@@ -69,6 +84,7 @@ map <S-F7> :FuzzyFinderMruFile<CR>
 " Insert date by pressing <leader>nd
 " from http://www.vim.org/tips/tip.php?tip_id=97
 map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
+
 " Insert time by pressing <leader>nt
 map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>gP
 
@@ -90,13 +106,19 @@ map <C-Left> :tabp<CR>
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
 
+" Close buffer
 map <F4> :bd<CR>
 imap <F4> <C-O>:bd<CR>
+map <leader>d :bd<CR>
 
 " Window Mappings
 " Window up/down are same as up/down in Vim
 map <C-J> <C-W>j
 map <C-K> <C-W>k
+
+" Window left/right are same as left/right in Vim
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 
 " Make / error list / search list
 " mappings

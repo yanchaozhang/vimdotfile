@@ -1,6 +1,7 @@
 "" Enable filetype-specific indenting and plugins
 filetype plugin indent on 
 syntax enable
+
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
@@ -17,7 +18,7 @@ set confirm
 " content of the active window
 " Not a fan of this, due to non-backward compatibility
 " set autochdir
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h
 
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
@@ -72,10 +73,19 @@ if has('win32')
 else
     set dir=~/tmp
 endif
+
 " Status Line
 " The %= means right-align.  The %Y means filetype
 " set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
 set laststatus=2
+set statusline=%t%m%w
+set statusline+=%r      "read only flag
+set statusline+=%h      "help file flag
+set statusline+=%=      "left/right separator
+set statusline+=(%l,\ %v)\ of\ %L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+" Show a pending Vim command like "c" or "d" under the status bar
+set showcmd
 
 " Back up files to $HOME/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
@@ -112,22 +122,11 @@ endif
 " if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 
-
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'FavFile':{}, 'Tag':{}, 'TaggedFile':{}}
-let g:FuzzyFinderOptions.Base.abbrev_map  = {
-            \   "^;" : [
-            \    getcwd() . '/**/'
-            \   ],
-            \ } 
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
 let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
-let g:fuzzy_roots=[getcwd()]
-" Used to tell my version of fuzzy finder what
-" the global directory is so that it can remove it from
-" search results to trim down menu a bit.
-let g:fuzzy_root=getcwd()
 
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
 " buftabs plugin shows the buffers in the statusline.  Define what I want
@@ -140,7 +139,6 @@ let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$
 let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
-let mapleader = ","
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
