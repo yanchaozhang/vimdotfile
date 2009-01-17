@@ -52,6 +52,7 @@ imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
 " The ; is a shortcut to go to the directory that was defined
 " when Vim was started.  See vimrc
 map <F3> :FuzzyFinderFile;<CR>
+map <leader>t :FuzzyFinderFile\*\*/<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -67,8 +68,11 @@ map <F6> :bn<CR>
 map <S-F6> :bp<CR>
 
 " Use F7 for favorite files, recent files, etc.
-map <F7> :FuzzyFinderFavFile<CR>
-map <S-F7> :FuzzyFinderMruFile<CR>
+map <F7> :FuzzyFinderBookmark<CR>
+map <leader>bm :FuzzyFinderBookmark<CR>
+map <S-F7> :FuzzyFinderAddBookmark<CR>
+
+map <leader>r :FuzzyFinderMruFile<CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
