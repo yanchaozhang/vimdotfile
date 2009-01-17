@@ -84,6 +84,7 @@ map <leader>r :FuzzyFinderMruFile<CR>
 " Insert date by pressing <leader>nd
 " from http://www.vim.org/tips/tip.php?tip_id=97
 map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
+
 " Insert time by pressing <leader>nt
 map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>gP
 
@@ -105,13 +106,19 @@ map <C-Left> :tabp<CR>
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
 
+" Close buffer
 map <F4> :bd<CR>
 imap <F4> <C-O>:bd<CR>
+map <leader>d :bd<CR>
 
 " Window Mappings
 " Window up/down are same as up/down in Vim
 map <C-J> <C-W>j
 map <C-K> <C-W>k
+
+" Window left/right are same as left/right in Vim
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 
 " Make / error list / search list
 " mappings
