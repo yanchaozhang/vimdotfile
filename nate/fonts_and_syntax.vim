@@ -1,9 +1,9 @@
 if has("gui_running")
-    colorscheme koehler
+    " colorscheme koehler
 endif
 
 " Most of the time, I use dark backgrounds on terminal
-set bg=dark
+" set bg=dark
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
