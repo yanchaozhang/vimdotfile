@@ -3,7 +3,18 @@ if has("gui_running")
 endif
 
 " Most of the time, I use dark backgrounds on terminal
-" set bg=dark
+" But, you can customize that by setting an environment var.
+if exists("$NJN_VIM_BG")
+    " You have to do this stupid if
+    " statement because vim whines if "set bg=$NJN_VIM_BG"
+    if($NJN_VIM_BG == "dark")
+        set bg=dark
+    else
+        set bg=light
+    endif
+else
+    set bg=light
+endif
 
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
@@ -15,6 +26,7 @@ hi Pmenu        guibg=#000000 guifg=#c0c0c0 ctermbg=0
 hi PmenuSel     guibg=#3465a4 guifg=#ffffff
 hi PmenuSbar    guibg=#444444 guifg=#444444
 hi PmenuThumb   guibg=#888888 guifg=#888888 
+
 " Set font.  Use Monaco on OSX, and Courier on Linux/Windoze 
 " These are my favorite settings for common stuff
 " hi CursorLine guibg=#121212
