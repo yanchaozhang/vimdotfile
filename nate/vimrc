@@ -140,6 +140,7 @@ let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$
 let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
+let g:qb_hotkey = "<F9>"
 " NERD Tree
 let NERDTreeHijackNetrw=0
 "" ------------- Source other configfiles -------------
