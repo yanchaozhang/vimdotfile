@@ -42,7 +42,7 @@ function! s:JumpFind()
         endif
     endif
 endfunction
-nnoremap <Leader>s :call <SID>JumpFind()<CR>
+nnoremap <Leader>f :call <SID>JumpFind()<CR>
 " use / mapping, kinda like regular / command
 nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 
