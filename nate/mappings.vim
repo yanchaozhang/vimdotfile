@@ -29,7 +29,8 @@ map <leader>hc :set cursorline!<Enter>
 " Hexplore means to open it in the upper left new window
 map <F1> :Explore!<CR>
 map <leader>e :Explore!<CR>
-
+" Map ,s to be save.  Should help.
+map <leader>s :w<CR>
 imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
@@ -43,6 +44,9 @@ nnoremap <S-F1> <ESC> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~
 " Use F2 to show buffers
 map <F2> <leader>be
 imap <F2> <ESC><leader>be
+
+" NERD Tree
+map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Map Shift-F2 to be the fuzzy version of BufExplorer
 map <S-F2> :FuzzyFinderBuffer<CR>
@@ -66,10 +70,13 @@ map <F5> :w<Bar>:!./%<CR>
 " Use F6 for switching bufers
 map <F6> :bn<CR>
 map <S-F6> :bp<CR>
+map <A-Left> :bp<CR>
+map <A-Right> :bn<CR>
 
 " Use F7 for favorite files, recent files, etc.
 map <F7> :FuzzyFinderBookmark<CR>
 map <leader>bm :FuzzyFinderBookmark<CR>
+map <leader>ba :FuzzyFinderAddBookmark<CR>
 map <S-F7> :FuzzyFinderAddBookmark<CR>
 
 map <leader>r :FuzzyFinderMruFile<CR>
@@ -96,15 +103,18 @@ imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
-" Ctrl-Tab tab mappings
-map <C-Tab> :tabn<CR>
-map <C-S-Tab> :tabp<CR>
-map <C-Right> :tabn<CR>
-map <C-Left> :tabp<CR>
+" Ctrl-Tab mappings
+" Don't use tabs much in Vim
+map <C-Tab> :bn<CR>
+map <C-S-Tab> :bp<CR>
+map <C-Right> :bn<CR>
+map <C-Left> :bp<CR>
 
 " Buffer Mappings
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
+map <A-N> :bn<CR>
+map <A-P> :bp<CR>
 
 " Close buffer
 map <F4> :bd<CR>

@@ -113,6 +113,7 @@ if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
 
+
 " For grep.vim, tell it to ignore .svn directories and log files
 :let Grep_Skip_Dirs = '.svn log vendor' 
 " Ignore case
@@ -139,6 +140,8 @@ let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$
 let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
+" NERD Tree
+let NERDTreeHijackNetrw=0
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
