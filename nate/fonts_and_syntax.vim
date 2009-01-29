@@ -1,5 +1,5 @@
 if has("gui_running")
-    " colorscheme koehler
+    colorscheme vividchalk
 endif
 
 " Most of the time, I use dark backgrounds on terminal
@@ -39,5 +39,5 @@ elseif has('gui_win32')
 	set guifont=courier_new:h10 
 elseif has('gui_gtk')
 	" set guifont=Courier\ New\ 12
-	set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
+	set guifont=Bitstream\ Vera\ Sans\ Mono\ 13
 endif
