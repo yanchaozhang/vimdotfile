@@ -6,7 +6,7 @@ let mapleader = ","
 " Map the overwritten "," character to call itself, if I ever
 " need it, I just press ,,
 nnoremap <leader>, ,
-
+map <leader>q <ESC>:qa<CR>
 ",v reloads vimrc
 if has('win32')
     map <silent> <leader>v :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -29,7 +29,10 @@ map <leader>hc :set cursorline!<Enter>
 " Hexplore means to open it in the upper left new window
 map <F1> :Explore!<CR>
 map <leader>e :Explore!<CR>
-
+" Map ,s to be save.  Should help.
+map <leader>s :w<CR>
+" Try mapping ',s' to "save" even in insert mode.
+imap <leader>s <ESC>:w<CR>
 imap <F1> <C-O>:Explore!<CR>
 
 " Map Shift-F1 to be the fuzzy version of Explorer
@@ -43,6 +46,14 @@ nnoremap <S-F1> <ESC> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~
 " Use F2 to show buffers
 map <F2> <leader>be
 imap <F2> <ESC><leader>be
+map <silent> <C-F2> :if &guioptions =~# 'm' <Bar>
+                        \set guioptions-=m <Bar>
+                    \else <Bar>
+                        \set guioptions+=m <Bar>
+                    \endif<CR>
+
+" NERD Tree
+map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Map Shift-F2 to be the fuzzy version of BufExplorer
 map <S-F2> :FuzzyFinderBuffer<CR>
@@ -60,18 +71,17 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
 
-" Use F5 for running stuff
-map <F5> :w<Bar>:!./%<CR>
-
 " Use F6 for switching bufers
 map <F6> :bn<CR>
 map <S-F6> :bp<CR>
+map <A-Left> :bp<CR>
+map <A-Right> :bn<CR>
 
 " Use F7 for favorite files, recent files, etc.
 map <F7> :FuzzyFinderBookmark<CR>
-map <leader>bm :FuzzyFinderBookmark<CR>
 map <S-F7> :FuzzyFinderAddBookmark<CR>
-
+map <leader>bm :FuzzyFinderBookmark<CR>
+map <leader>ba :FuzzyFinderAddBookmark<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
 
 " Use F9 for running stuff
@@ -96,20 +106,25 @@ imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
-" Ctrl-Tab tab mappings
-map <C-Tab> :tabn<CR>
-map <C-S-Tab> :tabp<CR>
-map <C-Right> :tabn<CR>
-map <C-Left> :tabp<CR>
+" Ctrl-Tab mappings
+" Don't use tabs much in Vim
+map <C-Tab> gt
+map <C-S-Tab> gT
+
+map <C-Right> :bn<CR>
+map <C-Left> :bp<CR>
 
 " Buffer Mappings
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
+map <A-N> :bn<CR>
+map <A-P> :bp<CR>
 
 " Close buffer
 map <F4> :bd<CR>
 imap <F4> <C-O>:bd<CR>
-map <leader>d :bd<CR>
+" map <leader>d :bd<CR>
+" <leader>d is now mapped to BlastBuffer in ~/.vim/nate/functions.vim
 
 " Window Mappings
 " Window up/down are same as up/down in Vim
@@ -120,10 +135,21 @@ map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 
-" Make / error list / search list
-" mappings
+" Try using semicolon for window movements
+map ;j <C-W>j
+map ;k <C-W>k
+
+" Window left/right are same as left/right in Vim
+map ;h <C-W>h
+map ;l <C-W>l
+
+" Make / error list / search list mappings
+" Go next/prev error
 map <C-Down> :cn<Enter>
 map <C-Up> :cp<Enter>
+" Go to error in next/prev file
+map <C-S-Down> :cnf<Enter>
+map <C-Up> :cpf<Enter>
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods

@@ -18,14 +18,12 @@ function! s:JumpOccurrence()
     let v:errmsg = ""
     exe "normal [I"
     if strlen(v:errmsg) == 0
-        let nr = input("Which one: ")
+        let nr = input("Jump to Occurrence (Enter to Cancel): ")
         if nr =~ '\d\+'
             exe "normal! " . nr . "[\t"
         endif
     endif
 endfunction
-nnoremap <Leader>j :call <SID>JumpOccurrence()<CR>
-nnoremap <Leader>8 :call <SID>JumpOccurrence()<CR>
 nnoremap <Leader>* :call <SID>JumpOccurrence()<CR>
 
 " I added this one!  Whee!
@@ -42,7 +40,7 @@ function! s:JumpFind()
         endif
     endif
 endfunction
-nnoremap <Leader>s :call <SID>JumpFind()<CR>
+nnoremap <Leader>f :call <SID>JumpFind()<CR>
 " use / mapping, kinda like regular / command
 nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 
@@ -69,6 +67,8 @@ function! s:BlastBuffer()
         :BD!
     endif
 endfunction
+map <silent> <leader>d :call <SID>BlastBuffer()<Enter>
+imap <silent> <leader>d <C-O>:call <SID>BlastBuffer()<Enter>
 map <silent> <F4> :call <SID>BlastBuffer()<Enter>
 imap <silent> <F4> <C-O>:call <SID>BlastBuffer()<Enter>
 

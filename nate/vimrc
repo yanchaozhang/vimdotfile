@@ -41,8 +41,9 @@ set dictionary=/usr/share/dict/words
 set vb t_vb=
 
 " Don't show the toolbar
-:set guioptions-=T
-
+set guioptions-=T
+" set guioptions=aegimrLtc
+set guioptions=aegitc
 " Tell Vim to quit whining about unsaved buffers 
 " when I want to open a new buffer.  Vim just hides
 " the unsaved buffer, instead of trying to close it.
@@ -113,6 +114,7 @@ if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
 
+
 " For grep.vim, tell it to ignore .svn directories and log files
 :let Grep_Skip_Dirs = '.svn log vendor' 
 " Ignore case
@@ -125,9 +127,12 @@ let g:BufKillCommandWhenLastBufferKilled = ''
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
-let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
-let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
-
+" let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
+" let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
+" Don't ignore case.  If I type in "RC" I want to find stuff with
+" capital R and C in it.
+let g:FuzzyFinderOptions.Base.ignore_case = 0
+let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|\.swp$|((^|[/\\])\.[/\\]$)'
 " buftabs plugin shows the buffers in the statusline.  Define what I want
 " statusline to be
@@ -139,6 +144,9 @@ let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$
 let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
+let g:qb_hotkey = "<F9>"
+" NERD Tree
+let NERDTreeHijackNetrw=0
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim

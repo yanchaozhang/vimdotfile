@@ -194,13 +194,13 @@ if !hasmapto("<SID>RunPrompt()", "n")
 endif
 if !hasmapto("<SID>RunNoPrompt()")
 	nmap <buffer><unique><silent> <leader>gr :call <SID>RunNoPrompt()<CR>
-	nmap <buffer><unique><silent> <F9> :call <SID>RunNoPrompt()<CR>
 endif
 if !hasmapto("<SID>CompilePrompt()")
-	" nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
+        " Removed compile with prompt thingy.
+        " nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
 endif
 if !hasmapto("<SID>CompileNoPrompt()")
-	nmap <buffer><unique><silent> <S-F9> :call <SID>CompileNoPrompt()<CR>
+	nmap <buffer><unique><silent> <leader>gc :call <SID>CompileNoPrompt()<CR>
 endif
 " Test current groovy scripts.
 nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
