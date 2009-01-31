@@ -108,8 +108,8 @@ imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
 " Ctrl-Tab mappings
 " Don't use tabs much in Vim
-map <C-Tab> gt
-map <C-S-Tab> gT
+map <C-Tab> :bn
+map <C-S-Tab> :bp
 
 map <C-Right> :bn<CR>
 map <C-Left> :bp<CR>
@@ -149,7 +149,7 @@ map <C-Down> :cn<Enter>
 map <C-Up> :cp<Enter>
 " Go to error in next/prev file
 map <C-S-Down> :cnf<Enter>
-map <C-Up> :cpf<Enter>
+map <C-S-Up> :cpf<Enter>
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods
