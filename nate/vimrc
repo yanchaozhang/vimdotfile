@@ -147,6 +147,12 @@ let g:buftabs_only_basename=1
 let g:qb_hotkey = "<F9>"
 " NERD Tree
 let NERDTreeHijackNetrw=0
+" let g:miniBufExplMapWindowNavVim = 1
+" let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+" let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
+" let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 "" ------------- Source other configfiles -------------
 so ~/.vim/nate/menus.vim
 so ~/.vim/nate/mappings.vim
