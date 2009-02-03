@@ -136,12 +136,12 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 
 " Try using semicolon for window movements
-map ;j <C-W>j
-map ;k <C-W>k
+" map ;j <C-W>j
+" map ;k <C-W>k
 
 " Window left/right are same as left/right in Vim
-map ;h <C-W>h
-map ;l <C-W>l
+" map ;h <C-W>h
+" map ;l <C-W>l
 
 " Make / error list / search list mappings
 " Go next/prev error
