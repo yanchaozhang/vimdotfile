@@ -108,8 +108,8 @@ imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
 " Ctrl-Tab mappings
 " Don't use tabs much in Vim
-map <C-Tab> :bn
-map <C-S-Tab> :bp
+map <C-Tab> :bn<CR>
+map <C-S-Tab> :bp<CR>
 
 map <C-Right> :bn<CR>
 map <C-Left> :bp<CR>
