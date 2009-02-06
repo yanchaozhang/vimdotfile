@@ -23,7 +23,9 @@ set confirm
 " remember some stuff after quiting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
-
+let s:init_dir = expand("%:p:~:h:t")
+let &titlestring  = '%{expand("%:p:~:t")}' . '(%{expand("%:p:h")})' . ' - ' . s:init_dir
+" echo &titlestring
 " use console dialogs instead of popup
 " dialogs for simple choices
 set guioptions+=c
@@ -154,7 +156,7 @@ let g:miniBufExplModSelTarget = 1
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 "" ------------- Source other configfiles -------------
-so ~/.vim/nate/menus.vim
-so ~/.vim/nate/mappings.vim
-so ~/.vim/nate/functions.vim
-so ~/.vim/nate/fonts_and_syntax.vim
+so ~/.vim/personal/menus.vim
+so ~/.vim/personal/mappings.vim
+so ~/.vim/personal/functions.vim
+so ~/.vim/personal/fonts_and_syntax.vim

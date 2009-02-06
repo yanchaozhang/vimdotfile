@@ -4,3 +4,9 @@ set vb t_vb=
 
 " Don't show the toolbar
 :set guioptions-=T
+
+" $HOME is necessary for some reason -- filereadable
+" doesn't interpolate the ~/
+if filereadable($HOME . "/.vim/personal/gvimrc.local")
+    so ~/.vim/personal/gvimrc.local
+endif

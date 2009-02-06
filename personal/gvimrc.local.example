@@ -1,0 +1,9 @@
+" gvimrc.local.example
+" Contains settings that might be different depending on
+" the machine it's running on.
+" Purpose is to store settings here that will not be copied
+" to the repository
+" Rename this file to gvimrc.local for the settings to take effect.
+" gvimrc.local is ignored by git.
+
+colorscheme vividchalk

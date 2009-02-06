@@ -1,21 +1,6 @@
-if has("gui_running")
-    colorscheme vividchalk
-endif
-
-" Most of the time, I use dark backgrounds on terminal
-" But, you can customize that by setting an environment var.
-if exists("$NJN_VIM_BG")
-    " You have to do this stupid if
-    " statement because vim whines if "set bg=$NJN_VIM_BG"
-    if($NJN_VIM_BG == "dark")
-        set bg=dark
-    else
-        set bg=light
-    endif
-else
-    set bg=light
-endif
-
+" For additional font stuff, see ~/.vim/personal/gvimrc.local
+" and ~/.vim/personal/vimrc.local
+"
 " Added by me to avoid headache when viewing folded code.
 " And Fuzzy Menus
 highlight Folded                    guifg=#E6E1DC   guibg=#000000
@@ -41,3 +26,4 @@ elseif has('gui_gtk')
 	" set guifont=Courier\ New\ 12
 	set guifont=Bitstream\ Vera\ Sans\ Mono\ 13
 endif
+
