@@ -209,7 +209,7 @@ nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
 au VimEnter *.groovy echo "F2 for Groovy plugin help"
 
 " Abbreviations
-ia <buffer> ba #!/bin/evn groovy
+ia <buffer> ba #!/usr/bin/env groovy
 ia <buffer> cl class {<CR>}<Esc>kf{i<C-R>=<SID>RemoveSpace()<CR>
 ia <buffer> dcp this.class.classLoader.rootLoader.addURL(new URL('file:///'))<Esc>F'i<C-R>=<SID>RemoveSpace()<CR>
 ia <buffer> fl for( in ){<CR>}<Esc>kf(a<C-R>=<SID>RemoveSpace()<CR>
