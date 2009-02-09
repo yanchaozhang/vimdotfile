@@ -155,6 +155,10 @@ let NERDTreeHijackNetrw=0
 let g:miniBufExplModSelTarget = 1 
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
+" Define autocmd for using "template" files when creating a new file.
+" Use the file's extension to see if there's a corresponding <extension>.tpl.
+" If so, then read it into the new file.
+autocmd BufNewFile * silent! 0r $VIMHOME/templates/%:e.tpl
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
 so ~/.vim/personal/mappings.vim
