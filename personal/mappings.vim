@@ -35,6 +35,9 @@ map <leader>s :w<CR>
 imap <leader>s <ESC>:w<CR>
 imap <F1> <C-O>:Explore!<CR>
 
+" Make script executable
+map <leader>755 :! chmod 755 %<CR>
+
 " Map Shift-F1 to be the fuzzy version of Explorer
 " As an example, if you want to launch file-mode Fuzzyfinder with the full
 " path of current buffer's directory, map like below:
@@ -59,10 +62,7 @@ map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <S-F2> :FuzzyFinderBuffer<CR>
 imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
 
-" Map F3 to be like "project explorer" in Textmate
-" The ; is a shortcut to go to the directory that was defined
-" when Vim was started.  See vimrc
-map <F3> :FuzzyFinderFile;<CR>
+" Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
 
 " Tried this textmate version, but it sucks
@@ -70,6 +70,9 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 " nnoremap <F3> :FuzzyFinderTextMate<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
+
+" Use F5 for running stuff.
+map <F5> :! %<CR>
 
 " Use F6 for switching bufers
 map <F6> :bn<CR>
