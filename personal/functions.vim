@@ -121,3 +121,14 @@ endif
 
 " What's Changed ("wc")
 nnoremap <leader>wc <ESC>:DiffOrig<Enter>
+
+" Define autocmd for using "template" files when creating a new file.
+" Use the file's extension to see if there's a corresponding <extension>.tpl.
+" If so, then read it into the new file.
+function! s:LoadTemplate(extension)
+    :execute '0r $VIMHOME/templates/' . a:extension . '.tpl'
+    " Insert filename into <+filename+> placeholder
+    :%s/<+filename+>/\=expand("%:p:t")/g
+endfunction
+
+autocmd BufNewFile * call <SID>LoadTemplate('%:e')
