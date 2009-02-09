@@ -126,9 +126,15 @@ nnoremap <leader>wc <ESC>:DiffOrig<Enter>
 " Use the file's extension to see if there's a corresponding <extension>.tpl.
 " If so, then read it into the new file.
 function! s:LoadTemplate(extension)
-    :execute '0r $VIMHOME/templates/' . a:extension . '.tpl'
-    " Insert filename into <+filename+> placeholder
-    :%s/<+filename+>/\=expand("%:p:t")/g
+    " Conjure template name
+    let fileTemplate = $VIMHOME . '/templates/' . expand(a:extension) . '.tpl'
+    " echo l:fileTemplate
+    " If template exists, read it in.
+    if filereadable(l:fileTemplate)
+        silent! execute '0r ' . l:fileTemplate
+        " Insert filename into <+filename+> placeholder
+        silent! :%s/<+filename+>/\=expand("%:p:t")/g
+    endif
 endfunction
 
 autocmd BufNewFile * call <SID>LoadTemplate('%:e')
