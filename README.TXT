@@ -3,22 +3,42 @@ This is my vim dotfiles.  There are many like it, but this one is mine.
 
 ====== Shortcuts ====== 
 These are some shortcuts/handy mappings that I have.
+<leader>a  Toggle NERD Tree
+<leader>t  Use Fuzzy Finder in current directory
+<leader>hs Turn on/off search highlighting
 
-<Ctrl-Space> Turn off search highlighting
 <C-N>   Go to next buffer (:bn)
 <C-P>   Go to previous buffer (:bn)
-\s      Interactive search that lists occurrences
-\/
+<leader>s  Saves the current file (Same as :w)
+           Also works in insert mode.
 
-\8      list occurrences of word under cursor (Reason for the 8 is 
+<leader>d   Closes file (buffer)
+<leader>/   Interactive search.  Prompts for search, then lists occurrences,
+            and lets you select which one you want to jump to.
+
+<leader>*      list occurrences of word under cursor (Reason for the 8 is 
         it's like "*"
+
+<F1>    Open Netrw (vim's file browser) in the current directory
+        of the file that you're viewing.
+
+        Handy netrw commands:
+
+        mf - Mark the file that the cursor is on
+        me - Open all marked files
+
+        - (dash) Go up one directory
+        u Go to previous directory
+
+        i Display more/less information about files
+        s Sort files differently
+        r reverse sort
 
 
 :Rgrep  Recursive grep that finds stuff in subfolders
 <C-Down>Go to next occurrence of error or search result (:cn)
 <C-Up>Go to previous occurrence of error or search result (:cp)
 
-<F1>    Opens netrw (File browser) instead of help.
 <S-F1>  Opens Fuzzy Finder in current directory
 
 <F2>    Opens BufExplorer plugin
