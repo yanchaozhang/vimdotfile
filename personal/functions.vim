@@ -89,23 +89,11 @@ function! s:CopyFilePath()
 endfunction
 nnoremap <leader>cf :call <SID>CopyFilePath()<Enter>
 
-function! s:DiffWithFileFromDisk()
-    let filename=expand('%')
-    let diffname = filename.'.withedits'
-    exec 'saveas! '.diffname
-    diffthis
-    vsplit
-    exec 'edit '.filename
-    diffthis
-endfun
-" What's Changed ("wc")
-nnoremap <leader>wc :call <SID>DiffWithFileFromDisk()<Enter>
 
 function! s:ChangeFuzzyDir()
     let g:fuzzy_root = getcwd()
     FuzzyFinderRemoveCache
 endfun
-" What's Changed ("wc")
 nnoremap <leader>ncd :call <SID>ChangeFuzzyDir()<CR>
 nnoremap <C-F3>ncd :call <SID>ChangeFuzzyDir()<CR>
 
@@ -121,6 +109,7 @@ function! s:ToggleVirtualEdit()
     endif
 endfunction
 map <F10> :call <SID>ToggleVirtualEdit()<CR>
+
 " copied from /etc/vimrc that comes with Arch
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -129,3 +118,6 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" What's Changed ("wc")
+nnoremap <leader>wc <ESC>:DiffOrig<Enter>

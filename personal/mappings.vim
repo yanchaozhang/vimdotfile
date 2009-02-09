@@ -162,8 +162,6 @@ map [[ [m
 map [] [M
 
 " -------------- Experimental --------------
-" Remap enter key to insert a new blank line (kinda)
-map <Enter> o<ESC>
 " Get rid of useless '' and 'a, 'e, wich take you to the start of the line
 " that you were at, instead of the exact place where you were just at
 " http://www.vim.org/htmldoc/tips.html
