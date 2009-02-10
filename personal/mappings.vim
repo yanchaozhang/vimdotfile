@@ -58,9 +58,8 @@ map <silent> <C-F2> :if &guioptions =~# 'm' <Bar>
 " NERD Tree
 map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" Map Shift-F2 to be the fuzzy version of BufExplorer
-map <S-F2> :FuzzyFinderBuffer<CR>
-imap <S-F2> <ESC>:FuzzyFinderBuffer<CR>
+" Map <leader>bu to be the fuzzy version of BufExplorer
+map <leader>bu :FuzzyFinderBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
@@ -80,9 +79,7 @@ map <S-F6> :bp<CR>
 map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
-" Use F7 for favorite files, recent files, etc.
-map <F7> :FuzzyFinderBookmark<CR>
-map <S-F7> :FuzzyFinderAddBookmark<CR>
+" Use ,bm ,ba for bookmark files
 map <leader>bm :FuzzyFinderBookmark<CR>
 map <leader>ba :FuzzyFinderAddBookmark<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
