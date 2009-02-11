@@ -82,7 +82,13 @@ map <A-Right> :bn<CR>
 " Use ,bm ,ba for bookmark files
 map <leader>bm :FuzzyFinderBookmark<CR>
 map <leader>ba :FuzzyFinderAddBookmark<CR>
+" Fuzzy's "refresh" method.
+map <leader>bc :FuzzyFinderRemoveCache<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
+
+" <leader>o will search in the current buffer.
+" mnemonic - Like "Open", which usually defaults to current dir.
+nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
