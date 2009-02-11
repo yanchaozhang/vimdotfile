@@ -2,6 +2,9 @@
 filetype plugin indent on 
 syntax enable
 
+" Remove ALL autocommands for the current group.
+autocmd!
+
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
