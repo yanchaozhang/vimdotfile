@@ -203,7 +203,9 @@ if !hasmapto("<SID>CompileNoPrompt()")
 	nmap <buffer><unique><silent> <leader>gc :call <SID>CompileNoPrompt()<CR>
 endif
 " Test current groovy scripts.
-nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
+if !hasmapto("<SID>RunTests()")
+        nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
+endif
 
 " Display a help key reminder when first loading Vim (with a Groovy file)
 au VimEnter *.groovy echo ":gsh for Groovy plugin help"
