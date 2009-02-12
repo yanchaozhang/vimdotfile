@@ -2,10 +2,13 @@
 " and ~/.vim/personal/vimrc.local
 " Whenever a colorscheme is loaded, then run this function,
 " to preserve sanity.
-autocmd ColorScheme * call <SID>SaneColors()
+if !exists("sane_colors_autocommands_loaded")
+    let sane_colors_autocommands_loaded = 1
+    autocmd ColorScheme * call <SID>SaneColors()
+endif
 
 function! s:SaneColors()
-    echo "I'm adding my Sane Colors to this Colorscheme!"
+    " echo "I'm adding my Sane Colors to this Colorscheme!"
     " Added by me to avoid headache when viewing folded code.
     " And Fuzzy Menus
     hi Folded       guifg=#E6E1DC   guibg=#000000
@@ -33,6 +36,8 @@ elseif has('gui_win32')
     set guifont=courier_new:h10 
 elseif has('gui_gtk')
     " set guifont=Courier\ New\ 12
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 13
+    set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+    " set guifont=DejaVu\ Sans\ Mono\ 9
+    " set guifont=ProFont\ 14
 endif
 
