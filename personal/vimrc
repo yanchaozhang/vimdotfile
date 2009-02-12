@@ -5,6 +5,8 @@ syntax enable
 " Remove ALL autocommands for the current group.
 autocmd!
 
+set nocp
+
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
@@ -27,7 +29,7 @@ set confirm
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
 let s:init_dir = expand("%:p:~:h:t")
-let &titlestring  = '%{expand("%:p:~:t")}' . '(%{expand("%:p:h")})' . ' - ' . s:init_dir
+" let &titlestring  = '%{expand("%:p:~:t")}' . '(%{expand("%:p:h")})' . ' - ' . s:init_dir
 " echo &titlestring
 " use console dialogs instead of popup
 " dialogs for simple choices
