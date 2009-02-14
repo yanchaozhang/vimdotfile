@@ -11,15 +11,24 @@ function! s:SaneColors()
     " echo "I'm adding my Sane Colors to this Colorscheme!"
     " Added by me to avoid headache when viewing folded code.
     " And Fuzzy Menus
-    hi Folded       guifg=#E6E1DC   guibg=#000000
-    " Tame down cursorline
-    " Defaults in Gvim are obnoxious pink
-    hi CursorLine   guibg=#222222
-    hi Visual       gui=none guibg=#222222
-    hi Pmenu        guibg=#000000 guifg=#c0c0c0 ctermbg=0
-    hi PmenuSel     guibg=#3465a4 guifg=#ffffff
-    hi PmenuSbar    guibg=#444444 guifg=#444444
-    hi PmenuThumb   guibg=#888888 guifg=#888888 
+    " hi link Folded  Normal
+    " " Tame down cursorline
+    " " Defaults in Gvim are obnoxious pink
+    if exists("g:colors_name")
+        if g:colors_name == "koehler"
+            hi clear Pmenu
+            hi link  Pmenu Normal
+        elseif g:colors_name == "railscasts"
+            hi clear Pmenu
+            hi link  Pmenu Normal
+            " echo "RAILSCASTS"
+        endif
+    endif
+    " hi CursorLine   guibg=#222222
+    " hi Visual       gui=none guibg=#222222
+    " hi PmenuSel     guibg=#3465a4 guifg=#ffffff
+    " hi PmenuSbar    guibg=#444444 guifg=#444444
+    " hi PmenuThumb   guibg=#888888 guifg=#888888 
 endfunction
 " Call SaneColors right now.
 call <SID>SaneColors()
@@ -30,7 +39,7 @@ call <SID>SaneColors()
 " hi Visual guibg=#15171D
 if has('mac')
     " set guifont=DejaVu\ Sans\ Mono:h15
-    set guifont=Monaco:h15
+    set guifont=Monaco:h14
     " set guifont=Bitstream\ Vera\ Sans\ Mono:h14
 elseif has('gui_win32')
     set guifont=courier_new:h10 
