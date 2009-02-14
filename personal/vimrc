@@ -2,9 +2,6 @@
 filetype plugin indent on 
 syntax enable
 
-" Remove ALL autocommands for the current group.
-autocmd!
-
 set nocp
 
 " Don't do the stupid wrapping line junk
