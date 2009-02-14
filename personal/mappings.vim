@@ -59,7 +59,8 @@ map <silent> <C-F2> :if &guioptions =~# 'm' <Bar>
 map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Map <leader>bu to be the fuzzy version of BufExplorer
-map <leader>bu :FuzzyFinderBuffer<CR>
+" Mnemonic: Fu(zz)y
+map <leader>z :FuzzyFinderBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
@@ -73,15 +74,16 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 " Use F5 for running stuff.
 map <F5> :! %<CR>
 
-" Use F6 for switching bufers
+" Use F6 for switching buffers
 map <F6> :bn<CR>
 map <S-F6> :bp<CR>
 map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
 " Use ,bm ,ba for bookmark files
-map <leader>bm :FuzzyFinderBookmark<CR>
-map <leader>ba :FuzzyFinderAddBookmark<CR>
+map <F7> :FuzzyFinderBookmark<CR>
+map <S-F7> :FuzzyFinderAddBookmark<CR>
+
 " Fuzzy's "refresh" method.
 map <leader>bc :FuzzyFinderRemoveCache<CR>
 map <leader>r :FuzzyFinderMruFile<CR>
