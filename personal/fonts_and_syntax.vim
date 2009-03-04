@@ -18,10 +18,14 @@ function! s:SaneColors()
         if g:colors_name == "koehler"
             hi clear Pmenu
             hi link  Pmenu Normal
+        elseif g:colors_name == "moria"
+            hi clear Pmenu
+            hi link  Pmenu Normal
+            hi clear PmenuSel
+            hi link  PmenuSel Visual
         elseif g:colors_name == "railscasts"
             hi clear Pmenu
             hi link  Pmenu Normal
-            " echo "RAILSCASTS"
         endif
     endif
     " hi CursorLine   guibg=#222222
