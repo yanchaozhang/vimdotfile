@@ -41,8 +41,6 @@ function! s:JumpFind()
     endif
 endfunction
 nnoremap <Leader>f :call <SID>JumpFind()<CR>
-" use / mapping, kinda like regular / command
-nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 
 " Handles the stupid :bd versus :BD debate
 " :BD uses the bufkill thingy, where it will keep the window
@@ -52,7 +50,7 @@ nnoremap <Leader>/ :call <SID>JumpFind()<CR>
 function! s:BlastBuffer()
     if &filetype == 'help' || &filetype == 'netrw'
         " Just close it.
-        :bd
+        :bw
     else
         " We're going to use :BD from BufKill plugin
         " Check for modifications
@@ -64,7 +62,7 @@ function! s:BlastBuffer()
                 return
             endif
         endif
-        :BD!
+        :BW!
     endif
 endfunction
 map <silent> <leader>d :call <SID>BlastBuffer()<Enter>

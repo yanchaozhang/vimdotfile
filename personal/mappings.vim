@@ -72,7 +72,7 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 " the directory of the Fuzzy Finder's ";" shortcut
 
 " Use F5 for running stuff.
-map <F5> :! %<CR>
+map <F5> :! %:p<CR>
 
 " Use F6 for switching buffers
 map <F6> :bn<CR>
@@ -129,10 +129,11 @@ map <A-N> :bn<CR>
 map <A-P> :bp<CR>
 
 " Close buffer
-map <F4> :bd<CR>
-imap <F4> <C-O>:bd<CR>
+map <F4> :bw<CR>
+imap <F4> <C-O>:bw<CR>
 " map <leader>d :bd<CR>
-" <leader>d is now mapped to BlastBuffer in ~/.vim/nate/functions.vim
+" <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
+map <leader>/ I//<ESC>
 
 " Window Mappings
 " Window up/down are same as up/down in Vim
@@ -161,8 +162,8 @@ map <C-S-Up> :cpf<Enter>
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods
-map ]] ]m
-map ][ ]M
+map ]] ]M
+map ][ ]m
 map [[ [m
 map [] [M
 
@@ -177,8 +178,6 @@ map [] [M
 :cnoremap <C-A> <Home>
 " back one character
 :cnoremap <C-B> <Left>
-" delete character under cursor
-:cnoremap <C-D> <Del>
 " end of line
 :cnoremap <C-E> <End>
 " forward one character
