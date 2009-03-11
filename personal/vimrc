@@ -3,7 +3,8 @@ filetype plugin indent on
 syntax enable
 
 set nocp
-
+" Skip minibufexplorer for now.
+let loaded_minibufexplorer = 1
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?

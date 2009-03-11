@@ -6,4 +6,5 @@
 " Rename this file to gvimrc.local for the settings to take effect.
 " gvimrc.local is ignored by git.
 
-colorscheme vividchalk
+colorscheme moria
+set bg=dark
