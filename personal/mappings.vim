@@ -20,20 +20,13 @@ map <C-Space> :set hlsearch!<Enter>
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
-" Mnemonic: (h)ighlight (c)ursorline
-map <S-Space> :set cursorline!<Enter>
-map <leader>hc :set cursorline!<Enter>
-
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
-" Use <F1> to open :Ex (File browser)
 " Hexplore means to open it in the upper left new window
-map <F1> :Explore!<CR>
 map <leader>e :Explore!<CR>
 " Map ,s to be save.  Should help.
 map <leader>s :w<CR>
 " Try mapping ',s' to "save" even in insert mode.
 imap <leader>s <ESC>:w<CR>
-imap <F1> <C-O>:Explore!<CR>
 
 " Make script executable
 map <leader>755 :! chmod 755 %<CR>
@@ -84,11 +77,10 @@ map <A-Right> :bn<CR>
 map <F7> :FuzzyFinderBookmark<CR>
 map <S-F7> :FuzzyFinderAddBookmark<CR>
 
-" Fuzzy's "refresh" method.
-map <leader>bc :FuzzyFinderRemoveCache<CR>
+" Fuzzy's Most-recently used
 map <leader>r :FuzzyFinderMruFile<CR>
 
-" <leader>o will search in the current buffer.
+" <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
 nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
@@ -113,6 +105,27 @@ map <D-M-Left> :tabp<Enter>
 imap <Ctrl-O><D-M-Left> :tabp<Enter>
 map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
+
+" Map Cmd-1, etc. to go to same-numbered tab
+map <D-1> :tabn 1<CR>
+map <D-2> :tabn 2<CR>
+map <D-3> :tabn 3<CR>
+map <D-4> :tabn 4<CR>
+map <D-5> :tabn 5<CR>
+map <D-6> :tabn 6<CR>
+map <D-7> :tabn 7<CR>
+map <D-8> :tabn 8<CR>
+map <D-9> :BufExplore<CR>
+map! <D-1> <C-O>:tabn 1<CR>
+map! <D-2> <C-O>:tabn 2<CR>
+map! <D-3> <C-O>:tabn 3<CR>
+map! <D-4> <C-O>:tabn 4<CR>
+map! <D-5> <C-O>:tabn 5<CR>
+map! <D-6> <C-O>:tabn 6<CR>
+map! <D-7> <C-O>:tabn 7<CR>
+map! <D-8> <C-O>:tabn 8<CR>
+map! <D-9> <C-O>:tabn 9<CR>
+map <D-9> <C-O>:BufExplore<CR>
 
 " Ctrl-Tab mappings
 " Don't use tabs much in Vim
@@ -181,4 +194,27 @@ map [] [M
 " end of line
 :cnoremap <C-E> <End>
 " forward one character
+" ----------------- BufKill Mappings ----------------
+" Used mainly so the plugin doesn't override <leader>b mapping
+if !hasmapto('<Plug>BufKillBun')
+  nmap <silent> <unique> <Leader>Bun <Plug>BufKillBun
+endif
+if !hasmapto('<Plug>BufKillBunBang')
+  nmap <silent> <unique> <Leader>!Bun <Plug>BufKillBunBang
+endif
+if !hasmapto('<Plug>BufKillBd')
+  nmap <silent> <unique> <Leader>Bd  <Plug>BufKillBd
+endif
+if !hasmapto('<Plug>BufKillBdBang')
+  nmap <silent> <unique> <Leader>!Bd  <Plug>BufKillBdBang
+endif
+if !hasmapto('<Plug>BufKillBw')
+  nmap <silent> <unique> <Leader>Bw  <Plug>BufKillBw
+endif
+if !hasmapto('<Plug>BufKillBwBang')
+  nmap <silent> <unique> <Leader>!Bw  <Plug>BufKillBwBang
+endif
+if !hasmapto('<Plug>BufKillBundo')
+  nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
+endif
 
