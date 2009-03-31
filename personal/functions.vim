@@ -153,8 +153,6 @@ endfunction
 
 autocmd BufNewFile * call <SID>LoadTemplate('%:e')
 
-
-
 " NextIndent()
 
 " Jump to the next or previous line that has the same level or a lower
@@ -231,3 +229,23 @@ function! s:ToggleCursorHighlight()
     endif
 endfunction
 map <leader>hc :call <SID>ToggleCursorHighlight()<CR>
+
+nnoremap <C-W>O :call <SID>MaximizeToggle ()<CR>
+nnoremap <C-W>o :call <SID>MaximizeToggle ()<CR>
+nnoremap <C-W><C-O> :call <SID>MaximizeToggle ()<CR>
+
+function! s:MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
