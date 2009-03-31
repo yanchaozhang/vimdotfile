@@ -5,6 +5,9 @@ set vb t_vb=
 " Don't show the toolbar
 :set guioptions-=T
 
+" Don't show the menu
+:set guioptions-=m
+
 " $HOME is necessary for some reason -- filereadable
 " doesn't interpolate the ~/
 if filereadable($HOME . "/.vim/personal/gvimrc.local")
