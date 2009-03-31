@@ -70,8 +70,24 @@ imap <silent> <leader>d <C-O>:call <SID>BlastBuffer()<Enter>
 map <silent> <F4> :call <SID>BlastBuffer()<Enter>
 imap <silent> <F4> <C-O>:call <SID>BlastBuffer()<Enter>
 
+function! s:CopyFileName()
+    " Use <leader>cp to copy the file name (no directory -- for fullpath, see CopyFilePath below)
+    " of the current buffer into the clipboard
+    if has('win32')
+        let @+=substitute(expand("%:p"), "/", "\\", "g")
+        let @0=substitute(expand("%:p"), "/", "\\", "g")
+    else
+        " Copy file/pathname, and echo it on line
+        let @+=expand("%:p:t")
+        let @0=expand("%:p:t")
+    endif
+    echo expand("%:p:t") . " was copied to the system clipboard."
+
+endfunction
+nnoremap <leader>cf :call <SID>CopyFileName()<Enter>
+
 function! s:CopyFilePath()
-    " Use \cf to copy the filename of the current buffer into the clipboard
+    " Use \cp to copy the filename of the current buffer into the clipboard
     " Use this feature by entering \ff in normal mode (I guess that's
     " what <Leader> means
     if has('win32')
@@ -85,7 +101,7 @@ function! s:CopyFilePath()
     echo expand("%:p") . " was copied to the system clipboard."
 
 endfunction
-nnoremap <leader>cf :call <SID>CopyFilePath()<Enter>
+nnoremap <leader>cp :call <SID>CopyFilePath()<Enter>
 
 
 function! s:ChangeFuzzyDir()
@@ -188,3 +204,30 @@ onoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
 onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
 onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
 onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR
+
+function! s:ToggleCursorHighlight()
+    " If we are showing the cursor now, then quit showing it.
+    if (! exists('g:NJNShowingCursorLine')) 
+        let g:NJNShowingCursorLine = 0
+    endif
+    if (g:NJNShowingCursorLine)
+        augroup cursorHigh
+            au!
+            autocmd WinLeave * setlocal nocursorline
+            autocmd WinEnter * setlocal nocursorline
+            autocmd BufLeave * setlocal nocursorline
+            autocmd BufEnter * setlocal nocursorline
+        augroup END
+        let g:NJNShowingCursorLine = 0
+    else
+        augroup cursorHigh
+            au!
+            autocmd WinLeave * setlocal nocursorline
+            autocmd WinEnter * setlocal cursorline
+            autocmd BufLeave * setlocal nocursorline
+            autocmd BufEnter * setlocal cursorline
+        augroup END
+        let g:NJNShowingCursorLine = 1
+    endif
+endfunction
+map <leader>hc :call <SID>ToggleCursorHighlight()<CR>
