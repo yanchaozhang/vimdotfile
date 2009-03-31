@@ -20,6 +20,9 @@ exe "Snipp ewi eachWithIndex { ${1:obj} , ${2:i} -> \n\t${3:// some code}\n}"
 exe "Snipp def def ${1:method_name}(${2:params...}) {\n\t${3:// some code}\n}"
 " Closure
 exe "Snipp dfc def ${1:closure_name} = {\n\t${3:// some code}\n}"
+" Assertions
+exe 'Snipp as assert ${1:test} : "${2:Failure message}";${3}'
+exe 'Snipp ann assertNotNull "${1:message}", ${2:test}'
 
 exe 'Snipp st static'
 exe 'Snipp fi final'
@@ -50,4 +53,3 @@ exe 'Snipp m ${1:void} ${2:method}(${3}) ${4:throws }${5}'
 exe 'Snipp v ${1:String} ${2:var}${3: = null}${4};${5}'
 exe 'Snipp co static public final ${1:String} ${2:var} = ${3};${4}'
 exe 'Snipp cos static public final String ${1:var} = "${2}";${3}'
-exe 'Snipp as assert ${1:test} : "${2:Failure message}";${3}'
