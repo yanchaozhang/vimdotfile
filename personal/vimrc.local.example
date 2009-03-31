@@ -1,0 +1,3 @@
+if has("gui") == 0
+    set bg=dark
+endif
