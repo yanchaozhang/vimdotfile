@@ -1,0 +1,22 @@
+** Just a notepad w/favorite colorschemes **
+moria
+vividchalk
+vibratink
+koeher_njn
+lucius
+
+--- Avail. colorschemes in colors dir ---
+darkspectrum.vim
+desert256.vim
+inkpot.vim
+koehler_njn.vim
+lucius.vim
+midnight2.vim
+moria.vim
+paintbox.vim
+railscasts.vim
+railscasts_njn.vim
+rastafari.vim
+vibrantink.vim
+vividchalk.vim
+xoria256.vim
