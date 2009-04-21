@@ -1,7 +1,7 @@
 if !exists('loaded_snips') || exists('b:did_groovy_snips')
 	fini
 en
-let b:did_java_snips = 1
+let b:did_groovy_snips = 1
 " Bang operator for Unix/Linux
 exe "Snipp #! #!/usr/bin/env groovy\n"
 " Simple if condition

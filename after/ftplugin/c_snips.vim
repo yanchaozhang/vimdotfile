@@ -1,4 +1,4 @@
-if !exists('g:loaded_snips') || exists('b:did_c_snips')
+if !exists('loaded_snips') || exists('b:did_c_snips')
 	fini
 en
 let b:did_c_snips = 1
