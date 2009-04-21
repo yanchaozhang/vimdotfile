@@ -217,6 +217,7 @@ function! s:ToggleCursorHighlight()
             autocmd BufEnter * setlocal nocursorline
         augroup END
         let g:NJNShowingCursorLine = 0
+        setlocal nocursorline
     else
         augroup cursorHigh
             au!
@@ -226,15 +227,18 @@ function! s:ToggleCursorHighlight()
             autocmd BufEnter * setlocal cursorline
         augroup END
         let g:NJNShowingCursorLine = 1
+        setlocal cursorline
     endif
 endfunction
 map <leader>hc :call <SID>ToggleCursorHighlight()<CR>
 
-nnoremap <C-W>O :call <SID>MaximizeToggle ()<CR>
-nnoremap <C-W>o :call <SID>MaximizeToggle ()<CR>
-nnoremap <C-W><C-O> :call <SID>MaximizeToggle ()<CR>
+noremap <C-W><C-O> :call <SID>MaximizeToggle ()<CR>
 
 function! s:MaximizeToggle()
+    " Tell session not to store info about other tabs.
+    " Just this one. Otherwise, Vim duplicates all tabs when you restore the
+    " layout.
+  set ssop-=tabpages
   if exists("s:maximize_session")
     exec "source " . s:maximize_session
     call delete(s:maximize_session)
