@@ -38,7 +38,7 @@ omap <M-Down> :call NextIndent(0, 1, 0, 1)<CR>
 " which makes it look better
 " See help status-line
 " set highlight+=sr
-set columns=90 lines=65
+" set columns=90 lines=65
 " set transparency=1
 set nocursorline
 
