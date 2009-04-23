@@ -57,6 +57,9 @@ map <leader>z :FuzzyFinderBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
+" Map <leader>m to "maximize" current window to another tab
+" See also MaximizeToggle in functions.vim
+map <leader>m :tabe %<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -67,13 +70,10 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 " Use F5 for running stuff.
 map <F5> :! %:p<CR>
 
-" Use F6 for switching buffers
-map <F6> :bn<CR>
-map <S-F6> :bp<CR>
 map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
-" Use ,bm ,ba for bookmark files
+" Use F7 for bookmark files
 map <F7> :FuzzyFinderBookmark<CR>
 map <S-F7> :FuzzyFinderAddBookmark<CR>
 
@@ -193,7 +193,8 @@ map [] [M
 :cnoremap <C-B> <Left>
 " end of line
 :cnoremap <C-E> <End>
-" forward one character
+" XML Tidy command
+map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------
 " Used mainly so the plugin doesn't override <leader>b mapping
 if !hasmapto('<Plug>BufKillBun')
