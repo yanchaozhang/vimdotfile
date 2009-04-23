@@ -253,3 +253,21 @@ function! s:MaximizeToggle()
     only
   endif
 endfunction
+
+function! s:ToggleSaveOnFocusLost()
+    if (! exists('g:NJNSaveOnFocusLost')) 
+        let g:NJNSaveOnFocusLost = 0
+    endif
+    if (g:NJNSaveOnFocusLost)
+        " Blast all FocusLost actions
+        " Prolly not best way to do this
+        au! FocusLost
+        echo 'Disabled save on Focus Lost'
+        let g:NJNSaveOnFocusLost = 0
+    else
+        au FocusLost * echo 'Autosaved file'|wall
+        let g:NJNSaveOnFocusLost = 1
+        echo 'Now Saving on Focus Lost'
+    endif
+endfunction
+map <F6> :call <SID>ToggleSaveOnFocusLost()<CR>
