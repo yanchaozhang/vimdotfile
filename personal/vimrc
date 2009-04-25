@@ -154,9 +154,11 @@ endif
 
 
 " For grep.vim, tell it to ignore .svn directories and log files
-:let Grep_Skip_Dirs = '.svn log vendor' 
-" Ignore case
-:let Grep_Default_Options = '-i'
+let Grep_Skip_Dirs = '.svn log vendor' 
+" Ignore case, and provide 1 line of context above and 1 line below
+let Grep_Default_Options = '-i -A 1 -B 1'
+" Just default the grep filelist to groovy, gsp and js files
+let Grep_Default_Filelist = '*.groovy *.gsp *.js'
 
 " BufKill customization not to default to a blank buffer
 " if this is the last buffer that's killed
@@ -164,7 +166,7 @@ let g:BufKillCommandWhenLastBufferKilled = ''
 
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions = { 'Base':{}, 'File':{} }
 " let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 " let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 " Don't ignore case.  If I type in "RC" I want to find stuff with
@@ -195,7 +197,6 @@ let g:miniBufExplModSelTarget = 1
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 let g:bufmru_splashbufs = 0
-
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
 so ~/.vim/personal/mappings.vim
