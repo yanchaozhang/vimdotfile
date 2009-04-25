@@ -315,6 +315,7 @@ function s:MapKeys()
   nnoremap <buffer> <silent> s             :call <SID>SortSelect()<cr>
   nnoremap <buffer> <silent> u             :call <SID>ToggleShowUnlisted()<cr>
   nnoremap <buffer> <silent> f             :call <SID>ToggleFindActive()<cr>
+  nnoremap <buffer> <silent> w             :call <SID>SelectBuffer("split")<cr>
 
   for k in ["G", "n", "N", "L", "M", "H"]
     exec "nnoremap <buffer> <silent>" k ":keepjumps normal!" k."<cr>"
@@ -565,6 +566,21 @@ function s:SelectBuffer(...)
                                 " Focus window.
         exec s:GetWinNbr(tabNbr, _bufNbr) . "wincmd w"
       endif
+    elseif (a:0 == 1 ) && (a:1 == "split")
+      " User pressed 'w', and we want to open the file in a split window
+      " and keep the bufexplorer open
+      let bufname = expand("#"._bufNbr.":p")
+      " exec bufname ? "drop ".escape(bufname, " ") : "buffer "._bufNbr
+      " Record this window's height
+      let l:winHeight = winheight(0)
+      " Switch to the buffer.
+      exec "keepalt keepjumps silent sb!" _bufNbr
+      " Exchange this window with the newly created one.
+      " This keeps the BufExplorer on top
+      silent wincmd x
+      " Resize to orig. height
+      resize 15
+
     else
       if bufloaded(_bufNbr) && g:bufExplorerFindActive
         call s:Close()
