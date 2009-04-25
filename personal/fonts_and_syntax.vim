@@ -26,6 +26,9 @@ function! s:SaneColors()
         elseif g:colors_name == "railscasts"
             hi clear Pmenu
             hi link  Pmenu Normal
+        elseif g:colors_name == "vividchalk"
+            hi clear Pmenu
+            hi link  Pmenu Normal
         endif
     endif
     " hi CursorLine   guibg=#222222
