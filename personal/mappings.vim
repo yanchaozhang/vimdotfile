@@ -95,6 +95,9 @@ nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:
 " from http://www.vim.org/tips/tip.php?tip_id=97
 map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
 
+" Insert time by pressing <leader>nw
+map <silent> <leader>nw "=strftime("%Y/%m/%d -- %A")<Enter>gP
+
 " Insert time by pressing <leader>nt
 map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>gP
 
