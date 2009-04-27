@@ -46,6 +46,7 @@ call <SID>SaneColors()
 " hi Visual guibg=#15171D
 if has('mac')
     " set guifont=DejaVu\ Sans\ Mono:h15
+    " set guifont=Courier\ New:h15
     set guifont=Monaco:h14
     " set guifont=Bitstream\ Vera\ Sans\ Mono:h14
 elseif has('gui_win32')
