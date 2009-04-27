@@ -197,6 +197,7 @@ let g:miniBufExplModSelTarget = 1
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 let g:bufmru_splashbufs = 0
+set scrolloff=2
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
 so ~/.vim/personal/mappings.vim
