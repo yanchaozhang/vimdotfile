@@ -40,7 +40,7 @@ function! s:JumpFind()
         endif
     endif
 endfunction
-nnoremap <Leader>f :call <SID>JumpFind()<CR>
+nnoremap <Leader>ff :call <SID>JumpFind()<CR>
 
 " Handles the stupid :bd versus :BD debate
 " :BD uses the bufkill thingy, where it will keep the window
@@ -132,9 +132,6 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
-
-" What's Changed ("wc")
-nnoremap <leader>wc <ESC>:DiffOrig<Enter>
 
 " Define autocmd for using "template" files when creating a new file.
 " Use the file's extension to see if there's a corresponding <extension>.tpl.
@@ -232,7 +229,6 @@ function! s:ToggleCursorHighlight()
 endfunction
 map <leader>hc :call <SID>ToggleCursorHighlight()<CR>
 
-noremap <C-W><C-O> :call <SID>MaximizeToggle ()<CR>
 
 function! s:MaximizeToggle()
     " Tell session not to store info about other tabs.
@@ -253,6 +249,9 @@ function! s:MaximizeToggle()
     only
   endif
 endfunction
+noremap <C-W><C-O> :call <SID>MaximizeToggle()<CR>
+" CAPITAL m
+noremap <leader>M :call <SID>MaximizeToggle()<CR>
 
 function! s:ToggleSaveOnFocusLost()
     if (! exists('g:NJNSaveOnFocusLost')) 
@@ -271,3 +270,21 @@ function! s:ToggleSaveOnFocusLost()
     endif
 endfunction
 map <F6> :call <SID>ToggleSaveOnFocusLost()<CR>
+
+function! s:XMLTidy()
+    let l:outFile = tempname() 
+    let l:errFile = tempname() 
+    " -file is error file, where errors are output to
+    let l:cmd = "!tidy -xml -indent -file " . l:errFile . " -output " . l:outFile . " --indent-spaces 4 --wrap 90 " . expand("%")
+    exe l:cmd
+    if (filereadable(l:outFile))
+    "    exe "r! " . l:outFile
+    endif
+    if (filereadable(l:errFile))
+        execute "silent! caddfile " . l:errFile
+        botright copen
+    endif
+
+endfunction
+
+

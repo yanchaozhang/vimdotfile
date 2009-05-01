@@ -7,12 +7,10 @@ let mapleader = ","
 " need it, I just press ,,
 nnoremap <leader>, ,
 map <leader>q <ESC>:qa<CR>
-",v reloads vimrc
-if has('win32')
-    map <silent> <leader>v :source c:\njn\_vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-else
-    map <silent> <leader>v :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-endif
+",V (CAPITAL V) reloads vimrc
+map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" ,v opens personal Vim stuff directory
+map <silent> <leader>v :e $VIMHOME/personal<CR>
 
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
@@ -59,7 +57,9 @@ map <leader>z :FuzzyFinderBuffer<CR>
 map <leader>t :FuzzyFinderFile\*\*/<CR>
 " Map <leader>m to "maximize" current window to another tab
 " See also MaximizeToggle in functions.vim
-map <leader>m :tabe %<CR>
+map <leader>m <C-W>o
+" 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
+" map <C-M> :tabe %<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -79,6 +79,8 @@ map <S-F7> :FuzzyFinderAddBookmark<CR>
 
 " Fuzzy's Most-recently used
 map <leader>r :FuzzyFinderMruFile<CR>
+" Recursive find-in-files (Think "f"ind in "f"iles)
+nnoremap <Leader>fr :Rgrep 
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
@@ -91,11 +93,11 @@ nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:
 " See functions.vim
 
 " See ftplugins
-" Insert date by pressing <leader>nd
+" Insert date by pressing <leader>nd Mnemonic: Think "N"ow
 " from http://www.vim.org/tips/tip.php?tip_id=97
 map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
 
-" Insert time by pressing <leader>nw
+" Insert date plus weekday by pressing <leader>nw
 map <silent> <leader>nw "=strftime("%Y/%m/%d -- %A")<Enter>gP
 
 " Insert time by pressing <leader>nt
@@ -110,6 +112,7 @@ map <D-M-Right> :tabn<Enter>
 imap <Ctrl-O><D-M-Right> :tabn<Enter>
 
 " Map Cmd-1, etc. to go to same-numbered tab
+" Doesn't work if you have Expose mapped to Cmd+1, Cmd+2, etc.
 map <D-1> :tabn 1<CR>
 map <D-2> :tabn 2<CR>
 map <D-3> :tabn 3<CR>
@@ -149,7 +152,7 @@ map <F4> :bw<CR>
 imap <F4> <C-O>:bw<CR>
 " map <leader>d :bd<CR>
 " <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
-map <leader>/ I//<ESC>
+map <leader>/ I// <ESC>
 
 " Window Mappings
 " Window up/down are same as up/down in Vim
@@ -159,6 +162,7 @@ map <C-K> <C-W>k
 " Window left/right are same as left/right in Vim
 map <C-H> <C-W>h
 map <C-L> <C-W>l
+
 
 " Try using semicolon for window movements
 " map ;j <C-W>j
@@ -196,8 +200,11 @@ map [] [M
 :cnoremap <C-B> <Left>
 " end of line
 :cnoremap <C-E> <End>
-" XML Tidy command
-map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
+" XML Tidy commands
+" ,xc = check (no overwrite)
+map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
+" ,xo = check + overwrite file w/more stuff
+" map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------
 " Used mainly so the plugin doesn't override <leader>b mapping
 if !hasmapto('<Plug>BufKillBun')
