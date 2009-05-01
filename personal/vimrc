@@ -22,7 +22,7 @@ set confirm
 " Not a fan of this, due to non-backward compatibility
 " set autochdir
 " autocmd BufEnter * lcd %:p:h
-
+autocmd FileType gsp set foldmethod=indent
 " remember some stuff after quitting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
@@ -152,13 +152,12 @@ if s:os =~ "Darwin"
     let g:Grep_Xargs_Options='-0'
 endif
 
-
 " For grep.vim, tell it to ignore .svn directories and log files
 let Grep_Skip_Dirs = '.svn log vendor' 
-" Ignore case, and provide 1 line of context above and 1 line below
-let Grep_Default_Options = '-i -A 1 -B 1'
+" Ignore case
+let Grep_Default_Options = '-i'
 " Just default the grep filelist to groovy, gsp and js files
-let Grep_Default_Filelist = '*.groovy *.gsp *.js'
+let Grep_Default_Filelist = '*.groovy *.gsp'
 
 " BufKill customization not to default to a blank buffer
 " if this is the last buffer that's killed
@@ -166,14 +165,17 @@ let g:BufKillCommandWhenLastBufferKilled = ''
 
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
-let g:FuzzyFinderOptions = { 'Base':{}, 'File':{} }
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
 " let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 " let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 " Don't ignore case.  If I type in "RC" I want to find stuff with
 " capital R and C in it.
 let g:FuzzyFinderOptions.Base.ignore_case = 0
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|test/reports/.*\.html$|\.swp$|((^|[/\\])\.[/\\]$)'
-let g:FuzzyFinder_ExcludePattern = '\.html'
+let g:FuzzyFinderOptions.Base.enumerating_limit = 40
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" Html exclude doesn't work anymore
+" let g:FuzzyFinder_ExcludePattern = '\.html'
 " buftabs plugin shows the buffers in the statusline.  Define what I want
 " statusline to be
 " buftabs_in_statusline will display tabs in statusline, rather than the flaky
