@@ -2,6 +2,8 @@ if !exists('loaded_snips') || exists('b:did_groovy_snips')
 	fini
 en
 let b:did_groovy_snips = 1
+" See also tem in gsp_snips.vim
+exe "Snipp tem render(template:\"${1:name}\",model:[${2:name}:${3:obj}])"
 " Bang operator for Unix/Linux
 exe "Snipp #! #!/usr/bin/env groovy\n"
 " Simple if condition
