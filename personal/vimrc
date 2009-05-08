@@ -5,6 +5,16 @@ syntax enable
 set nocp
 " Skip minibufexplorer for now.
 let loaded_minibufexplorer = 1
+
+" ----- BufExplorer options ----- 
+" Split new window below current.
+let g:bufExplorerSplitBelow=1        
+" Show relative paths.
+let g:bufExplorerShowRelativePath=1  
+" Do not go to 'active window' when I use BufExplorer
+" to open a buffer.  Use the existing window / tab that I'm in
+let g:bufExplorerFindActive=0        
+
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
@@ -22,7 +32,18 @@ set confirm
 " Not a fan of this, due to non-backward compatibility
 " set autochdir
 " autocmd BufEnter * lcd %:p:h
+" Folding -----------
 autocmd FileType gsp set foldmethod=indent
+" Set fold level to something sensible
+set foldlevelstart=2
+" However, don't enable folding by default
+set nofoldenable
+
+" Vim Wiki customization
+let g:vimwiki_list = [{'path': '~/Documents/personal/', 'index': 'main', 
+                     \ 'path_html': '~/Documents/personal/html'},
+                     \ {'path': '~/Documents/Contegix/wiki/', 'index': 'contegix', 
+                     \ 'path_html': '~/Documents/Contegix/wiki/html' }]
 " remember some stuff after quitting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
