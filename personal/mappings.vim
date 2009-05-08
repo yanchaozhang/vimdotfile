@@ -7,6 +7,9 @@ let mapleader = ","
 " need it, I just press ,,
 nnoremap <leader>, ,
 map <leader>q <ESC>:qa<CR>
+" Close window
+map <leader>w <C-W>c
+
 ",V (CAPITAL V) reloads vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " ,v opens personal Vim stuff directory
@@ -17,7 +20,8 @@ map <silent> <leader>v :e $VIMHOME/personal<CR>
 map <C-Space> :set hlsearch!<Enter>
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
-
+" -------------- Folding ----------------
+map <F3> :set foldenable! <BAR> echo "Folding is now: " . &foldenable<CR>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e :Explore!<CR>
@@ -94,14 +98,15 @@ nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:
 
 " See ftplugins
 " Insert date by pressing <leader>nd Mnemonic: Think "N"ow
+" 
 " from http://www.vim.org/tips/tip.php?tip_id=97
-map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>gP
+map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>p
 
 " Insert date plus weekday by pressing <leader>nw
-map <silent> <leader>nw "=strftime("%Y/%m/%d -- %A")<Enter>gP
+map <silent> <leader>nw "=strftime("%Y/%m/%d -- %A")<Enter>p
 
 " Insert time by pressing <leader>nt
-map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>gP
+map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>p
 
 " -------------- Window and Tab Navigation --------------
 " Textmate like mappings for tabs
@@ -134,12 +139,14 @@ map! <D-9> <C-O>:tabn 9<CR>
 map <D-9> <C-O>:BufExplore<CR>
 
 " Ctrl-Tab mappings
-" Don't use tabs much in Vim
-map <C-Tab> :bn<CR>
-map <C-S-Tab> :bp<CR>
+" Changing to next tab, previous tab
+" I don't use buffer previous, buffer next that much.
+" If I use it, then I use C-N, C-P
+map <C-Tab> :tabn<CR>
+map <C-S-Tab> :tabp<CR>
 
-map <C-Right> :bn<CR>
-map <C-Left> :bp<CR>
+map <C-Right> :tabn<CR>
+map <C-Left> :tabp<CR>
 
 " Buffer Mappings
 map <C-N> :bn<CR>
