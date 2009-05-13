@@ -155,10 +155,8 @@ map <A-N> :bn<CR>
 map <A-P> :bp<CR>
 
 " Close buffer
-map <F4> :bw<CR>
-imap <F4> <C-O>:bw<CR>
-" map <leader>d :bd<CR>
 " <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
+" Insert Comment
 map <leader>/ I// <ESC>
 
 " Window Mappings
@@ -211,6 +209,10 @@ map [] [M
 " ,xc = check (no overwrite)
 map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
 " ,xo = check + overwrite file w/more stuff
+
+
+map <leader>g <Plug>CompView
+
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------
 " Used mainly so the plugin doesn't override <leader>b mapping

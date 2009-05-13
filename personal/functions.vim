@@ -67,8 +67,6 @@ function! s:BlastBuffer()
 endfunction
 map <silent> <leader>d :call <SID>BlastBuffer()<Enter>
 imap <silent> <leader>d <C-O>:call <SID>BlastBuffer()<Enter>
-map <silent> <F4> :call <SID>BlastBuffer()<Enter>
-imap <silent> <F4> <C-O>:call <SID>BlastBuffer()<Enter>
 
 function! s:CopyFileName()
     " Use <leader>cp to copy the file name (no directory -- for fullpath, see CopyFilePath below)
@@ -287,4 +285,14 @@ function! s:XMLTidy()
 
 endfunction
 
-
+" http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
+function! s:QFixToggle()
+  if exists("g:qfix_win")
+    cclose
+    unlet g:qfix_win
+  else
+    copen 10
+    let g:qfix_win = bufnr("$")
+  endif
+endfunction
+nmap <silent> <F4> :call <SID>QFixToggle()<CR>
