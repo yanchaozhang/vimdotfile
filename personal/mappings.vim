@@ -207,9 +207,9 @@ map [] [M
 :cnoremap <C-E> <End>
 " XML Tidy commands
 " ,xc = check (no overwrite)
-map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
+map <leader>xc :!tidy -errors -xml -indent --indent-spaces 2 --wrap 90 %<CR>
+map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 2 --wrap 90 %<CR>ggdd:w!
 " ,xo = check + overwrite file w/more stuff
-
 
 map <leader>g <Plug>CompView
 
