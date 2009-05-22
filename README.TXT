@@ -103,6 +103,7 @@ Favorite color schemes:
 :colo vibrantink
 
 New Color Schemes:
+:colo molokai 
 :colo darkburn 
 :colo darkZ
 
