@@ -72,7 +72,13 @@ These are some shortcuts/handy mappings that I have.
 <leader>nt  Inserts the current date in MM/DD/YYYY format, followed by the time
 
 
- ====== Window Navigation / Management ======
+====== XML Tidy ======
+<leader>xc  Check XML syntax using tidy.  Requires tidy to be installed
+<leader>xc! Check XML syntax, and if good, replace existing file 
+            with output from tidy
+
+
+====== Window Navigation / Management ======
  Ctrl K     Move cursor up one window
  Ctrl J     Move cursor down one window
  Ctrl L     Move cursor right one window
@@ -93,6 +99,13 @@ Favorite color schemes:
 
 :colo moria
 :colo vividchalk
+:colo skittles_dark
+:colo vibrantink
+
+New Color Schemes:
+:colo molokai 
+:colo darkburn 
+:colo darkZ
 
 ====== Less Used ======
 <C-N>   Go to next buffer (:bn)
