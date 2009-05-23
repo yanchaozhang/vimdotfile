@@ -1,5 +1,7 @@
 " Vim color file
 "
+" Version: 1.1
+"
 " Author: Shawn Biddle <shawn@shawnbiddle.com>
 "
 " Note: Used the molokai color scheme as a template
@@ -7,21 +9,19 @@
 " everything to be a bit more colorful while still
 " being quite readable
 "
- 
+
 hi clear
- 
+
 set background=dark
 if version > 580
-" no guarantees for version 5.8 and below, but this makes it stop
-" complaining
     hi clear
     if exists("syntax_on")
         syntax reset
     endif
 endif
 let g:colors_name="skittles_dark"
- 
- 
+
+
 hi Boolean guifg=#AE81FF
 hi Character guifg=#E6DB74
 hi Number guifg=#AE81FF
@@ -37,8 +37,6 @@ hi DiffChange guifg=#89807D guibg=#4C4745
 hi DiffDelete guifg=#960050 guibg=#1E0010
 hi DiffText guibg=#4C4745 gui=italic,bold
 
-" hi phpRegion guifg=#CC0000 gui=bold
-
 hi Directory guifg=#A6E22E gui=bold
 hi Error guifg=#960050 guibg=#1E0010
 hi ErrorMsg guifg=#8ac6f2 guibg=#232526 gui=bold
@@ -52,17 +50,18 @@ hi Identifier guifg=#ffffff
 
 hi Ignore guifg=#808080 guibg=bg
 hi IncSearch guifg=#C4BE89 guibg=#000000
- 
+
 hi Keyword guifg=#8ac6f2 gui=bold
 hi Label guifg=#E6DB74 gui=none
 hi Macro guifg=#C4BE89 gui=italic
 hi SpecialKey guifg=#66D9EF gui=italic
- 
+
+
 hi MatchParen guifg=#000000 guibg=#FD971F gui=bold
 hi ModeMsg guifg=#E6DB74
 hi MoreMsg guifg=#E6DB74
 hi Operator guifg=#FF9900
- 
+
 " complete menu
 hi Pmenu guifg=#66D9EF guibg=#000000
 hi PmenuSel guibg=#808080
@@ -96,27 +95,28 @@ hi Tag guifg=#8ac6f2 gui=italic
 hi Title guifg=#ef5939
 hi Todo guifg=#FFFFFF guibg=bg gui=bold
 
-hi phpDocBlock guifg=#94E1E4 guibg=bg gui=bold,italic
+hi phpDocBlock guifg=#94E1E4 guibg=bg gui=bold,italic,underline
 
 hi Typedef guifg=#66D9EF
 hi Type guifg=#66D9EF gui=none
 hi Underlined guifg=#808080 gui=underline
- 
+
 hi VertSplit guifg=#808080 guibg=#080808 gui=bold
 hi VisualNOS guibg=#403D3D
 hi Visual guibg=#403D3D
 hi WarningMsg guifg=#FFFFFF guibg=#333333 gui=bold
 hi WildMenu guifg=#66D9EF guibg=#121212
- 
-hi Normal guifg=#F8F8F2 guibg=#080808
+
+hi Normal guifg=#F8F8F2 guibg=#050505
 hi Comment guifg=#5D8D8F
 hi CursorLine guibg=#121212
 hi CursorColumn guibg=#121212
-hi LineNr guifg=Gray guibg=#111111
+hi LineNr guifg=#FFFFFF guibg=#000000 gui=underline
 hi NonText guifg=#BCBCBC guibg=#232526
 
 hi yamlBaseKey  gui=bold,underline
 hi yamlTab guibg=#FF0000
-"hi yamlKey guifg=#8bd146
-"hi yamlKey guifg=#cf2620
 hi User1 guifg=#000000 guibg=#84E12E gui=bold
+
+hi clear htmlTagN
+hi link htmlTagN Typedef
