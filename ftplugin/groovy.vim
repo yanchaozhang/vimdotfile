@@ -185,27 +185,27 @@ if !exists("<SID>RemoveSpace")
 		return (c =~ '\s') ? '' : c
 	endfunction
 endif
-
-if !hasmapto("<SID>ShowHelp()", "n")
-	nmap <buffer><unique><silent> <leader>gsh :call <SID>ShowHelp()<CR>
-endif
-if !hasmapto("<SID>RunPrompt()", "n")
-	nmap <buffer><unique><silent> <leader>gp :call <SID>RunPrompt()<CR>
-endif
-if !hasmapto("<SID>RunNoPrompt()")
-	nmap <buffer><unique><silent> <leader>gr :call <SID>RunNoPrompt()<CR>
-endif
-if !hasmapto("<SID>CompilePrompt()")
-        " Removed compile with prompt thingy.
-        " nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
-endif
-if !hasmapto("<SID>CompileNoPrompt()")
-	nmap <buffer><unique><silent> <leader>gc :call <SID>CompileNoPrompt()<CR>
-endif
-" Test current groovy scripts.
-if !hasmapto("<SID>RunTests()")
-        nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
-endif
+" TODO: bring back under something like the F5 key, shift F5, etc.
+" if !hasmapto("<SID>ShowHelp()", "n")
+" 	nmap <buffer><unique><silent> <leader>gsh :call <SID>ShowHelp()<CR>
+" endif
+" if !hasmapto("<SID>RunPrompt()", "n")
+" 	nmap <buffer><unique><silent> <leader>gp :call <SID>RunPrompt()<CR>
+" endif
+" if !hasmapto("<SID>RunNoPrompt()")
+" 	nmap <buffer><unique><silent> <leader>gr :call <SID>RunNoPrompt()<CR>
+" endif
+" if !hasmapto("<SID>CompilePrompt()")
+"         " Removed compile with prompt thingy.
+"         " nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
+" endif
+" if !hasmapto("<SID>CompileNoPrompt()")
+" 	nmap <buffer><unique><silent> <leader>gc :call <SID>CompileNoPrompt()<CR>
+" endif
+" " Test current groovy scripts.
+" if !hasmapto("<SID>RunTests()")
+"         nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
+" endif
 
 " Display a help key reminder when first loading Vim (with a Groovy file)
 au VimEnter *.groovy echo ":gsh for Groovy plugin help"
