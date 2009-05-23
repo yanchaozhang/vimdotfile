@@ -168,7 +168,6 @@ map <C-K> <C-W>k
 map <C-H> <C-W>h
 map <C-L> <C-W>l
 
-
 " Try using semicolon for window movements
 " map ;j <C-W>j
 " map ;k <C-W>k
@@ -208,10 +207,14 @@ map [] [M
 " XML Tidy commands
 " ,xc = check (no overwrite)
 map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
-" ,xo = check + overwrite file w/more stuff
+" ,xo = check check + overwrite file w/more stuff
 
-
+" Cool "find in file" plugin
 map <leader>g <Plug>CompView
+
+" Remap p and P to us ]p and ]P which preserve indentation
+nnoremap p ]p
+nnoremap P ]P
 
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------
