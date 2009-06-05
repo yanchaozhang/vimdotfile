@@ -8,3 +8,9 @@ snippet gdef
 
 snippet inp
 	<input name="{$1:name}" type="hidden" value="{$2:value}" />
+
+snippet each
+	<g:each ${1:var="${2}" }in="\${$3}">
+		${0:$TM_SELECTED_TEXT}
+	</g:each>
+	
