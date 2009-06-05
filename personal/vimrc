@@ -213,6 +213,11 @@ let g:qb_hotkey = "<F9>"
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore=['\.class', '\~$']
 
+" NERD Commenter
+" Put a space after comments, like // foo instead of //foo
+let NERDSpaceDelims=1
+map <leader>cc <Plug>NERDCommenterToggle
+
 " let g:miniBufExplMapWindowNavVim = 1
 " let g:miniBufExplMapWindowNavArrows = 1
 " let g:miniBufExplMapCTabSwitchBufs = 1
