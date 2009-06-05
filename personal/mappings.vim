@@ -186,9 +186,9 @@ map <C-S-Up> :cpf<Enter>
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods
-map ]] ]M
-map ][ ]m
+map ]] ]m
 map [[ [m
+map ][ ]M
 map [] [M
 
 " -------------- Experimental --------------
