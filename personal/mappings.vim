@@ -212,10 +212,6 @@ map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --
 " Cool "find in file" plugin
 map <leader>g <Plug>CompView
 
-" Remap p and P to us ]p and ]P which preserve indentation
-nnoremap p ]p
-nnoremap P ]P
-
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------
 " Used mainly so the plugin doesn't override <leader>b mapping

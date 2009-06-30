@@ -14,8 +14,8 @@ nmenu CrazyNate.Find.Word\ Under\ Cursor<Tab><leader>j <leader>j
 nmenu CrazyNate.Format\ File<Tab><leader>f <leader>f
 nmenu CrazyNate.Fuzzy.Change\ Dir<Tab><leader>ncd <leader>ncd<CR>
 nmenu CrazyNate.Fuzzy.Edit\ Favorites :FuzzyFinderEditInfo<CR>
-nmenu CrazyNate.Fuzzy.Recent\ Files<Tab><F7> :FuzzyFinderMruFile<CR>
-nmenu CrazyNate.Fuzzy.Reload :FuzzyFinderRemoveCache<CR>
+nmenu CrazyNate.Fuzzy.Recent\ Files<Tab><leader>r :FuzzyFinderMruFile<CR>
+nmenu CrazyNate.Fuzzy.Reload :FuzzyFinderRenewCache<CR>
 nmenu CrazyNate.Groovy.Help<Tab><leader>gsh <leader>gsh
 nmenu CrazyNate.Groovy.Run<Tab><F5> <F5>
 nmenu CrazyNate.HTML\ Tidy<Tab><leader>t :call ReadEx("!tidy -xml --indent-spaces 4 -im %")<CR>
@@ -26,3 +26,5 @@ nmenu CrazyNate.List.Jumps<Tab>jumps :jumps<CR>
 nmenu CrazyNate.Recent\ Files<Tab><F7> :FuzzyFinderMruFile<CR>
 nmenu CrazyNate.functions<Tab><leader>nf :e ~/.vim/nate/functions.vim<Enter>
 vmenu CrazyNate.Insert.Line\ Numbers :s/^/\=line(".")." "/ <CR>
+
+
