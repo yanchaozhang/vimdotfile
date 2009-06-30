@@ -271,6 +271,8 @@ setlocal fillchars=fold:\  foldtext=getline(v:foldstart)
 "    zm  : fold (m)ore
 "    zr  : (r)educe folding
 "    See :h folding for more options
+" Set tabstop = 4 (convention for groovy files)
+setlocal tabstop=4
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
