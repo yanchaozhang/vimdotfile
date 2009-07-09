@@ -48,17 +48,17 @@ imap <F2> <ESC>:BufExplorer<CR>
 " NERD Tree
 map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
+" ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
 map <leader>b :FuzzyFinderBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
-" Map <leader>m to "maximize" current window to another tab
-" See also MaximizeToggle in functions.vim
-map <leader>m <C-W>o
-" 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
-" map <C-M> :tabe %<CR>
+
+" Renew cache in Fuzzy Finder -- use this when there's new files
+" that fuzzy finder doesn't know about.
+map <leader>fc :FuzzyFinderRenewCache<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -173,6 +173,12 @@ map <C-L> <C-W>l
 " Window left/right are same as left/right in Vim
 " map ;h <C-W>h
 " map ;l <C-W>l
+
+" Map <leader>m to "maximize" current window to another tab
+" See also MaximizeToggle in functions.vim
+map <leader>m <C-W>o
+" 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
+" map <C-M> :tabe %<CR>
 
 " Make / error list / search list mappings
 " Go next/prev error
