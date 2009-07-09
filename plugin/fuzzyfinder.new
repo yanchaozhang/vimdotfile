@@ -371,38 +371,31 @@ endfunction
 function! s:SetRanks(item, eval_word, eval_base, stats)
     let rank_perfect = (a:eval_word == a:eval_base ? 0 : 1)
     let data = []
-    let writetofile = 0
-    if writetofile
-        if filereadable('writefile.txt')
-            let data = readfile('writefile.txt')
-        endif
-        call add(data, "eval_word:" . a:eval_word)
-        call add(data, "eval_base:" . a:eval_base)
+    if filereadable('writefile.txt')
+        let data = readfile('writefile.txt')
     endif
+    call add(data, "eval_word:" . a:eval_word)
+    call add(data, "eval_base:" . a:eval_base)
     if a:eval_word == a:eval_base
         let rank_perfect = 1
         let rank_matching = 0
     else
         let rank_perfect = 2
         let rank_matching = -s:EvaluateMatchingRate(a:eval_word, a:eval_base)
+        call add(data, "rank_matching:" . rank_matching)
         " Try matching on word-boundaries/capital letters
         let l:eval_abbrev_word = substitute(a:eval_word, '\a\zs\l\+\|\zs\A', '', 'g')
         let rank_matching_abbrev = -s:EvaluateMatchingRate(l:eval_abbrev_word, a:eval_base)
-        if writetofile
-            call add(data, "rank_matching:" . rank_matching)
-            call add(data, "rank_matching_abbrev:" . rank_matching_abbrev)
-        endif
+        call add(data, "rank_matching_abbrev:" . rank_matching_abbrev)
         if rank_matching > rank_matching_abbrev
             let rank_matching = rank_matching_abbrev
         endif
     endif
-    if writetofile
-        call add(data, "returned_rank_matching:" . rank_matching)
-        call add(data, "rank_perfect:" . rank_perfect)
-        call writefile(data, 'writefile.txt')
-    endif
+    call add(data, "returned_rank_matching:" . rank_matching)
+    call add(data, "rank_perfect:" . rank_perfect)
     let a:item.ranks = [ rank_perfect, s:EvaluateLearningRank(a:item.word, a:stats),
                 \              rank_matching, a:item.index ]
+    call writefile(data, 'writefile.txt')
     return a:item
 endfunction
 

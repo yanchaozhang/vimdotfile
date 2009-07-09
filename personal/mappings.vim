@@ -42,20 +42,15 @@ map <S-F1> <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>:FuzzyFinder
 nnoremap <S-F1> <ESC> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F2 to show buffers
-map <F2> <leader>be
-imap <F2> <ESC><leader>be
-map <silent> <C-F2> :if &guioptions =~# 'm' <Bar>
-                        \set guioptions-=m <Bar>
-                    \else <Bar>
-                        \set guioptions+=m <Bar>
-                    \endif<CR>
+map <F2> :BufExplorer<CR>
+imap <F2> <ESC>:BufExplorer<CR>
 
 " NERD Tree
 map <leader>a :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Map <leader>bu to be the fuzzy version of BufExplorer
-" Mnemonic: Fu(zz)y
-map <leader>z :FuzzyFinderBuffer<CR>
+" Mnemonic: Fuzzy (B)uffer
+map <leader>b :FuzzyFinderBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
 map <leader>t :FuzzyFinderFile\*\*/<CR>
@@ -89,6 +84,9 @@ nnoremap <Leader>fr :Rgrep
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
 nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+" Trying leader . out for now.
+" Mnemonic: :e .
+nnoremap <leader>. :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
@@ -186,9 +184,9 @@ map <C-S-Up> :cpf<Enter>
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods
-map ]] ]M
-map ][ ]m
+map ]] ]m
 map [[ [m
+map ][ ]M
 map [] [M
 
 " -------------- Experimental --------------
@@ -211,10 +209,6 @@ map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --
 
 " Cool "find in file" plugin
 map <leader>g <Plug>CompView
-
-" Remap p and P to us ]p and ]P which preserve indentation
-nnoremap p ]p
-nnoremap P ]P
 
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " ----------------- BufKill Mappings ----------------

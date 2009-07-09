@@ -1,6 +1,6 @@
 # See also tem in gsp_snips.vim
 snippet tem
-	render(template:\"${1:name}\",model:[${2:name}:${3:obj}])
+	render(template:"${1:name}",model:[${2:name}:${3:obj}])
 # Bang operator for Unix/Linux
 snippet #!
 	#!/usr/bin/env groovy
@@ -111,3 +111,18 @@ snippet cos
 	static public final String ${1:var} = "${2}";${3}
 snippet redi
 	redirect(action:${1:action}, controller:${2:controller}, params:${3:params})
+snippet err
+	.errors.allErrors.each { println it }
+
+# Grails-specific
+snippet bel
+	static belongsTo = ${1:domain}
+
+# Two nullable snippets.
+snippet bla
+	${1:fieldname}(blank:true, nullable:true)
+snippet nul
+	${1:fieldname}(blank:true, nullable:true)
+# has many
+snippet has
+	static hasMany = [ ${1:property} : ${2:domain} ]
