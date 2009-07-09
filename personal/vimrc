@@ -4,7 +4,6 @@ filetype plugin indent on
 syntax enable
 
 set nocp
-" }}}1
 
 " fullscreen maximizes vertically AND horizontally
 set fuoptions=maxvert,maxhorz
@@ -33,11 +32,7 @@ set foldlevelstart=2
 " However, don't enable folding by default
 set nofoldenable
 
-" Vim Wiki customization
-let g:vimwiki_list = [{'path': '~/Documents/personal/', 'index': 'main', 
-                     \ 'path_html': '~/Documents/personal/html'},
-                     \ {'path': '~/Documents/Contegix/wiki/', 'index': 'contegix', 
-                     \ 'path_html': '~/Documents/Contegix/wiki/html' }]
+" }}}1
 " remember some stuff after quitting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
