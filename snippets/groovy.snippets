@@ -47,7 +47,9 @@ snippet dfc
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
 snippet ann
-	assertNotNull "${1:message}", ${2:test}
+	assertNotNull "${1:Message Or Expected}", ${2:Value}
+snippet ass
+	assertEquals "${1:Message Or Expected}", ${2:Value}
 snippet st
 	static
 snippet fi
