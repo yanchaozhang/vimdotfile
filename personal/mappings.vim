@@ -15,6 +15,9 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " ,v opens personal Vim stuff directory
 map <silent> <leader>v :e $VIMHOME/personal<CR>
 
+" Map Y to act like C and D
+map Y y$
+
 " Toggle highlighting of found search terms on/off
 " Use Control-Space because a bunch of other things use Space
 map <C-Space> :set hlsearch!<Enter>
