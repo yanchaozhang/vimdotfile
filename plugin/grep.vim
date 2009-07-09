@@ -519,6 +519,8 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
     else
         let startdir = input("Start searching from directory: ", cwd)
     endif
+    " use relative pos, instead of absolute.
+    let startdir = substitute(startdir, getcwd(), ".", "")
     if startdir == ""
         return
     endif
