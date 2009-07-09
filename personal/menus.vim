@@ -12,6 +12,7 @@ exe "nmenu CrazyNate.Favorites.vim\\ directory :e " . s:vimPersonal . "<Enter>"
 nmenu CrazyNate.Find.List\ Occurrences<Tab><leader>s <leader>s
 nmenu CrazyNate.Find.Word\ Under\ Cursor<Tab><leader>j <leader>j
 nmenu CrazyNate.Format\ File<Tab><leader>f <leader>f
+nmenu CrazyNate.Format.Remove\ Trailing\ Spaces :%s/\s\+//gc<CR>
 nmenu CrazyNate.Fuzzy.Change\ Dir<Tab><leader>ncd <leader>ncd<CR>
 nmenu CrazyNate.Fuzzy.Edit\ Favorites :FuzzyFinderEditInfo<CR>
 nmenu CrazyNate.Fuzzy.Recent\ Files<Tab><leader>r :FuzzyFinderMruFile<CR>
