@@ -6,14 +6,8 @@ set nocp
 " Skip minibufexplorer for now.
 let loaded_minibufexplorer = 1
 
-" ----- BufExplorer options ----- 
-" Split new window below current.
-let g:bufExplorerSplitBelow=1        
-" Show relative paths.
-let g:bufExplorerShowRelativePath=1  
-" Do not go to 'active window' when I use BufExplorer
-" to open a buffer.  Use the existing window / tab that I'm in
-let g:bufExplorerFindActive=0        
+" fullscreen maximizes vertically AND horizontally
+set fuoptions=maxvert,maxhorz
 
 " Don't do the stupid wrapping line junk
 set nowrap
@@ -184,6 +178,16 @@ let Grep_Default_Filelist = '*.groovy *.gsp'
 " if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 
+" =========== BufExplorer options =========== 
+" Split new window below current.
+let g:bufExplorerSplitBelow=1        
+" Show relative paths.
+let g:bufExplorerShowRelativePath=1  
+" Do not go to 'active window' when I use BufExplorer
+" to open a buffer.  Use the existing window / tab that I'm in
+let g:bufExplorerFindActive=0        
+
+" =========== Fuzzy options ===========  
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
