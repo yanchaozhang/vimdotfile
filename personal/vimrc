@@ -5,8 +5,6 @@ syntax enable
 
 set nocp
 
-" fullscreen maximizes vertically AND horizontally
-set fuoptions=maxvert,maxhorz
 
 " Don't do the stupid wrapping line junk
 set nowrap
@@ -32,7 +30,9 @@ set foldlevelstart=2
 " However, don't enable folding by default
 set nofoldenable
 
-" }}}1
+" Leave a line above/below the cursor when at the top
+" of the screen
+set scrolloff=2
 " remember some stuff after quitting vim:
 " marks, registers, searches, buffer list
 set viminfo='20,<50,s10,h,%
@@ -153,7 +153,9 @@ if has("autocmd")
 else
     echo "I don't have autocmd"
 endif " has("autocmd") End Arch vimrc stuff
-" ------------- Plugin Customizations ---------------
+" }}}1
+" Plugin Customizations: {{{1
+" Rgrep: {{{2
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
 " Previously used has("mac"), except this doesn't work in 
 " a terminal, and fubars the grep.vim plugin
@@ -168,12 +170,14 @@ let Grep_Skip_Dirs = '.svn log vendor'
 let Grep_Default_Options = '-i'
 " Just default the grep filelist to groovy, gsp and js files
 let Grep_Default_Filelist = '*.groovy *.gsp'
+" }}}2
 
+" BufKill: {{{2
 " BufKill customization not to default to a blank buffer
 " if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
-
-" =========== BufExplorer options =========== 
+" }}}2
+" BufExplorer options {{{2
 " Split new window below current.
 let g:bufExplorerSplitBelow=1        
 " Show relative paths.
@@ -181,8 +185,9 @@ let g:bufExplorerShowRelativePath=1
 " Do not go to 'active window' when I use BufExplorer
 " to open a buffer.  Use the existing window / tab that I'm in
 let g:bufExplorerFindActive=0        
+" }}}2
 
-" =========== Fuzzy options ===========  
+" Fuzzy options {{{2
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
@@ -193,6 +198,25 @@ let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFi
 let g:FuzzyFinderOptions.Base.ignore_case = 1
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|test/reports/.*\.html$|\.swp$|((^|[/\\])\.[/\\]$)'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
+" }}}2
+" NERD Tree {{{2
+let NERDTreeHijackNetrw=0
+let NERDTreeIgnore=['\.class', '\~$']
+
+" NERD Commenter
+" Put a space after comments, like // foo instead of //foo
+let NERDSpaceDelims=1
+map <leader>cc <Plug>NERDCommenterToggle
+" }}}2
+" MiniBufExplorer (defunct) {{{2
+" let g:miniBufExplMapWindowNavVim = 1
+" let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1 
+" let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
+" let g:miniBufExplorerDebugMode  = 0  " Writes to a file
+" }}}2
+" Miscellaneous {{{2
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 " Html exclude doesn't work anymore
 " let g:FuzzyFinder_ExcludePattern = '\.html'
@@ -207,24 +231,8 @@ let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
 let g:buftabs_in_statusline=1
 let g:buftabs_only_basename=1
 let g:qb_hotkey = "<F9>"
-
-" NERD Tree
-let NERDTreeHijackNetrw=0
-let NERDTreeIgnore=['\.class', '\~$']
-
-" NERD Commenter
-" Put a space after comments, like // foo instead of //foo
-let NERDSpaceDelims=1
-map <leader>cc <Plug>NERDCommenterToggle
-
-" let g:miniBufExplMapWindowNavVim = 1
-" let g:miniBufExplMapWindowNavArrows = 1
-" let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
-" let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
-" let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 let g:bufmru_splashbufs = 0
-set scrolloff=2
+" }}}2
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
 so ~/.vim/personal/mappings.vim

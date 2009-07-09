@@ -40,6 +40,9 @@ omap <M-Down> :call NextIndent(0, 1, 0, 1)<CR>
 " set transparency=1
 set nocursorline
 
+" fullscreen maximizes vertically AND horizontally
+set fuoptions=maxvert,maxhorz
+
 " Read local gvimrc file, for machine-local mods that are not checked into repo.
 " $HOME is necessary for some reason -- filereadable
 " doesn't interpolate the ~/
