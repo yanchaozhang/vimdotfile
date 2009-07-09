@@ -89,6 +89,8 @@ nnoremap <Leader>fr :Rgrep
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
 nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+" Trying leader b out for now.
+nnoremap <leader>b :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
