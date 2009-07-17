@@ -33,7 +33,42 @@ augroup grailsPluginDetect
   " autocmd Syntax railslog if s:autoload()|call rails#log_syntax()|endif
 augroup END
 
+" This function puts the current directory
+" and all files underneath it into the path.
+" This makes commands like 'gf' and friends able to open
+" files with paths relative to the Grails projects' root directory
 function! s:GrailsBufInit()
     let wildcardpath=getcwd() . "/**/"
     exec 'set path+=' . wildcardpath
 endfunction
+
+" Functions {{{1
+" Opens a netrw window in the view directory
+" pertain to the buffer where the cursor was when
+" this function was called
+function! s:GrailsDisplayViews()
+    " Get the name of the current file we're on
+    " TODO: Maybe we'll prompt someday
+    let fileName = expand("%:t:r") 
+    let fileName = substitute(fileName, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "g")
+    let fileName =  tolower(fileName[0]) . strpart(fileName, 1)
+    let viewsPath = "grails-app/views/" . fileName
+    echo "Exploring viewsPath".viewsPath
+    if finddir(viewsPath) != ""
+        exe "Explore " . viewsPath
+    else
+        echo "Sorry, " . viewsPath . " is not found, you idiot."
+    endif
+endfunction
+
+" Define Command{{{1
+noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
+noremap <SID>GrailsDisplayViews :call <SID>GrailsDisplayViews()<CR> 
+" }}}1
+
+" Mappings {{{1
+if !hasmapto('<Plug>MyscriptMyfunctionA') 
+    map <unique> <Leader>gv <Plug>GrailsDisplayViews
+endif 
+" }}}1
+" vim: set fdm=marker:
