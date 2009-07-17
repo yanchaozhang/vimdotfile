@@ -84,10 +84,12 @@ nnoremap <Leader>fr :Rgrep
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
-nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-" Trying leader . out for now.
+" nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <leader>o :FuzzyFinderFileWithCurrentBufferDir<CR>
+" Trying leader . out for now, also
 " Mnemonic: :e .
-nnoremap <leader>. :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <leader>. :FuzzyFinderFileWithCurrentBufferDir<CR>
+" nnoremap <leader>. :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
@@ -240,6 +242,7 @@ endif
 if !hasmapto('<Plug>BufKillBwBang')
   nmap <silent> <unique> <Leader>!Bw  <Plug>BufKillBwBang
 endif
+
 if !hasmapto('<Plug>BufKillBundo')
   nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
 endif
