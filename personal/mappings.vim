@@ -220,6 +220,8 @@ map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --
 map <leader>g <Plug>CompView
 
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
+" Use Control+Return in Quickfix window to preview
+map <C-Return> <CR><C-W>p
 " ----------------- BufKill Mappings ----------------
 " Used mainly so the plugin doesn't override <leader>b mapping
 if !hasmapto('<Plug>BufKillBun')
