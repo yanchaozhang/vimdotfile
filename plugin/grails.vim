@@ -61,14 +61,38 @@ function! s:GrailsDisplayViews()
     endif
 endfunction
 
-" Define Command{{{1
+" Function: s:GrailsDisplayDomainClass
+" Shows the domain class that pertains to the active buffer.
+" Example:  FooController.groovy -> domain/Foo.groovy
+function! s:GrailsDisplayDomainClass()
+    " Get the name of the current file we're on
+    " TODO: Maybe we'll prompt someday
+    let fileName = expand("%:t:r") 
+    let fileName = substitute(fileName, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "g")
+    let fileName = fileName . ".groovy"
+    
+    let filePath = findfile(fileName)
+    if filePath  != ""
+        exe "e " . filePath
+    else
+        echo "Sorry, " . fileName . " is not found, you idiot."
+    endif
+endfunction
+
+" Define Commands{{{1
 noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
-noremap <SID>GrailsDisplayViews :call <SID>GrailsDisplayViews()<CR> 
+noremap <SID>GrailsDisplayViews :call <SID>GrailsDisplayViews()<CR>
+
+noremap <unique> <script> <Plug>GrailsDisplayDomainClass <SID>GrailsDisplayDomainClass
+noremap <SID>GrailsDisplayDomainClass :call <SID>GrailsDisplayDomainClass()<CR>
 " }}}1
 
 " Mappings {{{1
-if !hasmapto('<Plug>MyscriptMyfunctionA') 
+if !hasmapto('<Plug>GrailsDisplayViews') 
     map <unique> <Leader>gv <Plug>GrailsDisplayViews
+endif 
+if !hasmapto('<Plug>GrailsDisplayDomainClass') 
+    map <unique> <Leader>gd <Plug>GrailsDisplayDomainClass
 endif 
 " }}}1
 " vim: set fdm=marker:
