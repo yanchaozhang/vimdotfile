@@ -6,12 +6,10 @@ let mapleader = ","
 " Map the overwritten "," character to call itself, if I ever
 " need it, I just press ,,
 nnoremap <leader>, ,
-map <leader>q <ESC>:qa<CR>
-" Close window
-map <leader>w <C-W>c
 
 ",V (CAPITAL V) reloads vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+
 " ,v opens personal Vim stuff directory
 map <silent> <leader>v :e $VIMHOME/personal<CR>
 
@@ -19,12 +17,12 @@ map <silent> <leader>v :e $VIMHOME/personal<CR>
 map Y y$
 
 " Toggle highlighting of found search terms on/off
-" Use Control-Space because a bunch of other things use Space
-map <C-Space> :set hlsearch!<Enter>
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
+
 " -------------- Folding ----------------
 map <F3> :set foldenable! <BAR> echo "Folding is now: " . &foldenable<CR>
+
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e :Explore!<CR>
