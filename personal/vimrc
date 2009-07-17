@@ -177,7 +177,8 @@ let Grep_Default_Filelist = '*.groovy *.gsp'
 " if this is the last buffer that's killed
 let g:BufKillCommandWhenLastBufferKilled = ''
 " }}}2
-" BufExplorer options {{{2
+
+" BufExplorer: {{{2
 " Split new window below current.
 let g:bufExplorerSplitBelow=1        
 " Show relative paths.
@@ -187,7 +188,7 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=0        
 " }}}2
 
-" Fuzzy options {{{2
+" Fuzzyfinder: {{{2
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
@@ -199,39 +200,30 @@ let g:FuzzyFinderOptions.Base.ignore_case = 1
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|test/reports/.*\.html$|\.swp$|((^|[/\\])\.[/\\]$)'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
 " }}}2
-" NERD Tree {{{2
+" NERD Tree:{{{2
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore=['\.class', '\~$']
+" }}}2
 
-" NERD Commenter
+" NERD Commenter: {{{2
 " Put a space after comments, like // foo instead of //foo
 let NERDSpaceDelims=1
 map <leader>cc <Plug>NERDCommenterToggle
 " }}}2
+
 " MiniBufExplorer (defunct) {{{2
 " let g:miniBufExplMapWindowNavVim = 1
 " let g:miniBufExplMapWindowNavArrows = 1
 " let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
+" let g:miniBufExplModSelTarget = 1 
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 " }}}2
+
 " Miscellaneous {{{2
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
-" Html exclude doesn't work anymore
-" let g:FuzzyFinder_ExcludePattern = '\.html'
-" buftabs plugin shows the buffers in the statusline.  Define what I want
-" statusline to be
-" buftabs_in_statusline will display tabs in statusline, rather than the flaky
-" command line.
-" Status Line.  Set a variable which is used by buftab plugin when
-" we're setting any statusline except the bottom one.
-" The %= means right-align.  The %Y means filetype
-let g:statusline='%F%m%r%h%w\ (%l\,\ %v)%=%Y\ '
-let g:buftabs_in_statusline=1
-let g:buftabs_only_basename=1
+" Quick Buf hotkey.  Quick Buf is good for splitting windows
 let g:qb_hotkey = "<F9>"
-let g:bufmru_splashbufs = 0
 " }}}2
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
