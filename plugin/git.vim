@@ -18,15 +18,15 @@ if !exists('g:git_highlight_blame')
     let g:git_highlight_blame = 0
 endif
 
-nnoremap <Leader>gd :GitDiff<Enter>
-nnoremap <Leader>gD :GitDiff --cached<Enter>
-nnoremap <Leader>gs :GitStatus<Enter>
-nnoremap <Leader>gl :GitLog<Enter>
-nnoremap <Leader>ga :GitAdd<Enter>
-nnoremap <Leader>gA :GitAdd <cfile><Enter>
-nnoremap <Leader>gc :GitCommit<Enter>
-nnoremap <Leader>gp :GitPullRebase<Enter>
-nnoremap <Leader>gg :GitGrep -e '<C-R>=getreg('/')<Enter>'<Enter>
+nnoremap <Leader>yd :GitDiff<Enter>
+nnoremap <Leader>yD :GitDiff --cached<Enter>
+nnoremap <Leader>ys :GitStatus<Enter>
+nnoremap <Leader>yl :GitLog<Enter>
+nnoremap <Leader>ya :GitAdd<Enter>
+nnoremap <Leader>yA :GitAdd <cfile><Enter>
+nnoremap <Leader>yc :GitCommit<Enter>
+nnoremap <Leader>yp :GitPullRebase<Enter>
+nnoremap <Leader>yg :GitGrep -e '<C-R>=getreg('/')<Enter>'<Enter>
 
 
 
