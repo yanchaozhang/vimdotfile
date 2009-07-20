@@ -225,6 +225,8 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 " Quick Buf hotkey.  Quick Buf is good for splitting windows
 let g:qb_hotkey = "<F9>"
 " }}}2
+"
+let VCSCommandMapPrefix="<leader>v"
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
 so ~/.vim/personal/mappings.vim

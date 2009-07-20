@@ -11,7 +11,9 @@ nnoremap <leader>, ,
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " ,v opens personal Vim stuff directory
-map <silent> <leader>v :e $VIMHOME/personal<CR>
+map <silent> <leader>ve :e $VIMHOME/personal<CR>
+" ,p opens personal directory
+map <silent> <leader>p :e $HOME/Documents/personal<CR>
 
 " Map Y to act like C and D
 map Y y$
