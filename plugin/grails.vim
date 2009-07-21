@@ -116,9 +116,8 @@ function! s:GrailsDisplayTestReports()
     " TODO: Maybe we'll prompt someday
     let currentItem =  expand("%:t:r")
     let currentItem = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
-    let currentItem = globpath(getcwd() . "test/reports/plain/**", "^TEST-*" . currentItem)
-    echo "Opening item: " . currentItem
-    call s:GrailsOpenItem(currentItem, "grails/test/reports/plain")
+    let foundItem = globpath(getcwd() . "/test/reports/plain/**", "TEST-*" . currentItem)
+    call s:GrailsOpenItem(foundItem, "grails/test/reports/plain")
 endfunction
 " }}}2
 
@@ -143,13 +142,14 @@ function! s:GrailsGetCurrentItem()
         let currentItem = substitute(fileNameBase, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "")
         " If we're in a TEST-FooTests.txt file, then return Foo
         let currentItem = substitute(currentItem, "^.*TEST-", "", "")
+        let currentItem = substitute(currentItem, ".*\\.", "", "")
     endif
     
     return currentItem
 endfunction
 
 function! s:GrailsOpenItem(thisItem, ...)
-    if a:1
+    if a:0 > 0
         let startPath = a:1
     else
         let startPath = getcwd()
