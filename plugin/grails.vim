@@ -70,7 +70,7 @@ function! s:GrailsDisplayDomainClass()
     " Get the name of the current file we're on
     " TODO: Maybe we'll prompt someday
     let currentItem = s:GrailsGetCurrentItem() . ".groovy"
-    s:GrailsOpenItem(currentItem)
+    call s:GrailsOpenItem(currentItem)
 endfunction
 
 " Function: s:GrailsDisplayController
@@ -107,6 +107,19 @@ function! s:GrailsDisplayTests()
     call s:GrailsOpenItem(currentItem)
 endfunction
 
+" Function: s:GrailsDisplayTestReports
+" Shows the plain-text tests that pertain to a particular file
+" Example:  Foo.groovy -> test/reports/plain/TEST-FooTests.txt
+" TODO: What if there's unit, and integration tests?
+function! s:GrailsDisplayTestReports()
+    " Get the name of the current file we're on
+    " TODO: Maybe we'll prompt someday
+    let currentItem =  expand("%:t:r")
+    let currentItem = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
+    let currentItem = globpath(getcwd() . "test/reports/plain/**", "^TEST-*" . currentItem)
+    echo "Opening item: " . currentItem
+    call s:GrailsOpenItem(currentItem, "grails/test/reports/plain")
+endfunction
 " }}}2
 
 " }}}2
@@ -127,14 +140,21 @@ function! s:GrailsGetCurrentItem()
         " Capitalize
         let currentItem = toupper(currentItem[0]) . strpart(currentItem, 1)
     else
-        let currentItem = substitute(fileNameBase, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "g")
+        let currentItem = substitute(fileNameBase, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "")
+        " If we're in a TEST-FooTests.txt file, then return Foo
+        let currentItem = substitute(currentItem, "^.*TEST-", "", "")
     endif
     
     return currentItem
 endfunction
 
-function! s:GrailsOpenItem(thisItem)
-    let filePath = findfile(a:thisItem, getcwd() . "/**")
+function! s:GrailsOpenItem(thisItem, ...)
+    if a:1
+        let startPath = a:1
+    else
+        let startPath = getcwd()
+    endif
+    let filePath = findfile(a:thisItem, startPath . "/**")
     if filePath  != ""
         exe "e " . filePath
     else
@@ -159,6 +179,8 @@ noremap <SID>GrailsDisplayService :call <SID>GrailsDisplayService()<CR>
 noremap <unique> <script> <Plug>GrailsDisplayTests <SID>GrailsDisplayTests
 noremap <SID>GrailsDisplayTests :call <SID>GrailsDisplayTests()<CR>
 
+noremap <unique> <script> <Plug>GrailsDisplayTestReports <SID>GrailsDisplayTestReports
+noremap <SID>GrailsDisplayTestReports :call <SID>GrailsDisplayTestReports()<CR>
 " }}}1
 
 " Mappings {{{1
@@ -180,6 +202,10 @@ endif
 
 if !hasmapto('<Plug>GrailsDisplayTest') 
     map <unique> <Leader>gt <Plug>GrailsDisplayTests
+endif 
+
+if !hasmapto('<Plug>GrailsDisplayTestReports') 
+    map <unique> <Leader>gr <Plug>GrailsDisplayTestReports
 endif 
 " }}}1
 " vim: set fdm=marker:
