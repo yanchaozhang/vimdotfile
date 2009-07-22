@@ -4,6 +4,7 @@
 " Install this file as plugin/grails.vim.
 " Run :helptags ~/.vim/doc
 " ============================================================================
+" Initialization {{{1
 " Exit quickly when:
 " - this plugin was already loaded (or disabled)
 " - when 'compatible' is set
@@ -11,16 +12,12 @@ if &cp || (exists("g:loaded_grails") && g:loaded_grails)
   finish
 endif
 let g:loaded_grails = 1
-" }}}1
-" Detection {{{1
 function! s:Detect()
     if finddir("grails-app", getcwd()) != ""
         call s:GrailsBufInit()
     endif
 endfunction
 
-" }}}1
-" Initialization {{{1
 
 " Detect whether this file is a Grails file.
 " We only look @ the current directory, and try to find a grails-app
@@ -42,8 +39,7 @@ function! s:GrailsBufInit()
     exec 'set path+=' . wildcardpath
 endfunction
 
-" Functions {{{1
-" Exported Functions {{{2
+" Exported Functions {{{1
 " Opens a netrw window in the view directory
 " pertain to the buffer where the cursor was when
 " this function was called
@@ -119,11 +115,8 @@ function! s:GrailsDisplayTestReports()
     let foundItem = globpath(getcwd() . "/test/reports/plain/**", "TEST-*" . currentItem)
     call s:GrailsOpenItem(foundItem, "grails/test/reports/plain")
 endfunction
-" }}}2
-
-" }}}2
-
-" Utility functions{{{2
+" }}}1
+" Utility functions{{{1
 " Function: s:GrailsGetCurrentItem()
 " Utility method to detect what grails 'item' we're in now.
 " (Domain Class, Controller, Service, View).
@@ -161,8 +154,7 @@ function! s:GrailsOpenItem(thisItem, ...)
         echo "Sorry, " . a:thisItem . " is not found, you idiot."
     endif
 endfunction
-"}}}2
-
+"}}}1
 " Define Commands{{{1
 noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
 noremap <SID>GrailsDisplayViews :call <SID>GrailsDisplayViews()<CR>
@@ -182,7 +174,6 @@ noremap <SID>GrailsDisplayTests :call <SID>GrailsDisplayTests()<CR>
 noremap <unique> <script> <Plug>GrailsDisplayTestReports <SID>GrailsDisplayTestReports
 noremap <SID>GrailsDisplayTestReports :call <SID>GrailsDisplayTestReports()<CR>
 " }}}1
-
 " Mappings {{{1
 if !hasmapto('<Plug>GrailsDisplayViews') 
     map <unique> <Leader>gv <Plug>GrailsDisplayViews
