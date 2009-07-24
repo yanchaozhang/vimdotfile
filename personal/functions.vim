@@ -40,7 +40,8 @@ function! s:JumpFind()
         endif
     endif
 endfunction
-nnoremap <Leader>ff :call <SID>JumpFind()<CR>
+" Obsoleted by better Compview plugin
+" nnoremap <Leader>ff :call <SID>JumpFind()<CR>
 
 " Handles the stupid :bd versus :BD debate
 " :BD uses the bufkill thingy, where it will keep the window

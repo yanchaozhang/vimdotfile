@@ -82,7 +82,7 @@ map <S-F7> :FuzzyFinderAddBookmark<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FuzzyFinderMruFile<CR>
 " Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>fr :Rgrep 
+nnoremap <Leader>ff :Rgrep<Space>
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
