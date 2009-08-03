@@ -69,15 +69,14 @@ map <leader>fc :FuzzyFinderRenewCache<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
 
-" Use F5 for running stuff.
-map <F5> :! %:p<CR>
 
 map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
 " Use F7 for bookmark files
-map <F7> :FuzzyFinderBookmark<CR>
-map <S-F7> :FuzzyFinderAddBookmark<CR>
+" map <F7> :FuzzyFinderBookmark<CR>
+map <F7> :e ~/.bookmarks<CR>
+map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to bookmarks file, idiot."<CR>
 
 " Fuzzy's Most-recently used
 map <leader>r :FuzzyFinderMruFile<CR>
