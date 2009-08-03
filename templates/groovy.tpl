@@ -2,21 +2,19 @@
 
 /* 
  *  Script: <+filename+>
- *
- * Purpose: <+purpose+>
- *
- *   Usage: groovy <+filename+> <+usage+> 
- *
- *  Author: <+author+>
+ *   Usage: <+filename+>
+ * Purpose:
+ *  Author: Crazy Nate
+ * History: 
  */
 
 // Parse command line arguments
 def cli = new CliBuilder(usage: 'groovy <+filename+> [-h|--help] [ -t "times" ] [[ -f "file1" ]..]',
                          parser: new org.apache.commons.cli.GnuParser ())
 
-cli.h(longOpt:'help', 'show usage information and quit')
+cli.h(argName:'help', longOpt:'help', 'show usage information and quit')
 cli.t(argName:'times', args:1, required:false, 'Number of X to create')
-cli.f(argName:'file', args:1, required:false, 'File name(s) of e-mail templates to use for Incidents')
+cli.f(argName:'file', longOpt:'file', args:1, required:false, 'File name(s)')
 
 // To actually parse the command line options, use the following command.
 def opt = cli.parse(args)
@@ -32,8 +30,10 @@ if (opt.h) {
 // Default to 1 optTimes
 def optTimes = (opt.t) ? opt.t : 1
 // Default to a list
+// Forces list when the "s" is used here:
+// -------------------------v
 def optFiles = opt.f ? opt.fs : [ 'defaultFileName' ]
 
-optFiles.each {
-    println it
-}
+// Get a list of all args that don't have a switch
+def leftOver = opt.arguments()
+println "Remaining args are ${leftOver}"
