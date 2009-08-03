@@ -189,12 +189,12 @@ endif
 " if !hasmapto("<SID>ShowHelp()", "n")
 " 	nmap <buffer><unique><silent> <leader>gsh :call <SID>ShowHelp()<CR>
 " endif
-" if !hasmapto("<SID>RunPrompt()", "n")
-" 	nmap <buffer><unique><silent> <leader>gp :call <SID>RunPrompt()<CR>
-" endif
-" if !hasmapto("<SID>RunNoPrompt()")
-" 	nmap <buffer><unique><silent> <leader>gr :call <SID>RunNoPrompt()<CR>
-" endif
+if !hasmapto("<SID>RunPrompt()", "n")
+        nmap <buffer><unique><silent> <S-F5> :call <SID>RunPrompt()<CR>
+endif
+if !hasmapto("<SID>RunNoPrompt()")
+        nmap <buffer><unique><silent> <F5> :call <SID>RunNoPrompt()<CR>
+endif
 " if !hasmapto("<SID>CompilePrompt()")
 "         " Removed compile with prompt thingy.
 "         " nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
@@ -273,6 +273,10 @@ setlocal fillchars=fold:\  foldtext=getline(v:foldstart)
 "    See :h folding for more options
 " Set tabstop = 4 (convention for groovy files)
 setlocal tabstop=4
+
+" Custom Groovy Mapping
+" which surrounds a word with ${}
+map <buffer> <leader>a ciw${}<ESC>P
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
