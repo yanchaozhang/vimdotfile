@@ -6,8 +6,8 @@ iunmenu File.Save
 imenu <silent> File.Save <Esc> :if expand("%") == "" <Bar> browse confirm w<Bar>else<Bar>confirm w<Bar>endif<CR>
 
 " Unmap Apple+T for FuzzyFinder
-" macmenu &File.New\ Tab key=<nop>
-" nnoremap <D-t> :FuzzyFinderFile\*\*/<CR>
+macmenu &File.New\ Tab key=<nop>
+nnoremap <D-t> :FuzzyFinderFile\*\*/<CR>
 
 " Bookmarks
 macmenu &Tools.Make key=<nop>
