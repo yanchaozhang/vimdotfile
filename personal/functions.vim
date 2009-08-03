@@ -84,6 +84,7 @@ function! s:CopyFileName()
 
 endfunction
 nnoremap <leader>cf :call <SID>CopyFileName()<Enter>
+nnoremap <leader>nf :call <SID>CopyFileName()<Enter>
 
 function! s:CopyFilePath()
     " Use \cp to copy the filename of the current buffer into the clipboard
@@ -101,6 +102,7 @@ function! s:CopyFilePath()
 
 endfunction
 nnoremap <leader>cp :call <SID>CopyFilePath()<Enter>
+nnoremap <leader>np :call <SID>CopyFilePath()<Enter>
 
 
 function! s:ChangeFuzzyDir()
