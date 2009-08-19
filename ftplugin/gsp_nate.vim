@@ -8,3 +8,6 @@ if exists("loaded_matchit")
 endif
 
 
+" Custom gsp Mapping
+" which surrounds a word with ${}
+map <buffer> <leader>a ciw${}<ESC>P
