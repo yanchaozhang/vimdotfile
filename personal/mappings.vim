@@ -22,16 +22,19 @@ map Y y$
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
-" -------------- Folding ----------------
-map <F3> :set foldenable! <BAR> echo "Folding is now: " . &foldenable<CR>
+" VCS Command Shortcuts
+" Prepare to commit this file
+map <leader>nvc <ESC>:w<CR><Bar>:VCSCommit 
+map <leader>nvd <ESC>:w<CR><Bar>:VCSDiff<CR>
+map <leader>nvl <ESC>:w<CR><Bar>:VCSLog<CR>
 
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e :Explore!<CR>
 " Map ,s to be save.  Should help.
-map <leader>s :w<CR>
+map <leader>f :w<CR>
 " Try mapping ',s' to "save" even in insert mode.
-imap <leader>s <ESC>:w<CR>
+imap <leader>f <ESC>:w<CR>
 
 " Make script executable
 map <leader>755 :! chmod 755 %<CR>
@@ -61,7 +64,7 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
-map <leader>fc :FuzzyFinderRenewCache<CR>
+" map <leader>fc :FuzzyFinderRenewCache<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -81,7 +84,7 @@ map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to 
 " Fuzzy's Most-recently used
 map <leader>r :FuzzyFinderMruFile<CR>
 " Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>ff :Rgrep<Space>
+nnoremap <Leader>sf :Rgrep<Space>
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
