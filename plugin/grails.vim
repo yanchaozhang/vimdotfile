@@ -111,9 +111,16 @@ function! s:GrailsDisplayTestReports()
     " Get the name of the current file we're on
     " TODO: Maybe we'll prompt someday
     let currentItem =  expand("%:t:r")
-    let currentItem = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
-    let foundItem = globpath(getcwd() . "/test/reports/plain/**", "TEST-*" . currentItem)
-    call s:GrailsOpenItem(foundItem, "grails/test/reports/plain")
+    let testGlob = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
+    let testGlob =  "TEST-*" . testGlob
+    " Use glob path to try to find the file.
+    let foundItem = globpath(getcwd() . "/test/reports/plain/**", testGlob)
+    if foundItem == ""
+        echo "Sorry, test report file: " . testGlob . " was not found :-("
+    else
+        call s:GrailsOpenItem(foundItem, "grails/test/reports/plain")
+    endif
+
 endfunction
 " }}}1
 " Utility functions{{{1
@@ -150,8 +157,10 @@ function! s:GrailsOpenItem(thisItem, ...)
     let filePath = findfile(a:thisItem, startPath . "/**")
     if filePath  != ""
         exe "e " . filePath
+        return 1
     else
         echo "Sorry, " . a:thisItem . " is not found, you idiot."
+        return 0
     endif
 endfunction
 "}}}1
