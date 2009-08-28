@@ -30,7 +30,16 @@ function! s:SaneColors()
             hi clear Pmenu
             hi link  Pmenu Normal
         endif
+    elseif !has("gui_running")
+        " We're in a terminal.
+        " Knock off that lame default hot pink Pmenu
+        " that's used to highlight fuzzy finder matches
+        hi clear Pmenu
+        hi link  Pmenu Normal
+        hi clear PmenuSel
+        hi link  PmenuSel Visual
     endif
+
     " hi CursorLine   guibg=#222222
     " hi Visual       gui=none guibg=#222222
     " hi PmenuSel     guibg=#3465a4 guifg=#ffffff
