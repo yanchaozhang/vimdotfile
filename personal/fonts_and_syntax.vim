@@ -29,6 +29,9 @@ function! s:SaneColors()
         elseif g:colors_name == "vividchalk"
             hi clear Pmenu
             hi link  Pmenu Normal
+        elseif g:colors_name == "patrickgenpaul"
+            hi clear Pmenu
+            hi link  Pmenu Normal
         endif
     elseif !has("gui_running")
         " We're in a terminal.
