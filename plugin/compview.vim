@@ -235,8 +235,13 @@ endfunction
 
 " Function: Start the search. {{{1
 "--------------------------------------------------------------------------
-function! s:CSearch()
-    let l:current_word = expand("<cword>")
+function! s:CSearch(searchText)
+    if a:searchText != ""
+        let l:current_word = a:searchText
+    else
+        let l:current_word = expand("<cword>")
+    endif
+
     let l:original_buffnr = bufnr('%')
     let l:original_line = line(".")
 
@@ -248,10 +253,14 @@ function! s:CSearch()
         let l:current_word = ""
     endif
 
-    " Ask to verify the word
-    echohl Search
-    let l:search_word = input(l:current_word.",/")
-    echohl None
+    " Ask to verify the word, unless provided by
+    " searchText
+    let l:search_word = ""
+    if (a:searchText == "")
+        echohl Search
+        let l:search_word = input(l:current_word.",/")
+        echohl None
+    endif
 
     " If no new word was given use the one we picked up.
     if strlen(l:search_word) == 0
@@ -320,7 +329,7 @@ endfunction
 "}}}
 
 " Command
-command! CompView call s:CSearch()
+command! -nargs=? CompView call s:CSearch(<args>)
 
 " Default key map
 if !hasmapto('<Plug>CompView')
