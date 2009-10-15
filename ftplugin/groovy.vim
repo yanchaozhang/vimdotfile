@@ -199,9 +199,9 @@ endif
 "         " Removed compile with prompt thingy.
 "         " nmap <buffer><unique><silent> <leader>gc :call <SID>CompilePrompt()<CR>
 " endif
-" if !hasmapto("<SID>CompileNoPrompt()")
-" 	nmap <buffer><unique><silent> <leader>gc :call <SID>CompileNoPrompt()<CR>
-" endif
+if !hasmapto("<SID>CompileNoPrompt()")
+        nmap <buffer><unique><silent> <F9> :call <SID>CompileNoPrompt()<CR>
+endif
 " " Test current groovy scripts.
 " if !hasmapto("<SID>RunTests()")
 "         nmap <buffer><unique><silent><C-F9> :call <SID>RunTests()<CR>
@@ -277,6 +277,8 @@ setlocal tabstop=4
 " Custom Groovy Mapping
 " which surrounds a word with ${}
 map <buffer> <leader>a ciw${}<ESC>P
+" Map F3 to use CompView plugin to find function definitions
+map <buffer> <F3> :CompView "^def"<CR>
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo
