@@ -22,12 +22,6 @@ map Y y$
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
-" VCS Command Shortcuts
-" Prepare to commit this file
-map <leader>nvc <ESC>:w<CR><Bar>:VCSCommit 
-map <leader>nvd <ESC>:w<CR><Bar>:VCSDiff<CR>
-map <leader>nvl <ESC>:w<CR><Bar>:VCSLog<CR>
-
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e :Explore!<CR>
