@@ -185,6 +185,7 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=0        
 " }}}2
 
+
 " Fuzzyfinder: {{{2
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
@@ -224,7 +225,7 @@ let g:qb_hotkey = "<F9>"
 " CompView window position == bottom
 let g:cvWindowPosition = 1
 
-let VCSCommandMapPrefix="<leader>v"
+let VCSCommandMapPrefix='<Leader>nv'
 " }}}2
 " Other Config Files {{{1
 "" ------------- Source other configfiles -------------
