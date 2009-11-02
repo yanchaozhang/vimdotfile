@@ -277,8 +277,9 @@ setlocal tabstop=4
 " Custom Groovy Mapping
 " which surrounds a word with ${}
 map <buffer> <leader>a ciw${}<ESC>P
-" Map F3 to use CompView plugin to find function definitions
-map <buffer> <F3> :CompView "^def"<CR>
+
+" Map F3 to use CompView plugin to find all function definitions
+map <buffer> <F3> :CompView "def [A-z]\\+\s*[({]"<CR>
 
 " Restore the saved compatibility options.
 let &cpo = s:save_cpo

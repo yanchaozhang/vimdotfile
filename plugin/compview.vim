@@ -60,8 +60,6 @@
 
 " History: {{{1
 "------------------------------------------------------------------------------
-" GetLatestVimScripts: 1803 1 :AutoInstall: compview.vim
-"
 " 1.05  Fixed bug where use in different tabs/buffers would not work.
 "
 " 1.04  Added configurable key map
@@ -235,36 +233,34 @@ endfunction
 
 " Function: Start the search. {{{1
 "--------------------------------------------------------------------------
-function! s:CSearch(searchText)
-    if a:searchText != ""
-        let l:current_word = a:searchText
-    else
-        let l:current_word = expand("<cword>")
-    endif
-
+function! s:CSearch(...)
     let l:original_buffnr = bufnr('%')
     let l:original_line = line(".")
+   
 
     " Get the word {{{
     " ----------------
 
-    " If the word is too big then blank it out
-    if strlen(l:current_word) > 30
-        let l:current_word = ""
-    endif
+    let l:current_word = ""
+    " Ask to verify the word, unless already specified
+    if a:0 == 0
+        let l:current_word = expand("<cword>")
+        " If the word is too big then blank it out
+        if strlen(l:current_word) > 30
+            let l:current_word = ""
+        endif
 
-    " Ask to verify the word, unless provided by
-    " searchText
-    let l:search_word = ""
-    if (a:searchText == "")
         echohl Search
         let l:search_word = input(l:current_word.",/")
         echohl None
-    endif
 
-    " If no new word was given use the one we picked up.
-    if strlen(l:search_word) == 0
-        let l:search_word = l:current_word
+        " If no new word was given use the one we picked up.
+        if strlen(l:search_word) == 0
+            let l:search_word = l:current_word
+        endif
+    else
+        " Just use specified search
+        let l:search_word = a:1
     endif
 
     " If only \c was passed then append it to the beginning
