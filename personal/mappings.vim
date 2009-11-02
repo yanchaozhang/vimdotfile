@@ -217,7 +217,7 @@ map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
 map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
 
 " Cool "find in file" plugin
-map <leader>g <Plug>CompView
+map <leader>cv <Plug>CompView
 
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " Use Control+Return in Quickfix window to preview
