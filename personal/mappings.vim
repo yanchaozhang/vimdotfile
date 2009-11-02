@@ -178,9 +178,11 @@ map <C-L> <C-W>l
 " Map <leader>m to "maximize" current window to another tab
 " See also MaximizeToggle in functions.vim
 map <leader>m <C-W>o
+map <leader>w <C-W>c
 " 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
 " map <C-M> :tabe %<CR>
 
+" }}}
 " Make / error list / search list mappings
 " Go next/prev error
 map <C-Down> :cn<Enter>
