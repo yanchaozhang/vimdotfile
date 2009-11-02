@@ -158,7 +158,7 @@ map <A-P> :bp<CR>
 " Insert Comment
 map <leader>/ I// <ESC>
 
-" Window Mappings
+" Window Mappings {{{2
 " Window up/down are same as up/down in Vim
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -247,3 +247,4 @@ if !hasmapto('<Plug>BufKillBundo')
   nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
 endif
 
+" vim: set fdm=marker"
