@@ -46,7 +46,7 @@ map <F2> :BufExplorer<CR>
 imap <F2> <ESC>:BufExplorer<CR>
 
 " NERD Tree
-map <leader>w :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
