@@ -239,4 +239,4 @@ if filereadable($HOME . "/.vim/personal/vimrc.local")
     so ~/.vim/personal/vimrc.local
 endif
 "}}}
-" vim: set fdm=marker"
+" vim: fdm=marker

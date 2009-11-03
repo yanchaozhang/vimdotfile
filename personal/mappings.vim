@@ -178,6 +178,8 @@ map <C-L> <C-W>l
 " Map <leader>m to "maximize" current window to another tab
 " See also MaximizeToggle in functions.vim
 map <leader>m <C-W>o
+" Also use emacs-style '1' to make this window the only 1
+map <leader>1 <C-W>o
 map <leader>w <C-W>c
 " 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
 " map <C-M> :tabe %<CR>
@@ -247,4 +249,4 @@ if !hasmapto('<Plug>BufKillBundo')
   nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
 endif
 
-" vim: set fdm=marker"
+" vim: fdm=marker
