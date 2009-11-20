@@ -58,7 +58,7 @@ map <leader>t :FuzzyFinderFile\*\*/<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
-" map <leader>fc :FuzzyFinderRenewCache<CR>
+map <leader>R :FuzzyFinderRenewCache<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
@@ -180,6 +180,10 @@ map <C-L> <C-W>l
 map <leader>m <C-W>o
 " Also use emacs-style '1' to make this window the only 1
 map <leader>1 <C-W>o
+map <leader>2 <C-W>s
+map <leader>3 <C-W>v
+" Close window shortcuts
+map <leader>0 <C-W>c
 map <leader>w <C-W>c
 " 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
 " map <C-M> :tabe %<CR>
@@ -200,6 +204,9 @@ map [[ [m
 map ][ ]M
 map [] [M
 
+" ---------- Fold Shortcuts ----------------
+map z1 :set foldlevel=1<CR>
+map z2 :set foldlevel=2<CR>
 " -------------- Experimental --------------
 " Get rid of useless '' and 'a, 'e, wich take you to the start of the line
 " that you were at, instead of the exact place where you were just at
@@ -214,9 +221,12 @@ map [] [M
 " end of line
 :cnoremap <C-E> <End>
 " XML Tidy commands
-" ,xc = check (no overwrite)
-map <leader>xc :!tidy -errors -xml -indent --indent-spaces 4 --wrap 90 %<CR>
-map <leader>xc! :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
+" ,xc = check XML (no overwrite)
+map <leader>xc :cex system('tidy -errors -xml -indent --indent-spaces 4 --wrap 90 ' . expand("%"))<CR>
+" ,xf and ,xx = format XML (overwrite)
+map <leader>xf :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
+" ,xx 
+map <leader>xx :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
 
 " Cool "find in file" plugin
 map <leader>cv <Plug>CompView
