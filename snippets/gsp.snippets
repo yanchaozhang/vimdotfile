@@ -8,9 +8,17 @@ snippet gdef
 	<g:def var="${1:varname}" value="${${2:expression}}" />
 
 snippet inp
-	<g:textField name="${1:name}" type="hidden" value="${2:value}" />
+	<g:textField name="${1:name}" type="${1:hidden}" value="${2:value}" />
 
 snippet each
 	<g:each var="${1:var}" in="${2}" status="i">
 	    ${3}
 	</g:each>
+snippet gscr
+	<script type="text/javascript" src="${resource(dir:'js${1:}', file:'${2:scriptname}')}"></script>
+
+snippet css
+	<link rel="stylesheet" type="text/css" href="${resource(dir:'css${1:}',file:'${2:file}')}" />
+
+snippet gdate
+	<g:formatDate format="${1:MM/dd/yyyy}" date="${${2:dateField}}"/>
