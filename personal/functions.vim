@@ -104,14 +104,6 @@ endfunction
 nnoremap <leader>cp :call <SID>CopyFilePath()<Enter>
 nnoremap <leader>np :call <SID>CopyFilePath()<Enter>
 
-
-function! s:ChangeFuzzyDir()
-    let g:fuzzy_root = getcwd()
-    FuzzyFinderRemoveCache
-endfun
-nnoremap <leader>ncd :call <SID>ChangeFuzzyDir()<CR>
-nnoremap <C-F3>ncd :call <SID>ChangeFuzzyDir()<CR>
-
 " Turn virtual edit on/off
 function! s:ToggleVirtualEdit()
     if &virtualedit == 'all'

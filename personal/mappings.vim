@@ -10,7 +10,7 @@ nnoremap <leader>, ,
 ",V (CAPITAL V) reloads vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" ,v opens personal Vim stuff directory
+" ,ve opens personal Vim stuff directory
 map <silent> <leader>ve :e $VIMHOME/personal<CR>
 " ,p opens personal directory
 map <silent> <leader>p :e $HOME/Documents/personal<CR>
@@ -33,14 +33,6 @@ imap <leader>f <ESC>:w<CR>
 " Make script executable
 map <leader>755 :! chmod 755 %<CR>
 
-" Map Shift-F1 to be the fuzzy version of Explorer
-" As an example, if you want to launch file-mode Fuzzyfinder with the full
-" path of current buffer's directory, map like below:
-" The fancy modifiers tell the filename to reduce to homedir or current dir,
-" if possible
-map <S-F1> <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>:FuzzyFinderFile<CR>
-nnoremap <S-F1> <ESC> :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-
 " Use F2 to show buffers
 map <F2> :BufExplorer<CR>
 imap <F2> <ESC>:BufExplorer<CR>
@@ -51,18 +43,18 @@ map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
-map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>b :FufBuffer<CR>
 
 " Map <leader>t to be like "project explorer" in Textmate
-map <leader>t :FuzzyFinderFile\*\*/<CR>
+map <leader>t :FufFile**/<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
-map <leader>R :FuzzyFinderRenewCache<CR>
+map <leader>R :FufRenewCache<CR>
 
 " Tried this textmate version, but it sucks
 " because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
-" nnoremap <F3> :FuzzyFinderTextMate<CR>
+" nnoremap <F3> :FufTextMate<CR>
 " See functions.vim for mapping of C-F3, which changes
 " the directory of the Fuzzy Finder's ";" shortcut
 
@@ -71,23 +63,23 @@ map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
 " Use F7 for bookmark files
-" map <F7> :FuzzyFinderBookmark<CR>
+" map <F7> :FufBookmark<CR>
 map <F7> :e ~/.bookmarks<CR>
 map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to bookmarks file, idiot."<CR>
 
 " Fuzzy's Most-recently used
-map <leader>r :FuzzyFinderMruFile<CR>
+map <leader>r :FufMruFile<CR>
 " Recursive find-in-files (Think "f"ind in "f"iles)
 nnoremap <Leader>sf :Rgrep<Space>
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
-" nnoremap <leader>o :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-nnoremap <leader>o :FuzzyFinderFileWithCurrentBufferDir<CR>
+" nnoremap <leader>o :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <leader>o :FufFileWithCurrentBufferDir<CR>
 " Trying leader . out for now, also
 " Mnemonic: :e .
-nnoremap <leader>. :FuzzyFinderFileWithCurrentBufferDir<CR>
-" nnoremap <leader>. :FuzzyFinderFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
+" nnoremap <leader>. :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files

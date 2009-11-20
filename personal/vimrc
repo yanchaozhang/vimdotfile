@@ -197,6 +197,8 @@ let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFi
 let g:FuzzyFinderOptions.Base.ignore_case = 1
 let g:FuzzyFinderOptions.File.excluded_path = '\v\~$|\.svn/|\.o$|\.class$|\.exe$|\.bak$|test/reports/.*\.html$|\.swp$|((^|[/\\])\.[/\\]$)'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
+let g:fuf_modesDisable = ['mrucmd']
+
 " }}}2
 " NERD Tree:{{{2
 let NERDTreeHijackNetrw=0
