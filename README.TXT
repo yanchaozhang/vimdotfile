@@ -6,6 +6,14 @@ These are my vim dotfiles.  There are many like it, but these are mine.
 See vim-dotfiles.pdf and vim-dotfiles.tex for pretty-formatted
 printouts of my deranged shortcut keys and overall Vim setup.
 
+
+====== File Management ====== 
+
+ <leader>f     Save current file
+ <leader>d     Close current buffer
+
+
+
 ====== Shortcuts ====== 
 These are some shortcuts/handy mappings that I have.
 <leader>t  Open Fuzzy Finder in current directory, and search
@@ -81,7 +89,6 @@ These are some shortcuts/handy mappings that I have.
 <leader>xc! Check XML syntax, and if good, replace existing file 
             with output from tidy
 
-
 ====== Window Navigation / Management ======
  Ctrl K     Move cursor up one window
  Ctrl J     Move cursor down one window
@@ -91,23 +98,32 @@ These are some shortcuts/handy mappings that I have.
  <leader>1  Close all windows except current one
  <leader>2  Split window
  <leader>3  Split window vertically
- <leader>0  Close current window
 
-<leader>m         "Maximize" the current window (Really it only opens it in a new Tab)
-<Ctrl-W Ctrl+O>   Maximize the current window in the current tab.  Press <Ctrl+W Ctrl+O> again
+ <leader>0  Close current window
+ <leader>w  Close current window
+
+ <leader>m         "Maximize" the current window (Really it only opens it in a new Tab)
+ <Ctrl-W Ctrl+O>   Maximize the current window in the current tab.  Press <Ctrl+W Ctrl+O> again
                   to restore the windows to their previous state
+
+====== NERD Commenter ======
+ <leader>ci      Comment / Uncomment line(s)
+ <leader>cu      UN-comment line(s)
+ <leader>cl      Comment lines
 
 ====== Source Control ======
 (From VCSCommand.vim)
 
-  <leader>nvc     Commit current file
-  <leader>nvd     Diff current file w/repository version
-  <leader>nvv     VimDiff current file w/repository version
+ <leader>nvc     Commit current file
+ <leader>nvd     Diff current file w/repository version
+ <leader>nvv     VimDiff current file w/repository version
 
 ====== Find Files ======
-:Rgrep  Recursive grep that finds stuff in subfolders
-        <C-Down>Go to next search result (:cn)
-        <C-Up>Go to previous search result (:cp)
+ <leader>sf
+ or
+ :Rgrep          Recursive grep that finds stuff in subfolders
+ <C-Down>        Go to next search result (:cn)
+ <C-Up>          Go to previous search result (:cp)
 
 
 ====== Color Schemes ======
