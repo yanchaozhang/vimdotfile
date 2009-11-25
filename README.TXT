@@ -97,6 +97,13 @@ These are some shortcuts/handy mappings that I have.
 <Ctrl-W Ctrl+O>   Maximize the current window in the current tab.  Press <Ctrl+W Ctrl+O> again
                   to restore the windows to their previous state
 
+====== Source Control ======
+(From VCSCommand.vim)
+
+  <leader>nvc     Commit current file
+  <leader>nvd     Diff current file w/repository version
+  <leader>nvv     VimDiff current file w/repository version
+
 ====== Find Files ======
 :Rgrep  Recursive grep that finds stuff in subfolders
         <C-Down>Go to next search result (:cn)
