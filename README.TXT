@@ -1,9 +1,13 @@
 ====== README ====== 
 These are my vim dotfiles.  There are many like it, but these are mine.
 
+
+====== See Also ====== 
+See vim-dotfiles.pdf and vim-dotfiles.tex for pretty-formatted
+printouts of my deranged shortcut keys and overall Vim setup.
+
 ====== Shortcuts ====== 
 These are some shortcuts/handy mappings that I have.
-<leader>a  Toggle NERD Tree
 <leader>t  Open Fuzzy Finder in current directory, and search
            subdirectories (WARNING: Don't run on large dirs)
 
@@ -83,6 +87,11 @@ These are some shortcuts/handy mappings that I have.
  Ctrl J     Move cursor down one window
  Ctrl L     Move cursor right one window
  Ctrl H     Move cursor left one window
+
+ <leader>1  Close all windows except current one
+ <leader>2  Split window
+ <leader>3  Split window vertically
+ <leader>0  Close current window
 
 <leader>m         "Maximize" the current window (Really it only opens it in a new Tab)
 <Ctrl-W Ctrl+O>   Maximize the current window in the current tab.  Press <Ctrl+W Ctrl+O> again
