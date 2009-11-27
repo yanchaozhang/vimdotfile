@@ -27,7 +27,9 @@ map <leader>hs :set hlsearch!<Enter>
 map <leader>e :Explore!<CR>
 " Map ,s to be save.  Should help.
 map <leader>f :w<CR>
-" Try mapping ',s' to "save" even in insert mode.
+" Shortcut to quit (like Mac)
+map <leader>w :qa<CR>
+" Try mapping ',f' to "save" even in insert mode.
 imap <leader>f <ESC>:w<CR>
 
 " Make script executable
@@ -176,7 +178,8 @@ map <leader>2 <C-W>s
 map <leader>3 <C-W>v
 " Close window shortcuts
 map <leader>0 <C-W>c
-map <leader>w <C-W>c
+
+
 " 'Maximize' Window -- nope, overwrites the <Enter> and <CR> func.
 " map <C-M> :tabe %<CR>
 
