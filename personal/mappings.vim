@@ -216,9 +216,9 @@ map z2 :set foldlevel=2<CR>
 " ,xc = check XML (no overwrite)
 map <leader>xc :cex system('tidy -errors -xml -indent --indent-spaces 4 --wrap 90 ' . expand("%"))<CR>
 " ,xf and ,xx = format XML (overwrite)
-map <leader>xf :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
+map <leader>xf :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 % <CR>ggdd:w!<CR>
 " ,xx 
-map <leader>xx :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 %<CR>ggdd:w!<CR>
+map <leader>xx :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 % <CR>ggdd:w!<CR>
 
 " Cool "find in file" plugin
 map <leader>cv <Plug>CompView
