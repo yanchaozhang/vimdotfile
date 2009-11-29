@@ -91,7 +91,7 @@ endif
 " The %= means right-align.  The %Y means filetype
 " set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
 set laststatus=2
-set statusline=%t%m%w
+set statusline=%-.40f%m%w
 set statusline+=%r      "read only flag
 set statusline+=%h      "help file flag
 set statusline+=%=      "left/right separator
