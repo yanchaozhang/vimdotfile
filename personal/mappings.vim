@@ -12,8 +12,13 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 
 " ,ve opens personal Vim stuff directory
 map <silent> <leader>ve :e $VIMHOME/personal<CR>
-" ,p opens personal directory
-map <silent> <leader>p :e $HOME/Documents/personal<CR>
+
+" Newline pastes
+" Paste registers after inserting a newline
+" ,*p pastes * register w/a newline
+map <silent> <leader>*p o<C-R>*<ESC>
+" ,p pastes w/a newline
+map <silent> <leader>p o<C-O>p<ESC>
 
 " Map Y to act like C and D
 map Y y$

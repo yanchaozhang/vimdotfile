@@ -24,7 +24,6 @@ function! s:JumpOccurrence()
         endif
     endif
 endfunction
-nnoremap <Leader>* :call <SID>JumpOccurrence()<CR>
 
 " I added this one!  Whee!
 " Prompts for search text, then lists occurrences, and prompts for line number
