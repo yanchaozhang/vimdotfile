@@ -54,29 +54,32 @@
 \vbox{\head{Modes}
 These are my vim dotfiles.  There are many like it, but these are mine.
 http://github.com/NathanNeff/vim-dotfiles
+
+I use the comma as the <leader>.  If you use a different character as the
+mapleader, then replace the comma with the character you use as the mapleader.
 }
+\newcommand{\leader}{,}
 
 \vskip 10pt
 \vbox{\head{File Operations}
-\key{exit, saving changes}{:x}
-\key{quit (unless changes)}{:q}
-\key{quit (force, even if unsaved)}{:q!}
+\key{Save file, exit normal mode}{{\leader}f}
+\key{Quit file/buffer, prompt if changed}{{\leader}d}
 }
 
 \vskip 10pt
 
-\vbox{\head{Inserting text}
-\key{insert before cursor, before line}{i , I}
-\key{append after cursor, after line}{a , A}
-\key{open new line after, line before}{o , O}
-\key{replace one char, many chars}{r , R}
+\vbox{\head{Window Operations}
+\key{Close all windows except current}{{\leader}1}}
+\key{Close current window}{{\leader}0}}
+\key{Split Window}{{\leader}2}}
+\key{Split Window Vertically}{{\leader}3}}
 }
 
 \vskip 10pt
 
-\vbox{\head{Motion}
-\key{left, down, up, right}{h , j , k , l}
-\key{next word, blank delimited word}{w , W}
+\vbox{\head{Search}
+\key{Recursive file search (RGrep plugin)}{{\leader}sf}
+\key{(Mnemonic: Search Files)}
 \key{beginning of word, of blank delimited word}{b , B}
 \key{end of word, of blank delimited word}{e , E}
 \key{sentence back, forward}{( , )}
