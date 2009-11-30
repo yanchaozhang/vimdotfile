@@ -163,6 +163,23 @@ function! s:GrailsOpenItem(thisItem, ...)
         return 0
     endif
 endfunction
+
+function! grails#SetGrailsControllerMarks(silent)
+    " Todo: find better way to restore orig. pos.
+    exe "ma z"
+    exe "g/def\ delete\\>/ma\ d"
+    exe "g/def\ create\\>/ma\ c"
+    exe "g/def\ edit\\>/ma\ e"
+    exe "g/def\ index\\>/ma\ i"
+    exe "g/def\ list\\>/ma\ l"
+    exe "g/def\ save\\>/ma\ s"
+    exe "g/def\ show\\>/ma\ h"
+    exe "g/def\ update\\>/ma\ u"
+    exe "normal 'z"
+    if !a:silent
+        echo "Marks have been set for this controller, meow"
+    endif
+endfunction
 "}}}1
 " Define Commands{{{1
 noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
@@ -207,5 +224,7 @@ endif
 if !hasmapto('<Plug>GrailsDisplayTestReports') 
     map <unique> <Leader>gr <Plug>GrailsDisplayTestReports
 endif 
+
+nmap <silent> <S-F10> :call <SID>grails#SetGrailsControllerMarks()<CR>
 " }}}1
 " vim: set fdm=marker:
