@@ -13,12 +13,14 @@ map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimr
 " ,ve opens personal Vim stuff directory
 map <silent> <leader>ve :e $VIMHOME/personal<CR>
 
-" Newline pastes
-" Paste registers after inserting a newline
-" ,*p pastes * register w/a newline
-map <silent> <leader>*p o<C-R>*<ESC>
-" ,p pastes w/a newline
-map <silent> <leader>p o<C-O>p<ESC>
+" Insert line, then paste.  
+" Accepts a register prefix like ["x]p and friends.
+" Thanks to Andy Wokula on the Vim mailing list.
+func! PasteNewLine()
+    exec "pu " . v:register
+endfunc
+
+nn <Leader>p :call PasteNewLine()<CR>
 
 " Map Y to act like C and D
 map Y y$
