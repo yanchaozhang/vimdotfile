@@ -95,16 +95,15 @@ nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
 " See functions.vim
 
 " See ftplugins
-" Insert date by pressing <leader>nd Mnemonic: Think "N"ow
-" 
+
+" Date / Time Mappings {{{2
+" Insert date by pressing  (mnemonic: (I)nsert (D)ate)
 " from http://www.vim.org/tips/tip.php?tip_id=97
-map <silent> <leader>nd "=strftime("%Y/%m/%d")<Enter>p
+map <silent> <leader>id "=strftime("%Y/%m/%d")<Enter>p
 
-" Insert date plus weekday by pressing <leader>nw
-map <silent> <leader>nw "=strftime("%Y/%m/%d -- %A")<Enter>p
-
-" Insert time by pressing <leader>nt
-map <silent> <leader>nt "=strftime("%Y/%m/%d %H:%M:%S")<Enter>p
+" Insert time (mnemonic: (I)nsert (T)ime)
+map <silent> <leader>it "=strftime("%Y/%m/%d %H:%M:%S")<Enter>p
+" }}}
 
 " -------------- Window and Tab Navigation --------------
 " Textmate like mappings for tabs
