@@ -20,6 +20,9 @@ func! PasteNewLine()
     exec "pu " . v:register
 endfunc
 
+" Fix for the wayward cursor, with a simpler
+" fix -- however, it's experimental.
+inoremap <Esc> <Esc>`^
 nn <Leader>p :call PasteNewLine()<CR>
 
 " Map Y to act like C and D
