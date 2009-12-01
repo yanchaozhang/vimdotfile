@@ -66,6 +66,12 @@ map <leader>R :FufRenewCache<CR>
 " the directory of the Fuzzy Finder's ";" shortcut
 
 
+" diffchanges.vim mappings {{{2
+nmap <unique> <leader>nd <Plug>DiffChangesDiffToggle
+nmap <unique> <leader>np <Plug>DiffChangesPatchToggle 
+" }}}2
+
+
 map <A-Left> :bp<CR>
 map <A-Right> :bn<CR>
 
@@ -103,7 +109,7 @@ map <silent> <leader>id "=strftime("%Y/%m/%d")<Enter>p
 
 " Insert time (mnemonic: (I)nsert (T)ime)
 map <silent> <leader>it "=strftime("%Y/%m/%d %H:%M:%S")<Enter>p
-" }}}
+" }}}2
 
 " -------------- Window and Tab Navigation --------------
 " Textmate like mappings for tabs
