@@ -88,6 +88,14 @@ mapleader, then replace the comma with the character you use as the mapleader.
 
 \vskip 10pt
 
+\vbox{\head{Version Control}
+\key{Show diff from latest revision}{{\leader}vd}
+\key{Commit changes}{{\leader}vc}
+\key{Show change log}{{\leader}vl}
+\key{Status}{{\leader}vs}
+}
+
+\vskip 10pt
 \vbox{\head{Deleting text}
 Almost all deletion commands are performed by typing \texttt{d}
 followed by a \textit{motion}.  For example \texttt{dw} deletes a
@@ -97,17 +105,6 @@ word.  A few other deletions are:\par
 \key{to end of line}{D}
 \key{line}{dd}
 \key{line}{:d}
-}
-
-\vskip 10pt
-
-\vbox{\head{Yanking text}
-Like deletion, almost all yank commands are performed by typing
-\texttt{y} followed by a \textit{motion}.  For example \texttt{y\$}
-yanks to the end of line.  Two other yank commands are:\par
-\vskip 5pt
-\key{line}{yy}
-\key{line}{:y}
 }
 
 \vskip 10pt
