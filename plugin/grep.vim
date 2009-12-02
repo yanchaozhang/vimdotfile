@@ -73,7 +73,7 @@
 " The above commands can be invoked like this:
 "
 "    :Grep   [<grep_options>] [<search_pattern> [<file_name(s)>]]
-"    :Rgrep  [<grep_options>] [<search_pattern> [<file_name(s)>]]
+"    :Rgrep  [<grep_options>] [<search_pattern> [<file_name(s)>] [<directory]]
 "    :Fgrep  [<grep_options>] [<search_pattern> [<file_name(s)>]]
 "    :Rfgrep [<grep_options>] [<search_pattern> [<file_name(s)>]]
 "    :Egrep  [<grep_options>] [<search_pattern> [<file_name(s)>]]
@@ -99,6 +99,16 @@
 "    :GrepArgsAdd [<grep_options>] [<search_pattern>]
 "
 " In the above commands, all the arguments are optional.
+" If you want Rgrep to prompt for an argument, use PROMPT
+" For example, if you want to search for 'foo' in /home, but you
+" want Rgrep to prompt for the file_names, you can use:
+"
+"   :Rgrep foo PROMPT /home
+
+" If you want Rgrep to prompt for the search text, but want to default
+" to searching all files in the ~/home/foo directory, you would use:
+"
+"   :Rgrep PROMPT * ~/home/foo
 "
 " You can specify grep options like -i (ignore case) or -w (search for a word)
 " to the above commands.  If the <grep_options> are not specified, then the
@@ -454,26 +464,29 @@ endfunction
 function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
     if a:0 > 0 && (a:1 == "-?" || a:1 == "-h")
         echo 'Usage: ' . a:cmd_name . " [<grep_options>] [<search_pattern> " .
-                        \ "[<file_name(s)>]]"
+                        \ "[<file_name(s)>] [<directory>]]"
         return
     endif
 
     let grep_opt    = ""
     let pattern     = ""
     let filepattern = ""
+    let cwd         = ""
 
     let argcnt = 1
     while argcnt <= a:0
         if a:{argcnt} =~ '^-'
             let grep_opt = grep_opt . " " . a:{argcnt}
         elseif pattern == ""
-            let pattern = g:Grep_Shell_Quote_Char . a:{argcnt} . 
-                            \ g:Grep_Shell_Quote_Char
-        else
-            let filepattern = filepattern . " " . a:{argcnt}
+            let pattern = a:{argcnt}
+        elseif filepattern == ""
+            let filepattern = a:{argcnt}
+        elseif cwd  == ""
+            let cwd = a:{argcnt}
         endif
         let argcnt= argcnt + 1
     endwhile
+
     if grep_opt == ""
         let grep_opt = g:Grep_Default_Options
     endif
@@ -500,32 +513,37 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
         return
     endif
 
-    " No argument supplied. Get the identifier and file list from user
-    if pattern == "" 
+    " No pattern argument supplied? Get the identifier and file list from user
+    if pattern == 'PROMPT' || pattern == ""
         let pattern = input("Search for pattern: ", expand("<cword>"))
         if pattern == ""
             return
         endif
-        let pattern = g:Grep_Shell_Quote_Char . pattern . 
-                        \ g:Grep_Shell_Quote_Char
+    endif
+    " Put shell escape on our pattern
+    let pattern = g:Grep_Shell_Quote_Char . pattern . 
+                    \ g:Grep_Shell_Quote_Char
+
+    " Prompt if no start dir was specified
+    if cwd == 'PROMPT' || cwd == ""
+        let cwd = getcwd()
+        if g:Grep_Cygwin_Find == 1
+            let cwd = substitute(cwd, "\\", "/", "g")
+        endif
+        if v:version >= 700
+            let startdir = input("Start searching from directory: ", cwd, "dir")
+        else
+            let startdir = input("Start searching from directory: ", cwd)
+        endif
+    else
+        let startdir = cwd
     endif
 
-    let cwd = getcwd()
-    if g:Grep_Cygwin_Find == 1
-        let cwd = substitute(cwd, "\\", "/", "g")
-    endif
-    if v:version >= 700
-        let startdir = input("Start searching from directory: ", cwd, "dir")
-    else
-        let startdir = input("Start searching from directory: ", cwd)
-    endif
     " use relative pos, instead of absolute.
     let startdir = substitute(startdir, getcwd(), ".", "")
-    if startdir == ""
-        return
-    endif
 
-    if filepattern == ""
+    " Prompt for file pattern if not specified
+    if filepattern == "PROMPT" || filepattern == ""
         let filepattern = input("Search in files matching pattern: ", 
                                           \ g:Grep_Default_Filelist)
         if filepattern == ""
