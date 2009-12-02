@@ -3,6 +3,10 @@ filetype plugin indent on
 syntax enable
 set nocp
 
+" Fix arrow keys in terminal vim
+" http://vim.wikia.com/wiki/Fix_broken_arrow_key_navigation_in_insert_mode
+" set term=builtin_ansi
+
 " Don't do the stupid wrapping line junk
 set nowrap
 " smartcase means ignore case unless i type a capITal letter in my search, mmk?
