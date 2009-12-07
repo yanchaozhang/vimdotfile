@@ -167,14 +167,14 @@ endfunction
 function! grails#SetGrailsControllerMarks(silent)
     " Todo: find better way to restore orig. pos.
     exe "ma z"
-    exe "g/def\ delete\\>/ma\ d"
-    exe "g/def\ create\\>/ma\ c"
-    exe "g/def\ edit\\>/ma\ e"
-    exe "g/def\ index\\>/ma\ i"
-    exe "g/def\ list\\>/ma\ l"
-    exe "g/def\ save\\>/ma\ s"
-    exe "g/def\ show\\>/ma\ h"
-    exe "g/def\ update\\>/ma\ u"
+    exe "silent g/def\ delete\\>/ma\ d"
+    exe "silent g/def\ create\\>/ma\ c"
+    exe "silent g/def\ edit\\>/ma\ e"
+    exe "silent g/def\ index\\>/ma\ i"
+    exe "silent g/def\ list\\>/ma\ l"
+    exe "silent g/def\ save\\>/ma\ s"
+    exe "silent g/def\ show\\>/ma\ h"
+    exe "silent g/def\ update\\>/ma\ u"
     exe "normal 'z"
     if !a:silent
         echo "Marks have been set for this controller, meow"
