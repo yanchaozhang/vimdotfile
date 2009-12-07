@@ -51,6 +51,8 @@ imap <F2> <ESC>:BufExplorer<CR>
 
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
+" Search Notesmine directory
+map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
 
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
@@ -166,6 +168,7 @@ map <A-P> :bp<CR>
 " <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
 " Insert Comment
 map <leader>/ I// <ESC>
+map <leader>cc <Plug>NERDCommenterCommentAlignLeft
 
 " Window Mappings {{{2
 " Window up/down are same as up/down in Vim
