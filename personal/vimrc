@@ -231,7 +231,6 @@ let g:qb_hotkey = "<F9>"
 " CompView window position == bottom
 let g:cvWindowPosition = 1
 
-let VCSCommandMapPrefix='<Leader>v'
 " }}}2
 " Other Config Files {{{1
 "" ------------- Source other configfiles -------------
