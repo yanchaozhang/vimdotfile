@@ -93,7 +93,9 @@ map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to 
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 " Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>sf :Rgrep<Space>
+nnoremap <Leader>sf :Rgrep PROMPT * .
+" Grails recursive find-in-files, defaulting to groovy, gsp files
+nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
