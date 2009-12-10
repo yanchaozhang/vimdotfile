@@ -55,7 +55,7 @@ map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
 
 " Git Gui (mnemonic - (n)ate (v)ersion control :-/
-map <leader>nv :!git gui<CR>
+map <leader>nv :!git gui &<CR>
 
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
