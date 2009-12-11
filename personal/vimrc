@@ -104,7 +104,7 @@ set statusline+=\ %P    "percent through file
 " Show a pending Vim command like "c" or "d" under the status bar
 set showcmd
 
-" Back up files to $HOME/vimbackups
+" Back up files to $HOME/tmp/vimbackups
 " If that doesn't exist, try one of the $TEMP directories.
 " User will need to create a backup directory if Vim whines about not being able to
 " make backups.
