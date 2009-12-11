@@ -1,0 +1,2 @@
+map <F7> :sidebar Delicious<CR>
+map <S-F7> :sbclose<CR>
