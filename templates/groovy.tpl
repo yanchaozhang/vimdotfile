@@ -4,7 +4,7 @@
  *  Script: <+filename+>
  *   Usage: <+filename+>
  * Purpose:
- *  Author: Crazy Nate
+ *  Author: nathan.neff@gmail.com
  * History: 
  */
 
