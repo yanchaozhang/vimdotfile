@@ -48,6 +48,7 @@ imap <F2> <ESC>:BufExplorer<CR>
 
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
+
 " Search Notesmine directory
 map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
 
@@ -90,14 +91,16 @@ map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to 
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 " Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>sf :Rgrep PROMPT * .
+nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
+
 " Grails recursive find-in-files, defaulting to groovy, gsp files
-nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .
+nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
 
 " <leader>o will search in the current directory.
 " mnemonic - Like "Open", which usually defaults to current dir.
 " nnoremap <leader>o :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 nnoremap <leader>o :FufFileWithCurrentBufferDir<CR>
+
 " Trying leader . out for now, also
 " Mnemonic: :e .
 nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
