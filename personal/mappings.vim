@@ -173,7 +173,7 @@ map <A-P> :bp<CR>
 " <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
 " Insert Comment
 map <leader>/ I// <ESC>
-map <leader>cc <Plug>NERDCommenterCommentAlignLeft
+map <leader>cc <Plug>NERDCommenterAlignLeft
 
 " Window Mappings {{{2
 " Window up/down are same as up/down in Vim
