@@ -10,9 +10,6 @@ nnoremap <leader>, ,
 ",V (CAPITAL V) reloads vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" ,ve opens personal Vim stuff directory
-map <silent> <leader>ve :e $VIMHOME/personal<CR>
-
 " Insert line, then paste.  
 " Accepts a register prefix like ["x]p and friends.
 " Thanks to Andy Wokula on the Vim mailing list.
