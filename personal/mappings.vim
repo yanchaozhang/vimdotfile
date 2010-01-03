@@ -60,9 +60,6 @@ map <leader>nv :!git gui &<CR>
 " Mnemonic: Fuzzy (B)uffer
 map <leader>b :FufBuffer<CR>
 
-" Map <leader>t to be like "project explorer" in Textmate
-map <leader>t :FufFile**/<CR>
-
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
 map <leader>R :FufRenewCache<CR>

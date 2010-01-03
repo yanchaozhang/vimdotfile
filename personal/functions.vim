@@ -290,3 +290,20 @@ function! s:QFixToggle()
 endfunction
 nmap <silent> <F4> :call <SID>QFixToggle()<CR>
 
+" Checks if current directory is $HOME or /, and cancels
+" the fuzzy finder search -- which bring the computer to a halt
+" due to directory size, etc.
+function! s:SafeFuzzySearch()
+    let curdir = getcwd()
+    if curdir == $HOME || curdir == "/" || curdir =~ "/Documents$" || curdir == $BASE_HOME
+        echo "You're in a big directory.  Aborting Fuzzy Search"
+        return
+    endif
+    FufFile**/
+endfunction
+
+nmap <silent> <leader>t :call <SID>SafeFuzzySearch()<CR>
+
+
+
+
