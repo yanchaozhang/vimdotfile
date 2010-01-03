@@ -305,5 +305,23 @@ endfunction
 nmap <silent> <leader>t :call <SID>SafeFuzzySearch()<CR>
 
 
+" Function GetFavoriteCommands()
+" returns a list of all my favorite commands to run in Vim.
+" For use w/FuzzyFinder's cool fuf#givencmd#launch which
+" shows a menu of commands, then launches the command you pick
+function s:GetFavoriteCommands()
+" Zap all buffers
+" Show all mappings in a new buffer 
+    let favCommands = [ ":bufdo :bw",        
+                     \  ":ReadEx :map" ]     
+    " redir => commands
+    " silent command
+    " redir END
+    " return map((split(commands, "\n")[3:]),
+                " \      '":" . matchstr(v:val, ''^....\zs\S*'')')
+    return favCommands
+endfunction
 
-
+" execute one of the user-defined commands in GetFavoriteCommands
+map <leader>nc :call fuf#givencmd#launch('', 0, 'Run Command>', <SID>GetFavoriteCommands())<CR>
+map <leader>a :call fuf#givencmd#launch('', 0, 'Run Command>', <SID>GetFavoriteCommands())<CR>
