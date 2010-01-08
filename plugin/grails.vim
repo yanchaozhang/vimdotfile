@@ -112,9 +112,12 @@ function! s:GrailsDisplayTestReports()
     " TODO: Maybe we'll prompt someday
     let currentItem =  expand("%:t:r")
     let testGlob = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
-    let testGlob =  "TEST-*" . testGlob
+    let testGlob =  "**/TEST-*" . testGlob
     " Use glob path to try to find the file.
-    let foundItem = globpath(getcwd() . "/test/reports/plain/**", testGlob)
+    " Search in Grails pre 1.2 and 1.2+ paths
+    let searchPath = getcwd() . "/test/reports/plain"
+    let searchPath = searchPath .  ',' . getcwd() . '/target/test-reports/plain'
+    let foundItem = globpath(searchPath, testGlob)
     if foundItem == ""
         echo "Sorry, test report file: " . testGlob . " was not found :-("
     else
