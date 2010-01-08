@@ -46,10 +46,10 @@ endfunction
 function! s:GrailsDisplayViews()
     " Get the name of the current file we're on
     " TODO: Maybe we'll prompt someday
-    let fileName = expand("%:t:r") 
-    let fileName = substitute(fileName, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "g")
-    let fileName =  tolower(fileName[0]) . strpart(fileName, 1)
-    let viewsPath = "grails-app/views/" . fileName
+    let currentItem = s:GrailsGetCurrentItem()
+    " Lower-case the first letter
+    let currentItem =  tolower(currentItem[0]) . strpart(currentItem, 1)
+    let viewsPath = "grails-app/views/" . currentItem
     echo "Exploring viewsPath".viewsPath
     if finddir(viewsPath) != ""
         exe "Explore " . viewsPath
