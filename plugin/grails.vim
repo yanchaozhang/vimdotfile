@@ -12,12 +12,14 @@ if &cp || (exists("g:loaded_grails") && g:loaded_grails)
   finish
 endif
 let g:loaded_grails = 1
+
+" If we're in a grails directory, then
+" perform initialization
 function! s:Detect()
     if finddir("grails-app", getcwd()) != ""
         call s:GrailsBufInit()
     endif
 endfunction
-
 
 " Detect whether this file is a Grails file.
 " We only look @ the current directory, and try to find a grails-app
