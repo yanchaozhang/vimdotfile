@@ -11,36 +11,20 @@ function! ReadEx(cmd)
 endfunction
 command! -nargs=+ -complete=command ReadEx call ReadEx(<q-args>)
 
-" List occurrences of keyword under cursor, and
-" jump to selected occurrence.
-" Like the * and gd commands, except it lists the occurrences
-function! s:JumpOccurrence()
+" function s:GrepCurFile
+" Prompts for search text, then lists occurrences
+" in the :cope window for easy navigation
+function! s:GrepCurFile()
     let v:errmsg = ""
-    exe "normal [I"
-    if strlen(v:errmsg) == 0
-        let nr = input("Jump to Occurrence (Enter to Cancel): ")
-        if nr =~ '\d\+'
-            exe "normal! " . nr . "[\t"
-        endif
+    let text = input("Search for:")
+    let curfile = resolve(expand("%:p"))
+    if text != ""
+        let cmd = 'Grep ' . text . ' ' . curfile
+        exe cmd
     endif
 endfunction
 
-" I added this one!  Whee!
-" Prompts for search text, then lists occurrences, and prompts for line number
-function! s:JumpFind()
-    let v:errmsg = ""
-    let text = input("Search for:")
-    exe "g/" . text . "/#"
-    if strlen(v:errmsg) == 0
-        let nr = input("Enter line number, or ESC:")
-        if nr =~ '\d\+'
-            exe "normal! " . nr . "G"
-            exe "normal! z."
-        endif
-    endif
-endfunction
-" Obsoleted by better Compview plugin
-" nnoremap <Leader>ff :call <SID>JumpFind()<CR>
+nnoremap <Leader>m :call <SID>GrepCurFile()<CR>
 
 " Handles the stupid :bd versus :BD debate
 " :BD uses the bufkill thingy, where it will keep the window
@@ -113,7 +97,7 @@ function! s:ToggleVirtualEdit()
         echo "Virtual edit setting is 'all'."
     endif
 endfunction
-map <F10> :call <SID>ToggleVirtualEdit()<CR>
+map <F11> :call <SID>ToggleVirtualEdit()<CR>
 
 " copied from /etc/vimrc that comes with Arch
 " Convenient command to see the difference between the current buffer and the
