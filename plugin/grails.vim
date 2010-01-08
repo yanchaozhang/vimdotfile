@@ -130,7 +130,6 @@ endfunction
 " Returns the name of the thing we're in (e.g. 'Song', 'Whatever')
 function! s:GrailsGetCurrentItem()
     let extension = expand("%:e") 
-    let fileNameOnly = expand("%:t") 
     let fileNameBase = expand("%:t:r")
     
     if extension == "gsp"
@@ -139,9 +138,9 @@ function! s:GrailsGetCurrentItem()
         " Capitalize
         let currentItem = toupper(currentItem[0]) . strpart(currentItem, 1)
     else
-        let currentItem = substitute(fileNameBase, "\\(ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "")
-        " If we're in a TEST-FooTests.txt file, then return Foo
-        let currentItem = substitute(currentItem, "^.*TEST-", "", "")
+        let currentItem = substitute(fileNameBase, "\\(FunctionalTests\\|ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "")
+        " If we're in a TEST-functional-FooTests.txt file, then return Foo
+        let currentItem = substitute(currentItem, "^.*TEST-.*-", "", "")
         let currentItem = substitute(currentItem, ".*\\.", "", "")
     endif
     
