@@ -294,10 +294,11 @@ nmap <silent> <leader>t :call <SID>SafeFuzzySearch()<CR>
 " For use w/FuzzyFinder's cool fuf#givencmd#launch which
 " shows a menu of commands, then launches the command you pick
 function s:GetFavoriteCommands()
-" Zap all buffers
-" Show all mappings in a new buffer 
-    let favCommands = [ ":bufdo :bw",        
-                     \  ":ReadEx :map" ]     
+    let favCommands = [ ]
+    call insert(favCommands, ":bufdo :bw")       " Zap all buffers 
+    call insert(favCommands, ":ReadEx :map")     " Show all mappings in a new buffer     
+    call insert(favCommands, ":!git checkout -- %") " Revert current file               
+
     " redir => commands
     " silent command
     " redir END
