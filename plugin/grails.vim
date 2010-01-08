@@ -98,6 +98,9 @@ function! s:GrailsDisplayTests()
     " TODO: Maybe we'll prompt someday
     let currentItem =  expand("%:t:r")
     let currentItem = substitute(currentItem, "Tests$", "", "")
+    " If we're in a test report, we'll have all kinds of garbage at the front.
+    " Remove it.
+    let currentItem = substitute(currentItem, "^.*TEST-.*-", "", "")
     let currentItem = currentItem . "Tests.groovy"
     echo "Opening item: " . currentItem
     call s:GrailsOpenItem(currentItem)
