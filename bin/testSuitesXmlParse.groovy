@@ -6,7 +6,8 @@ ts.testsuite.testcase.failure.each {
     if (splitted.size()) {
         testName = splitted[-1]
     }
-    def msg = it.attribute('message')
+    // sometimes message is blank.  if so, use 'type' attribute.
+    def msg = it.attribute('message') ?: it.attribute('type')
     msg = msg.replaceAll(":", ";")  
     def error = it.text().split("\n")[1]
     def m = error =~ /\((.*)\)/
