@@ -55,6 +55,8 @@ map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
 " Git Gui (mnemonic - (n)ate (v)ersion control :-/
 map <leader>nv :!git gui &<CR>
 
+" ============= Autoclose Bindings ===========
+nmap <Leader>na <Plug>ToggleAutoCloseMappings
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
