@@ -52,7 +52,7 @@ endfunction
 " Call SaneColors right now.
 call <SID>SaneColors()
 
-" Set font.  Use Monaco on OSX, and Courier on Linux/Windoze 
+" Set font.
 " These are my favorite settings for common stuff
 " hi CursorLine guibg=#121212
 " hi Visual guibg=#15171D
@@ -65,7 +65,9 @@ elseif has('gui_win32')
     set guifont=courier_new:h10 
 elseif has('gui_gtk')
     " set guifont=Courier\ New\ 12
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+    " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
+    set guifont=Inconsolata\ 13
+    " set guifont=Inconsolata\ 10
     " set guifont=DejaVu\ Sans\ Mono\ 9
     " set guifont=ProFont\ 14
 endif
