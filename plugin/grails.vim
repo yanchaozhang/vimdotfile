@@ -187,6 +187,17 @@ function! grails#SetGrailsControllerMarks(silent)
         echo "Marks have been set for this controller, meow"
     endif
 endfunction
+
+function s:ReadGrailsErrorFile()
+
+    let old_efm = &efm
+    set efm=%m:%f:%l
+    cexpr system("$VIMHOME/bin/testSuitesXmlParse.groovy")
+    botright copen
+
+    let &efm = old_efm
+endfunction
+map <leader>j :call <SID>ReadGrailsErrorFile()<CR>
 "}}}1
 " Define Commands{{{1
 noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
@@ -207,6 +218,7 @@ noremap <SID>GrailsDisplayTests :call <SID>GrailsDisplayTests()<CR>
 noremap <unique> <script> <Plug>GrailsDisplayTestReports <SID>GrailsDisplayTestReports
 noremap <SID>GrailsDisplayTestReports :call <SID>GrailsDisplayTestReports()<CR>
 " }}}1
+
 " Mappings {{{1
 if !hasmapto('<Plug>GrailsDisplayViews') 
     map <unique> <Leader>gv <Plug>GrailsDisplayViews
