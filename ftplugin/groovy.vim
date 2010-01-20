@@ -194,6 +194,7 @@ if !hasmapto("<SID>RunPrompt()", "n")
 endif
 if !hasmapto("<SID>RunNoPrompt()")
         nmap <buffer><unique><silent> <F5> :call <SID>RunNoPrompt()<CR>
+        imap <buffer><unique><silent> <F5> <C-O>:call <SID>RunNoPrompt()<CR>
 endif
 " if !hasmapto("<SID>CompilePrompt()")
 "         " Removed compile with prompt thingy.
