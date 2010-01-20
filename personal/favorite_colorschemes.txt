@@ -1,22 +1,16 @@
-** Just a notepad w/favorite colorschemes **
+# This file is just my notes about favorite colorschemes
+
+## Favorites
 moria
 vividchalk
-vibratink
+vibrantink
 koeher_njn
 lucius
 
---- Avail. colorschemes in colors dir ---
-darkspectrum.vim
-desert256.vim
-inkpot.vim
-koehler_njn.vim
-lucius.vim
-midnight2.vim
-moria.vim
-paintbox.vim
-railscasts.vim
-railscasts_njn.vim
-rastafari.vim
-vibrantink.vim
-vividchalk.vim
-xoria256.vim
+## Potential
+jellybeans -- Current filename bar needs to stand out more.
+
+## Colors I've tried.....
+asmanian_blood
+paintbox
+
