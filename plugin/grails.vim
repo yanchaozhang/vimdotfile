@@ -188,7 +188,7 @@ function! grails#SetGrailsControllerMarks(silent)
     endif
 endfunction
 
-function s:ReadGrailsErrorFile()
+function s:GrailsReadTestOutput()
 
     let old_efm = &efm
     set efm=%m:%f:%l
@@ -197,9 +197,12 @@ function s:ReadGrailsErrorFile()
 
     let &efm = old_efm
 endfunction
-map <leader>j :call <SID>ReadGrailsErrorFile()<CR>
+
 "}}}1
 " Define Commands{{{1
+noremap <unique> <script> <Plug>GrailsReadTestOutput <SID>GrailsReadTestOutput
+noremap <SID>GrailsReadTestOutput :call <SID>GrailsReadTestOutput()<CR>
+
 noremap <unique> <script> <Plug>GrailsDisplayViews <SID>GrailsDisplayViews
 noremap <SID>GrailsDisplayViews :call <SID>GrailsDisplayViews()<CR>
 
@@ -245,5 +248,10 @@ if !hasmapto('<Plug>GrailsDisplayTestReports')
 endif 
 
 nmap <silent> <S-F10> :call <SID>grails#SetGrailsControllerMarks()<CR>
+
+if !hasmapto('<Plug>GrailsReadTestOutput') 
+    map <unique> <Leader>gg <Plug>GrailsReadTestOutput
+endif 
+
 " }}}1
 " vim: set fdm=marker:
