@@ -245,6 +245,7 @@ function! s:ToggleSaveOnFocusLost()
     endif
 endfunction
 map <F6> :call <SID>ToggleSaveOnFocusLost()<CR>
+imap <F6> <C-o>:call <SID>ToggleSaveOnFocusLost()<CR>
 
 function! s:XMLTidy()
     let l:outFile = tempname() 
