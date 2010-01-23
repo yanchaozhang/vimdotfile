@@ -191,7 +191,8 @@ endfunction
 function s:GrailsReadTestOutput()
 
     let old_efm = &efm
-    set efm=%m:%f:%l
+    " format is file:lineNumber:message
+    set efm=%f:%l:%m
     cexpr system("$VIMHOME/bin/testSuitesXmlParse.groovy")
     botright copen
 
