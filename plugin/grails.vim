@@ -116,6 +116,8 @@ function! s:GrailsDisplayTestReports()
     " Get the name of the current file we're on
     " TODO: Maybe we'll prompt someday
     let currentItem =  expand("%:t:r")
+    " Zap the TEST-blahblah if we're in a test
+    let currentItem = s:GrailsStripTest(currentItem)
     let testGlob = substitute(currentItem, "Tests$", "", "") . "Tests.txt"
     let testGlob =  "**/TEST-*" . testGlob
     " Use glob path to try to find the file.
@@ -126,11 +128,37 @@ function! s:GrailsDisplayTestReports()
     if foundItem == ""
         echo "Sorry, test report file: " . testGlob . " was not found :-("
     else
-        call s:GrailsOpenItem(foundItem, "grails/test/reports/plain")
+        call s:GrailsOpenItem(foundItem)
+    endif
+
+endfunction
+
+" Function: s:GrailsDisplayTestXml
+" Shows the XML test results that pertain to a particular file
+" Example:  Foo.groovy -> test/reports/plain/TEST-FooTests.xml
+" TODO: What if there's unit, and integration tests?
+function! s:GrailsDisplayTestXml()
+    " Get the name of the current file we're on
+    " TODO: Maybe we'll prompt someday
+    let currentItem =  expand("%:t:r")
+    " Zap the TEST-blahblah if we're in a test
+    let currentItem = s:GrailsStripTest(currentItem)
+    let testGlob = substitute(currentItem, "Tests$", "", "") . "Tests.xml"
+    let testGlob =  "**/TEST-*" . testGlob
+    " Use glob path to try to find the file.
+    " Search in Grails pre 1.2 and 1.2+ paths
+    let searchPath = getcwd() . "/test/reports/plain"
+    let searchPath = searchPath .  ',' . getcwd() . '/target/test-reports'
+    let foundItem = globpath(searchPath, testGlob)
+    if foundItem == ""
+        echo "Sorry, test report file: " . testGlob . " was not found :-("
+    else
+        call s:GrailsOpenItem(foundItem)
     endif
 
 endfunction
 " }}}1
+
 " Utility functions{{{1
 " Function: s:GrailsGetCurrentItem()
 " Utility method to detect what grails 'item' we're in now.
@@ -147,12 +175,17 @@ function! s:GrailsGetCurrentItem()
         let currentItem = toupper(currentItem[0]) . strpart(currentItem, 1)
     else
         let currentItem = substitute(fileNameBase, "\\(FunctionalTests\\|ControllerTests\\|ServiceTests\\|Service\\|Controller\\|Tests\\)$", "", "")
-        " If we're in a TEST-functional-FooTests.txt file, then return Foo
-        let currentItem = substitute(currentItem, "^.*TEST-.*-", "", "")
-        let currentItem = substitute(currentItem, ".*\\.", "", "")
+        let currentItem = s:GrailsStripTest(currentItem)
     endif
     
     return currentItem
+endfunction
+
+function! s:GrailsStripTest(thisItem)
+    " If we're in a TEST-functional-FooTests.txt file, then return Foo
+    let thisItem = substitute(a:thisItem, "^.*TEST-.*-", "", "")
+    let thisItem = substitute(thisItem, ".*\\.", "", "")
+    return thisItem
 endfunction
 
 function! s:GrailsOpenItem(thisItem, ...)
@@ -221,6 +254,9 @@ noremap <SID>GrailsDisplayTests :call <SID>GrailsDisplayTests()<CR>
 
 noremap <unique> <script> <Plug>GrailsDisplayTestReports <SID>GrailsDisplayTestReports
 noremap <SID>GrailsDisplayTestReports :call <SID>GrailsDisplayTestReports()<CR>
+
+noremap <unique> <script> <Plug>GrailsDisplayTestXml <SID>GrailsDisplayTestXml
+noremap <SID>GrailsDisplayTestXml :call <SID>GrailsDisplayTestXml()<CR>
 " }}}1
 
 " Mappings {{{1
@@ -246,6 +282,10 @@ endif
 
 if !hasmapto('<Plug>GrailsDisplayTestReports') 
     map <unique> <Leader>gr <Plug>GrailsDisplayTestReports
+endif 
+
+if !hasmapto('<Plug>GrailsDisplayTestXml') 
+    map <unique> <Leader>gx <Plug>GrailsDisplayTestXml
 endif 
 
 nmap <silent> <S-F10> :call <SID>grails#SetGrailsControllerMarks()<CR>
