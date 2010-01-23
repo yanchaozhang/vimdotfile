@@ -1,0 +1,10 @@
+beginning of help file for grails.vim
+
+<Leader>gv Jump to the View
+<Leader>gd Jump to Domain Class
+<Leader>gc Jump to Controller
+<Leader>gs Jump to Service
+<Leader>gt Jump to a test
+<Leader>gr Jump to test report Text file
+<Leader>gx Jump to test report XML file
+<Leader>gg Show errors from running tests
