@@ -96,8 +96,8 @@ nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :exe "Rgrep PROMPT *" . shellescape(expand('%:h'))
-nnoremap <Leader>ss :exe "Rgrep PROMPT *" . shellescape(expand('%:h'))
+nnoremap <Leader>sh :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
+nnoremap <Leader>ss :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
