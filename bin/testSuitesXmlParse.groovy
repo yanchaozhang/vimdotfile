@@ -1,8 +1,19 @@
 #!/usr/bin/env groovy
 def ts = new XmlParser().parse(new File('target/test-reports/TESTS-TestSuites.xml'))
 
+// Process two things: failures and errors
 ts.testsuite.testcase.failure.each { failure ->
-    def className = failure.parent().attribute('classname') 
+    processProblem(failure)
+}
+
+ts.testsuite.testcase.error.each { err ->
+    processProblem(err)
+}
+
+// errors and failures are both structured similarly in
+// the xml report.  Generalize both as a 'problem'
+def processProblem(problem) {
+    def className = problem.parent().attribute('classname') 
 
     // remove package name from test.
     def splitted = className.toString().split("\\.")
@@ -11,16 +22,16 @@ ts.testsuite.testcase.failure.each { failure ->
     }
 
     // Get line number by finding (testName.groovy:lineNumber)
-    def matcher = failure.text() =~ /\((${className}.*)\)/
+    def matcher = problem.text() =~ /\((${className}.*)\)/
     // If nothing's found in the text(), then just use className + '.groovy', plus a zero-line number
     def fileNameWithErrorLine = matcher.find() ? matcher[0][1] : className + '.groovy:0'
 
 
-    // Get failure message.  
+    // Get problem message.  
     // Prepend the name of the test to it.
-    def msg = " : " + failure.parent().attribute('name') + " : "
+    def msg = " : " + problem.parent().attribute('name') + " : "
     // Sometimes the message is blank, so use 'type' attribute.
-    msg += failure.attribute('message') ?: failure.attribute('type') ?: ''
+    msg += problem.attribute('message') ?: problem.attribute('type') ?: ''
 
     // Find this file in the dir. structure so we can get abs. path
     def fullPath
