@@ -36,3 +36,6 @@ map <unique> <silent> <leader>vo :e $ORGDIR<CR>
 
 " Enrollio
 map <unique> <silent> <leader>ve :e $ENROLLIO_DIR<CR>
+
+" Super serial
+map <unique> <silent> <leader>vm :e $SUPER_SERIAL_SECRET_DIR<CR>
