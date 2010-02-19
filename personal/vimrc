@@ -213,7 +213,7 @@ let NERDTreeIgnore=['\.class', '\~$']
 " NERD Commenter: {{{2
 " Put a space after comments, like // foo instead of //foo
 let NERDSpaceDelims=1
-map <leader>cc <Plug>NERDCommenterToggle
+let NERDCreateDefaultMappings=0
 " }}}2
 
 " MiniBufExplorer (defunct) {{{2
