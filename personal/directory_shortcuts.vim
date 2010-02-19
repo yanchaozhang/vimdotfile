@@ -2,10 +2,10 @@
 " in the specified directory
 
 " Vim personal dir
-map <unique> <silent> <leader>vv :e $VIMHOME/personal<CR>
+map <unique> <silent> <leader>vv :e $VIM_DIR/personal<CR>
 
 " Vim dir
-map <unique> <silent> <leader>vh :e $VIMHOME<CR>
+map <unique> <silent> <leader>vh :e $VIM_DIR<CR>
 
 " Source 
 map <unique> <silent> <leader>vs :e $SRC_DIR<CR>
@@ -32,7 +32,7 @@ map <unique> <silent> <leader>v3 :e $SRC_DIR/3rdparty<CR>
 map <unique> <silent> <leader>vn :e $NOTESMINE_DIR<CR>
 
 " Personal
-map <unique> <silent> <leader>vo :e $ORGDIR<CR>
+map <unique> <silent> <leader>vo :e $ORG_DIR<CR>
 
 " Enrollio
 map <unique> <silent> <leader>ve :e $ENROLLIO_DIR<CR>
