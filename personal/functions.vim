@@ -250,18 +250,25 @@ imap <F6> <C-o>:call <SID>ToggleSaveOnFocusLost()<CR>
 function! s:XMLTidy()
     let l:outFile = tempname() 
     let l:errFile = tempname() 
-    " -file is error file, where errors are output to
-    let l:cmd = "!tidy -xml -indent -file " . l:errFile . " -output " . l:outFile . " --indent-spaces 4 --wrap 90 " . expand("%")
-    exe l:cmd
-    if (filereadable(l:outFile))
-    "    exe "r! " . l:outFile
-    endif
-    if (filereadable(l:errFile))
+
+    let old_efm = &efm
+    exe ":w"
+    set errorformat=line\ %l\ column\ %v\ -\ %m
+    
+    let tidyCmd = "tidy -xml -indent -f " . l:errFile . " --indent-spaces 4 --wrap 90"
+    cexpr system(tidyCmd . " -e " . expand("%"))
+    if v:shell_error == 0
+        " Run command again, and replace contents of file."
+        exe "%!" .tidyCmd
+    else 
         execute "silent! caddfile " . l:errFile
         botright copen
     endif
 
+
+    let &efm = old_efm
 endfunction
+map <leader>xx :call <SID>XMLTidy()<CR>
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 function! s:QFixToggle()
