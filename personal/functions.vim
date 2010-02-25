@@ -16,7 +16,7 @@ command! -nargs=+ -complete=command ReadEx call ReadEx(<q-args>)
 " in the :cope window for easy navigation
 function! s:GrepCurFile()
     let v:errmsg = ""
-    let text = input("Search for:")
+    let text = input("Search for: ", expand("<cword>"))
     let curfile = resolve(expand("%:p"))
     if text != ""
         let cmd = 'Grep ' . text . ' ' . curfile
@@ -66,6 +66,7 @@ function! s:CopyFileName()
     echo expand("%:p:t") . " was copied to the system clipboard."
 
 endfunction
+
 nnoremap <unique> <leader>cf :call <SID>CopyFileName()<Enter>
 nnoremap <unique> <leader>nf :call <SID>CopyFileName()<Enter>
 
