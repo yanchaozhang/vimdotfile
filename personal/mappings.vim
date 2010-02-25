@@ -205,9 +205,6 @@ map <C-L> <C-W>l
 " map ;h <C-W>h
 " map ;l <C-W>l
 
-" Map <leader>m to "maximize" current window to another tab
-" See also MaximizeToggle in functions.vim
-map <leader>m <C-W>o
 " Also use emacs-style '1' to make this window the only 1
 map <leader>1 <C-W>o
 map <leader>2 <C-W>s
