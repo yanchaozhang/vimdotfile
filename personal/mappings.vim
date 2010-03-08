@@ -232,9 +232,15 @@ map [[ [m
 map ][ ]M
 map [] [M
 
-" ---------- Fold Shortcuts ----------------
+" Fold Shortcuts {{{1
 map z1 :set foldlevel=1<CR>
 map z2 :set foldlevel=2<CR>
+" }}}
+
+" Grr mappings
+" Mappings that are hacks for bugs/annoying behavior
+map <leader>nn :set buflisted<CR>
+
 " -------------- Experimental --------------
 " Get rid of useless '' and 'a, 'e, wich take you to the start of the line
 " that you were at, instead of the exact place where you were just at
