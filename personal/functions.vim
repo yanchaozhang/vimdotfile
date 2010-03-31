@@ -51,6 +51,9 @@ function! s:BlastBuffer()
 endfunction
 map <silent> <leader>d :call <SID>BlastBuffer()<Enter>
 imap <silent> <leader>d <C-O>:call <SID>BlastBuffer()<Enter>
+" Also use ,k to blast buffer
+map <silent> <leader>k :call <SID>BlastBuffer()<Enter>
+imap <silent> <leader>k <C-O>:call <SID>BlastBuffer()<Enter>
 
 function! s:CopyFileName()
     " Use <leader>cp to copy the file name (no directory -- for fullpath, see CopyFilePath below)
