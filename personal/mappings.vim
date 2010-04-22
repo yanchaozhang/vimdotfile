@@ -170,9 +170,6 @@ map <D-9> <C-O>:BufExplore<CR>
 map <C-Tab> :tabn<CR>
 map <C-S-Tab> :tabp<CR>
 
-map <C-Right> :tabn<CR>
-map <C-Left> :tabp<CR>
-
 " Buffer Mappings
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
@@ -218,12 +215,19 @@ map <leader>0 <C-W>c
 
 " }}}
 " Make / error list / search list mappings
-" Go next/prev error
+" Quickfix  Mappings {{{2
+" Go next/prev error/search result
 map <C-Down> :cn<Enter>
 map <C-Up> :cp<Enter>
+
+" Go to next/previous SET of errors/search results
+map <C-Right> :cnew<CR>
+map <C-Left> :cold<CR>
+
 " Go to error in next/prev file
 map <C-S-Down> :cnf<Enter>
 map <C-S-Up> :cpf<Enter>
+" }}}
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods

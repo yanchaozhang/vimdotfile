@@ -4,6 +4,9 @@
 " Vim personal dir
 map <unique> <silent> <leader>vv :e $VIM_DIR/personal<CR>
 
+" Tmp dir
+map <unique> <silent> <leader>vt :e ~/tmp<CR>
+
 " Vim dir
 map <unique> <silent> <leader>vh :e $VIM_DIR<CR>
 
