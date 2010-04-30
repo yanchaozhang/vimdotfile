@@ -92,6 +92,7 @@ map <leader>r :FufMruFile<CR>
 
 " Recursive find-in-files (Think "f"ind in "f"iles)
 nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
+nnoremap <Leader>j :Rgrep PROMPT * .<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
