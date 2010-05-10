@@ -16,7 +16,7 @@ command! -nargs=+ -complete=command ReadEx call ReadEx(<q-args>)
 " in the :cope window for easy navigation
 function! s:GrepCurFile()
     let v:errmsg = ""
-    let text = input("Search for:")
+    let text = input("Search for: ", expand("<cword>"))
     let curfile = resolve(expand("%:p"))
     if text != ""
         let cmd = 'Grep ' . text . ' ' . curfile
@@ -51,6 +51,9 @@ function! s:BlastBuffer()
 endfunction
 map <silent> <leader>d :call <SID>BlastBuffer()<Enter>
 imap <silent> <leader>d <C-O>:call <SID>BlastBuffer()<Enter>
+" Also use ,k to blast buffer
+map <silent> <leader>k :call <SID>BlastBuffer()<Enter>
+imap <silent> <leader>k <C-O>:call <SID>BlastBuffer()<Enter>
 
 function! s:CopyFileName()
     " Use <leader>cp to copy the file name (no directory -- for fullpath, see CopyFilePath below)
@@ -66,6 +69,7 @@ function! s:CopyFileName()
     echo expand("%:p:t") . " was copied to the system clipboard."
 
 endfunction
+
 nnoremap <unique> <leader>cf :call <SID>CopyFileName()<Enter>
 nnoremap <unique> <leader>nf :call <SID>CopyFileName()<Enter>
 
@@ -250,18 +254,25 @@ imap <F6> <C-o>:call <SID>ToggleSaveOnFocusLost()<CR>
 function! s:XMLTidy()
     let l:outFile = tempname() 
     let l:errFile = tempname() 
-    " -file is error file, where errors are output to
-    let l:cmd = "!tidy -xml -indent -file " . l:errFile . " -output " . l:outFile . " --indent-spaces 4 --wrap 90 " . expand("%")
-    exe l:cmd
-    if (filereadable(l:outFile))
-    "    exe "r! " . l:outFile
-    endif
-    if (filereadable(l:errFile))
+
+    let old_efm = &efm
+    exe ":w"
+    set errorformat=line\ %l\ column\ %v\ -\ %m
+    
+    let tidyCmd = "tidy -xml -indent -f " . l:errFile . " --indent-spaces 4 --wrap 90"
+    cexpr system(tidyCmd . " -e " . expand("%"))
+    if v:shell_error == 0
+        " Run command again, and replace contents of file."
+        exe "%!" .tidyCmd
+    else 
         execute "silent! caddfile " . l:errFile
         botright copen
     endif
 
+
+    let &efm = old_efm
 endfunction
+map <leader>xx :call <SID>XMLTidy()<CR>
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 function! s:QFixToggle()

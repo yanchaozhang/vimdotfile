@@ -89,8 +89,20 @@ map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to 
 
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
+
 " Recursive find-in-files (Think "f"ind in "f"iles)
 nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
+nnoremap <Leader>j :Rgrep PROMPT * .<CR>
+
+" Recursive search in this file/buffer's current directory
+" TODO: Create a function that checks for verboten directories such as "/" and
+" "~" so that I don't have to kill the find processes.
+nnoremap <Leader>sh :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
+nnoremap <Leader>ss :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
+
+" CD to this file's directry
+nnoremap <Leader>cd :cd %:h<CR>
+
 
 " Grails recursive find-in-files, defaulting to groovy, gsp files
 nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
@@ -159,9 +171,6 @@ map <D-9> <C-O>:BufExplore<CR>
 map <C-Tab> :tabn<CR>
 map <C-S-Tab> :tabp<CR>
 
-map <C-Right> :tabn<CR>
-map <C-Left> :tabp<CR>
-
 " Buffer Mappings
 map <C-N> :bn<CR>
 map <C-P> :bp<CR>
@@ -172,7 +181,10 @@ map <A-P> :bp<CR>
 " <leader>d is now mapped to BlastBuffer in ~/.vim/personal/functions.vim
 " Insert Comment
 map <leader>/ I// <ESC>
-map <leader>cc <Plug>NERDCommenterAlignLeft
+map <leader>cc <plug>NERDCommenterAlignLeft
+map <leader>cl <plug>NERDCommenterAlignLeft
+map <leader>cu <plug>NERDCommenterUncomment
+map <leader>ci <plug>NERDCommenterToggle
 
 " Window Mappings {{{2
 " Window up/down are same as up/down in Vim
@@ -191,9 +203,6 @@ map <C-L> <C-W>l
 " map ;h <C-W>h
 " map ;l <C-W>l
 
-" Map <leader>m to "maximize" current window to another tab
-" See also MaximizeToggle in functions.vim
-map <leader>m <C-W>o
 " Also use emacs-style '1' to make this window the only 1
 map <leader>1 <C-W>o
 map <leader>2 <C-W>s
@@ -207,12 +216,19 @@ map <leader>0 <C-W>c
 
 " }}}
 " Make / error list / search list mappings
-" Go next/prev error
+" Quickfix  Mappings {{{2
+" Go next/prev error/search result
 map <C-Down> :cn<Enter>
 map <C-Up> :cp<Enter>
+
+" Go to next/previous SET of errors/search results
+map <C-Right> :cnew<CR>
+map <C-Left> :cold<CR>
+
 " Go to error in next/prev file
 map <C-S-Down> :cnf<Enter>
 map <C-S-Up> :cpf<Enter>
+" }}}
 
 " Map the [[ and ]],etc to be able to actually
 " jump to previous/next methods
@@ -221,9 +237,15 @@ map [[ [m
 map ][ ]M
 map [] [M
 
-" ---------- Fold Shortcuts ----------------
+" Fold Shortcuts {{{1
 map z1 :set foldlevel=1<CR>
 map z2 :set foldlevel=2<CR>
+" }}}
+
+" Grr mappings
+" Mappings that are hacks for bugs/annoying behavior
+map <leader>nn :set buflisted<CR>
+
 " -------------- Experimental --------------
 " Get rid of useless '' and 'a, 'e, wich take you to the start of the line
 " that you were at, instead of the exact place where you were just at

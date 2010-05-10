@@ -166,9 +166,9 @@ if s:os =~ "Darwin"
 endif
 
 " For grep.vim, tell it to ignore .svn directories and log files
-let Grep_Skip_Dirs = '.svn log vendor' 
-" Ignore case
-let Grep_Default_Options = '-i'
+let Grep_Skip_Dirs = '.svn log vendor .git .hg' 
+" Ignore case, and don't process Binary filez.
+let Grep_Default_Options = '-i -I'
 " Just default the grep filelist to groovy, gsp and js files
 let Grep_Default_Filelist = '*.groovy *.gsp'
 " }}}2
@@ -213,7 +213,7 @@ let NERDTreeIgnore=['\.class', '\~$']
 " NERD Commenter: {{{2
 " Put a space after comments, like // foo instead of //foo
 let NERDSpaceDelims=1
-map <leader>cc <Plug>NERDCommenterToggle
+let NERDCreateDefaultMappings=0
 " }}}2
 
 " MiniBufExplorer (defunct) {{{2
