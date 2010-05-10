@@ -36,3 +36,6 @@ map <unique> <silent> <leader>vo :e $ORGDIR<CR>
 
 " Enrollio
 map <unique> <silent> <leader>ve :e $ENROLLIO_DIR<CR>
+
+" Wmii
+map <unique> <silent> <leader>vw :e ~/.wmii<CR>
