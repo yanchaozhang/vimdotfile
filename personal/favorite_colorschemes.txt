@@ -1,6 +1,7 @@
 # This file is just my notes about favorite colorschemes
 
 ## Favorites
+elda!
 moria
 vividchalk
 vibrantink
@@ -13,4 +14,8 @@ jellybeans -- Current filename bar needs to stand out more.
 ## Colors I've tried.....
 asmanian_blood
 paintbox
+patrickgenpaul
+twilight
+github
+
 

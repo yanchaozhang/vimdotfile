@@ -335,4 +335,8 @@ else
     hi Error         cterm=bold ctermfg=7 ctermbg=1
 endif
 
+hi Pmenu          ctermfg=15 ctermbg=8 guifg=#000000 guibg=#a6a190
+hi PmenuSel       ctermfg=15 ctermbg=9 guifg=#ffffff guibg=#133293
+hi PmenuSbar      ctermfg=0 ctermbg=0 guibg=#555555
+
 " vim: set fdl=0 fdm=marker:
