@@ -238,6 +238,7 @@ map ][ ]M
 map [] [M
 
 " Fold Shortcuts {{{1
+map z0 :set foldlevel=0
 map z1 :set foldlevel=1<CR>
 map z2 :set foldlevel=2<CR>
 " }}}
