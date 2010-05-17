@@ -1,8 +1,8 @@
+" vim:tabstop=2:shiftwidth=2:expandtab:foldmethod=marker:textwidth=79
 " Vimwiki syntax file
 " MediaWiki syntax
 " Author: Maxim Kim <habamax@gmail.com>
 " Home: http://code.google.com/p/vimwiki/
-" vim:tw=78:
 
 " text: '''strong'''
 let g:vimwiki_rxBold = "'''[^']\\+'''"
@@ -52,9 +52,6 @@ let g:vimwiki_rxListBullet = '^\s*\*\+\([^*]*$\)\@='
 let g:vimwiki_rxListNumber = '^\s*#\+'
 
 let g:vimwiki_rxListDefine = '^\%(;\|:\)\s'
-
-" Treat all other lines that start with spaces as PRE-formatted text.
-let g:vimwiki_rxPre1 = '^\s\+[^[:blank:]*#].*$'
 
 " Preformatted text
 let g:vimwiki_rxPreStart = '<pre>'
