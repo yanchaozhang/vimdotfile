@@ -1,11 +1,12 @@
 " General Options: {{{1
-filetype plugin indent on
-syntax enable
-set nocp
 
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+filetype plugin indent on
+syntax enable
+set nocp
 
 " Fix arrow keys in terminal vim
 " http://vim.wikia.com/wiki/Fix_broken_arrow_key_navigation_in_insert_mode
