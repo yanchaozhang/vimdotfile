@@ -1,7 +1,11 @@
 " General Options: {{{1
-filetype plugin indent on 
+filetype plugin indent on
 syntax enable
 set nocp
+
+filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 
 " Fix arrow keys in terminal vim
 " http://vim.wikia.com/wiki/Fix_broken_arrow_key_navigation_in_insert_mode
@@ -60,12 +64,12 @@ set vb t_vb=
 set guioptions-=T
 " set guioptions=aegimrLtc
 set guioptions=aegitc
-" Tell Vim to quit whining about unsaved buffers 
+" Tell Vim to quit whining about unsaved buffers
 " when I want to open a new buffer.  Vim just hides
 " the unsaved buffer, instead of trying to close it.
 set hidden
 
-" ------------ Tab and indent settings ------------  
+" ------------ Tab and indent settings ------------
 set smartindent
 set autoindent
 
@@ -93,7 +97,7 @@ endif
 
 " Status Line
 " The %= means right-align.  The %Y means filetype
-" set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\ 
+" set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\
 set laststatus=2
 set statusline=%-.40f%m%w
 set statusline+=%r      "read only flag
@@ -158,7 +162,7 @@ endif " has("autocmd") End Arch vimrc stuff
 " Plugin Customizations: {{{1
 " Rgrep: {{{2
 " Tell Rgrep not to use Xargs on Mac OS 'cause it sucks.
-" Previously used has("mac"), except this doesn't work in 
+" Previously used has("mac"), except this doesn't work in
 " a terminal, and fubars the grep.vim plugin
 let s:os = system("uname")
 if s:os =~ "Darwin"
@@ -166,7 +170,7 @@ if s:os =~ "Darwin"
 endif
 
 " For grep.vim, tell it to ignore .svn directories and log files
-let Grep_Skip_Dirs = '.svn log vendor .git .hg' 
+let Grep_Skip_Dirs = '.svn log vendor .git .hg'
 " Ignore case, and don't process Binary filez.
 let Grep_Default_Options = '-i -I'
 " Just default the grep filelist to groovy, gsp and js files
@@ -181,12 +185,12 @@ let g:BufKillCommandWhenLastBufferKilled = ''
 
 " BufExplorer: {{{2
 " Split new window below current.
-let g:bufExplorerSplitBelow=1        
+let g:bufExplorerSplitBelow=1
 " Show relative paths.
-let g:bufExplorerShowRelativePath=1  
+let g:bufExplorerShowRelativePath=1
 " Do not go to 'active window' when I use BufExplorer
 " to open a buffer.  Use the existing window / tab that I'm in
-let g:bufExplorerFindActive=0        
+let g:bufExplorerFindActive=0
 " }}}2
 
 
@@ -220,7 +224,7 @@ let NERDCreateDefaultMappings=0
 " let g:miniBufExplMapWindowNavVim = 1
 " let g:miniBufExplMapWindowNavArrows = 1
 " let g:miniBufExplMapCTabSwitchBufs = 1
-" let g:miniBufExplModSelTarget = 1 
+" let g:miniBufExplModSelTarget = 1
 " let g:miniBufExplorerDebugLevel = 10 " MBE reports everything
 " let g:miniBufExplorerDebugMode  = 0  " Writes to a file
 " }}}2
@@ -247,3 +251,4 @@ if filereadable($HOME . "/.vim/personal/vimrc.local")
 endif
 "}}}
 " vim: fdm=marker
+
