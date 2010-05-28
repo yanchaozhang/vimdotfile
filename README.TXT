@@ -79,14 +79,13 @@ These are some shortcuts/handy mappings that I have.
             s Sort files differently
             r reverse sort
 
-<leader>nd  Inserts the current date in MM/DD/YYYY format
+<leader>id  Inserts the current date in MM/DD/YYYY format
 <leader>nw  Same as above, except with the weekday after it. ex: 12/01/2009 - Saturday
-<leader>nt  Inserts the current date in MM/DD/YYYY format, followed by the time
-
+<leader>it  Inserts the current date in MM/DD/YYYY format, followed by the time
 
 ====== XML Tidy ======
 <leader>xc  Check XML syntax using tidy.  Requires tidy to be installed
-<leader>xc! Check XML syntax, and if good, replace existing file 
+<leader>xx  Check XML syntax, and if good, replace existing file 
             with output from tidy
 
 ====== Window Navigation / Management ======
