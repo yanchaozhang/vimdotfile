@@ -238,6 +238,18 @@ let g:qb_hotkey = "<F9>"
 let g:cvWindowPosition = 1
 
 " }}}2
+
+" Templates {{{1
+" Load template when creating new file, if there is one
+" in the templates directory
+function! LoadTemplate(extension)
+    silent! :execute '0r ~/.vim/templates/' . a:extension . '.tpl'
+    " Highlight %VAR% placeholders with the Todo colour group
+    syn match Todo "%\u\+%" containedIn=ALL
+endfunction
+autocmd BufNewFile * silent! call LoadTemplate('%:e')
+" }}}1
+
 " Other Config Files {{{1
 "" ------------- Source other configfiles -------------
 so ~/.vim/personal/menus.vim
