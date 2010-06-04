@@ -96,16 +96,26 @@ else
     set dir=$HOME/tmp,/tmp
 endif
 
+function! MyStatusLine()
+
+    " return '%<%f %(%h%m%r %)%=%{fnamemodify(getcwd(), ":t")} %-15.15(%l,%c%V%)%P'
+
+    let l:statline = '%<%-.45f%m%w'
+    let l:statline = l:statline . '%r'                     "read only flag
+    let l:statline = l:statline . '%h'                     "help file flag
+    let l:statline = l:statline . '%='                     "left/right separator
+    let l:statline = l:statline . '%{" | " . fnamemodify(getcwd(), ":~:t") . " | "}'
+    let l:statline = l:statline . '%-15.15(%l, %v of %L%)'   "cursor line/total lines
+    let l:statline = l:statline . ' %P'                    "percent through file
+    return l:statline
+
+endfunction
+
 " Status Line
 " The %= means right-align.  The %Y means filetype
 " set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\
 set laststatus=2
-set statusline=%-.40f%m%w
-set statusline+=%r      "read only flag
-set statusline+=%h      "help file flag
-set statusline+=%=      "left/right separator
-set statusline+=(%l,\ %v)\ of\ %L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+set statusline=%!MyStatusLine()
 " Show a pending Vim command like "c" or "d" under the status bar
 set showcmd
 
