@@ -31,7 +31,7 @@ map <leader>hs :set hlsearch!<Enter>
 
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
-map <leader>e <ESC>:e %:h<CR>
+map <leader>e <ESC>:e %:p:h<CR>
 " Map ,f to be save.  Should help.
 map <leader>f :w<CR>
 " Shortcut to quit (like Mac)
