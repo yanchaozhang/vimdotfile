@@ -1,6 +1,17 @@
 ====== README ====== 
 These are my vim dotfiles.  There are many like it, but these are mine.
 
+====== INSTALLATION ======
+
+  - backup / move your ~/.vim directory to somewhere else
+  - backup / move your ~/.vimrc to somewhere else
+  - git clone this into your ~/.vim directory
+  - ln -s ~/.vim/personal/vimrc ~/.vimrc
+  - ln -s ~/.vim/personal/gvimrc ~/.gvimrc
+  - cd ~/.vim
+  - git submodule init
+  - git submodule update
+
 
 ====== See Also ====== 
 See vim-dotfiles.pdf and vim-dotfiles.tex for pretty-formatted
