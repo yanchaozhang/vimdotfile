@@ -13,6 +13,24 @@ These are my vim dotfiles.  There are many like it, but these are mine.
   - git submodule update
 
 
+====== Installing Plugins ======
+
+I use a "bundle" system for vim plugins.  This makes it much
+easier to install/uninstall plugins.
+
+See http://github.com/sunaku/.vim for more help on installing/updating plugins.
+
+I use the following steps to install plugins:
+
+  - download the plugin into a new directory in ~/.vim/bundle
+    - for example, ~/.vim/bundle/fooPlugin
+  - unzip the plugin into the new ~/.vim/bundle/fooPlugin directory
+  - run ~/.vim/bundle/doc.sh
+
+To unistall a plugin, delete the ~/.vim/bundle/fooPlugin directory
+
+Simple, no?
+
 ====== See Also ====== 
 See vim-dotfiles.pdf and vim-dotfiles.tex for pretty-formatted
 printouts of my deranged shortcut keys and overall Vim setup.
