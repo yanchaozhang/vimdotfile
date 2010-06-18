@@ -1,0 +1,14 @@
+set nocp
+filetype plugin indent on
+syntax enable
+
+let s:paths = [ "~/src/2ndparty/grails-vim",
+              \ "/var/lib/vim/addons",
+              \ "/usr/share/vim/vimfiles",
+              \ "/usr/share/vim/vim72",
+              \ "/usr/share/vim/vimfiles/after",
+              \ "/var/lib/vim/addons/after",
+              \ "~/src/2ndparty/grails-vim/after" ]
+
+exe "set runtimepath=" . join(s:paths, ",")
+" set runtimepath=/home/ak/.testvim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,/home/ak/.testvim/after
