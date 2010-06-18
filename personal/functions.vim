@@ -32,7 +32,7 @@ nnoremap <Leader>m :call <SID>GrepCurFile()<CR>
 " Problem is that if I open a help file, and issue a :BD, then
 " it tries to find the last used buffer, and I want to blast the help window.
 function! s:BlastBuffer()
-    if &filetype == 'help' || &filetype == 'netrw'
+    if &filetype == 'help'
         " Just close it.
         :bw
     else
