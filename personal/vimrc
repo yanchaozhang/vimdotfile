@@ -1,5 +1,8 @@
 " General Options: {{{1
 " append all bundles in the runtimepath to the runtimepath
+" This is a hack mentioned here:
+" http://github.com/tpope/vim-pathogen/issues/issue/2
+filetype off
 let s:bundles = tr(globpath(&rtp, 'bundle/*/'), "\n", ',')
 let s:afters = tr(globpath(s:bundles, 'after/'), "\n", ',')
 let &runtimepath = join([&runtimepath, s:bundles, s:afters], ',')
