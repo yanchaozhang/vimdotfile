@@ -107,15 +107,6 @@ nnoremap <Leader>cd :cd %:h<CR>
 " Grails recursive find-in-files, defaulting to groovy, gsp files
 nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
 
-" <leader>o will search in the current directory.
-" mnemonic - Like "Open", which usually defaults to current dir.
-" nnoremap <leader>o :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
-nnoremap <leader>o :FufFileWithCurrentBufferDir<CR>
-
-" Trying leader . out for now, also
-" Mnemonic: :e .
-nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
-" nnoremap <leader>. :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files

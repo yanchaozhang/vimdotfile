@@ -289,16 +289,29 @@ nmap <silent> <F4> :call <SID>QFixToggle()<CR>
 " Checks if current directory is $HOME or /, and cancels
 " the fuzzy finder search -- which bring the computer to a halt
 " due to directory size, etc.
-function! s:SafeFuzzySearch()
+function! s:SafeFuzzySearch(command)
     let curdir = getcwd()
     if curdir == $HOME || curdir == "/" || curdir =~ "/Documents$" || curdir == $BASE_HOME
         echo "You're in a big directory.  Aborting Fuzzy Search"
         return
     endif
-    FufFile**/
+    exe a:command
 endfunction
 
-nmap <silent> <leader>t :call <SID>SafeFuzzySearch()<CR>
+
+
+nmap <silent> <leader>t :call <SID>SafeFuzzySearch("FufFile**/")<CR>
+
+" <leader>o will search in the current directory.
+" mnemonic - Like "Open", which usually defaults to current dir.
+" nnoremap <leader>o :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
+nnoremap <leader>o :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir**/")<CR>
+" Leader + "." only searches in current buffer's dir by default, no
+" recursion
+nnoremap <leader>. :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
+
+" Mnemonic: :e .
+nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
 
 let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
