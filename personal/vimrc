@@ -217,6 +217,8 @@ let g:bufExplorerFindActive=0
 " Map ctrl-t to open in tab, like other plugins
 " Initializes g:FuzzyFinderOptions.
 let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
+
+let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/)'
 " let g:FuzzyFinderOptions.Base.key_open_tab = '<S-Enter>'
 " let g:FuzzyFinderOptions.Base.key_ignore_case = '<C-]>'
 " Don't ignore case.  If I type in "RC" I want to find stuff with
