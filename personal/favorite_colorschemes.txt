@@ -1,6 +1,7 @@
 # This file is just my notes about favorite colorschemes
 
 ## Favorites
+wombat256
 elda!
 moria
 macvim
