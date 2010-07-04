@@ -172,6 +172,11 @@ if has("autocmd")
 else
     echo "I don't have autocmd"
 endif " has("autocmd") End Arch vimrc stuff
+
+" Don't annoyingly jump to the start of the line
+" when switching back to a buffer.
+" http://stackoverflow.com/questions/1219518/keep-the-cursor-column-while-swapping-buffers-in-vim
+set nostartofline
 " }}}1
 " Plugin Customizations: {{{1
 " Rgrep: {{{2
