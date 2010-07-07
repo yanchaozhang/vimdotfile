@@ -13,3 +13,5 @@ set vb t_vb=
 if filereadable($HOME . "/.vim/personal/gvimrc.local")
     so ~/.vim/personal/gvimrc.local
 endif
+
+set novisualbell
