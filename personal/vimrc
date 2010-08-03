@@ -94,7 +94,7 @@ set guitabtooltip=%N\ %F
 " Set directory for swap files.
 " see :h swap
 if has('win32')
-    set dir=c:\nate\vimswapfiles
+    set dir=c:\Temp\vimswapfiles
 else
     set dir=$HOME/tmp,/tmp
 endif
@@ -129,7 +129,11 @@ set showcmd
 " e.g. mkdir -p ~/tmp/vimbackups
 
 set backup
-set backupdir=$HOME/tmp/vimbackups,/tmp
+if has('win32')
+    set backupdir=c:\Temp\vimbackups
+else
+    set backupdir=~/tmp/vimbackups
+endif
 
 " set the directory of the explorer = to the directory
 " of the current buffer
