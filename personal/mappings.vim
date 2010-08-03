@@ -87,6 +87,8 @@ map <A-Right> :bn<CR>
 map <F7> :e ~/.bookmarks<CR>
 map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to bookmarks file, idiot."<CR>
 
+nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
+
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
