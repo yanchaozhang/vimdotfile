@@ -198,6 +198,12 @@ let Grep_Skip_Dirs = '.svn log vendor .git .hg'
 let Grep_Default_Options = '-i -I'
 " Just default the grep filelist to groovy, gsp and js files
 let Grep_Default_Filelist = '*.groovy *.gsp'
+
+if has('win32')
+    let Grep_Path = 'c:\cygwin\bin\grep'
+    let Grep_Find_Path = 'c:\cygwin\bin\find'
+    let Grep_Xargs_Path = 'c:\cygwin\bin\xargs'
+endif
 " }}}2
 
 " BufKill: {{{2
