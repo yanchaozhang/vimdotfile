@@ -4,6 +4,9 @@
 " http://github.com/tpope/vim-pathogen/issues/issue/2
 filetype off
 let s:bundles = tr(globpath(&rtp, 'bundle/*/'), "\n", ',')
+if has("win32")
+    let s:bundles = tr(s:bundles, "\\", "/")
+endif
 let s:afters = tr(globpath(s:bundles, 'after/'), "\n", ',')
 let &runtimepath = join([&runtimepath, s:bundles, s:afters], ',')
 
@@ -94,7 +97,7 @@ set guitabtooltip=%N\ %F
 " Set directory for swap files.
 " see :h swap
 if has('win32')
-    set dir=c:\nate\vimswapfiles
+    set dir=c:\Temp\vimswapfiles
 else
     set dir=$HOME/tmp,/tmp
 endif
@@ -129,7 +132,11 @@ set showcmd
 " e.g. mkdir -p ~/tmp/vimbackups
 
 set backup
-set backupdir=$HOME/tmp/vimbackups,/tmp
+if has('win32')
+    set backupdir=c:\Temp\vimbackups
+else
+    set backupdir=~/tmp/vimbackups
+endif
 
 " set the directory of the explorer = to the directory
 " of the current buffer
@@ -194,6 +201,12 @@ let Grep_Skip_Dirs = '.svn log vendor .git .hg'
 let Grep_Default_Options = '-i -I'
 " Just default the grep filelist to groovy, gsp and js files
 let Grep_Default_Filelist = '*.groovy *.gsp'
+
+if has('win32')
+    let Grep_Path = 'c:\cygwin\bin\grep'
+    let Grep_Find_Path = 'c:\cygwin\bin\find'
+    let Grep_Xargs_Path = 'c:\cygwin\bin\xargs'
+endif
 " }}}2
 
 " BufKill: {{{2
@@ -262,25 +275,33 @@ let g:cvWindowPosition = 1
 " Load template when creating new file, if there is one
 " in the templates directory
 function! LoadTemplate(extension)
-    silent! :execute '0r ~/.vim/templates/' . a:extension . '.tpl'
+    let l:templateName='templates/' . a:extension . '.tpl'
+    " find this file in user's vimfiles or .vim dir
+    let l:filename = findfile(l:templateName, &rtp)
+    silent! execute '0r ' . l:filename
     " Highlight %VAR% placeholders with the Todo colour group
     syn match Todo "%\u\+%" containedIn=ALL
 endfunction
-autocmd BufNewFile * silent! call LoadTemplate('%:e')
+autocmd BufNewFile * call LoadTemplate(expand('%:e'))
 " }}}1
 
 " Other Config Files {{{1
 "" ------------- Source other configfiles -------------
-so ~/.vim/personal/menus.vim
-so ~/.vim/personal/mappings.vim
-so ~/.vim/personal/directory_shortcuts.vim
-so ~/.vim/personal/functions.vim
-so ~/.vim/personal/fonts_and_syntax.vim
+" First entry in runtimepath is the user's local vim dir
+" according to the steps detailed in :help runtimepath
+let s:vim_dir = split(&rtp, ",")[0]
+exe "so " . s:vim_dir . "/personal/menus.vim"
+exe "so " . s:vim_dir . "/personal/mappings.vim"
+exe "so " . s:vim_dir . "/personal/directory_shortcuts.vim"
+exe "so " . s:vim_dir . "/personal/functions.vim"
+exe "so " . s:vim_dir . "/personal/fonts_and_syntax.vim"
+
 " Source vimrc.local if it exists.
 " doesn't interpolate the ~/
-if filereadable($HOME . "/.vim/personal/vimrc.local")
-    so ~/.vim/personal/vimrc.local
+if filereadable(s:vim_dir . "/personal/vimrc.local")
+    exe "so " . s:vim_dir . "/personal/vimrc.local"
 endif
 "}}}
 " vim: fdm=marker
 
+set bg=dark
