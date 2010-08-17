@@ -62,7 +62,8 @@ if has('mac')
     set guifont=Monaco:h14
     " set guifont=Bitstream\ Vera\ Sans\ Mono:h14
 elseif has('gui_win32')
-    set guifont=courier_new:h10 
+    " set guifont=courier_new:h10 
+    set guifont=Inconsolata:h12:cANSI
 elseif has('gui_gtk')
     " set guifont=Courier\ New\ 12
     " set guifont=Bitstream\ Vera\ Sans\ Mono\ 11
