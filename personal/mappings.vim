@@ -93,22 +93,29 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 map <leader>r :FufMruFile<CR>
 
 " Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
-nnoremap <Leader>j :Rgrep PROMPT * .<CR>
+function! NjnSearch(dir)
+    echo a:dir
+    if has("win32")
+        exe "Rgrep PROMPT \"*\" " . shellescape(a:dir)
+    else
+        exe "Rgrep PROMPT * " . shellescape(a:dir)
+    endif
+endfunction
+
+nnoremap <Leader>sf :call NjnSearch(getcwd())<CR>
+nnoremap <Leader>j :call NjnSearch(getcwd())<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
-nnoremap <Leader>ss :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
+nnoremap <Leader>sh :call NjnSearch(expand('%:h'))<CR>
+nnoremap <Leader>ss :call NjnSearch(expand('%:h'))<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
 
-
 " Grails recursive find-in-files, defaulting to groovy, gsp files
 nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
-
 
 " Use F9 for running stuff
 " See the related ftplugin files
