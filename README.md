@@ -1,8 +1,8 @@
-# README
+# Overview
 
 These are my vim dotfiles.  There are many like it, but these are mine.
 
-# INSTALLATION
+# Installation
 
   - backup / move your ~/.vim directory to somewhere else
   - backup / move your ~/.vimrc to somewhere else
@@ -32,18 +32,18 @@ To unistall a plugin, delete the ~/.vim/bundle/fooPlugin directory
 
 Simple, no?
 
-# See Also #
+# See Also
 
 See vim-dotfiles.pdf and vim-dotfiles.tex for pretty-formatted
 printouts of my deranged shortcut keys and overall Vim setup.
 
 
-# File Management #
+# File Management
 
  <leader>f     Save current file
  <leader>d     Close current buffer
 
-# Shortcuts #
+# Shortcuts
 
 These are some shortcuts/handy mappings that I have.
 <leader>t  Open Fuzzy Finder in current directory, and search
