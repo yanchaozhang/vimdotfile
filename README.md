@@ -1,17 +1,43 @@
+
 # Overview
 
 These are my vim dotfiles.  There are many like it, but these are mine.
 
 # Installation
 
-  - backup / move your ~/.vim directory to somewhere else
-  - backup / move your ~/.vimrc to somewhere else
-  - git clone this into your ~/.vim directory
-  - ln -s ~/.vim/personal/vimrc ~/.vimrc
-  - ln -s ~/.vim/personal/gvimrc ~/.gvimrc
-  - cd ~/.vim
-  - git submodule init
-  - git submodule update
+  - I recommend that you backup/move your existing Vim settings:
+    - *nix systems:
+
+      cd $HOME
+      mv .vimrc   .vimrc.bak
+      mv .gvimrc .gvimrc.bak
+      mv .vim    .vim.bak
+
+    - Windows systems:
+
+      cd %HOME%
+      move _vimrc    _vimrc.bak
+      move _gvimrc   _gvimrc.bak
+      move vimfiles  vimfiles.bak
+
+  - Clone this repository or download it using the "Download Source" button on GitHub.
+    - Unzip the source if necessary
+  - Move the unzipped / cloned directory 
+    - To "$HOME/.vim" if you're on *nix, 
+    - To "%HOME%\vimfiles" if you're on Windows
+  - Use my vimrc and gvimrc:
+    - On *nix
+      - ln -s ~/.vim/personal/vimrc ~/.vimrc
+      - ln -s ~/.vim/personal/gvimrc ~/.gvimrc
+    - On Windows
+      copy vimfiles\personal\vimrc _vimrc
+      copy vimfiles\personal\gvimrc _gvimrc
+
+  - Finally, (whew), initialize any submodules in this repo (if you have git)
+    otherwise, don't worry about it.
+    - cd ~/.vim
+    - git submodule init
+    - git submodule update
 
 
 # Installing Plugins
