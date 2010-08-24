@@ -29,6 +29,9 @@ set incsearch
 " use confirm instead of aborting an action
 set confirm
 
+" Make backspace behave on Windoze
+set backspace=indent,eol,start
+
 " http://items.sjbach.com/319/configuring-vim-right
 " current directory is always matching the
 " content of the active window
@@ -206,6 +209,7 @@ if has('win32')
     let Grep_Path = 'c:\cygwin\bin\grep'
     let Grep_Find_Path = 'c:\cygwin\bin\find'
     let Grep_Xargs_Path = 'c:\cygwin\bin\xargs'
+    let Grep_Cygwin_Find = 1
 endif
 " }}}2
 
