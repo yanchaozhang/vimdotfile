@@ -49,9 +49,6 @@ imap <F2> <ESC>:BufExplorer<CR>
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" Search Notesmine directory
-map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
-
 " Git Gui (mnemonic - (n)ate (v)ersion control :-/
 map <leader>nv :!git gui &<CR>
 
@@ -92,7 +89,6 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
-" Recursive find-in-files (Think "f"ind in "f"iles)
 function! NjnSearch(dir)
     echo a:dir
     if has("win32")
@@ -104,6 +100,9 @@ endfunction
 
 nnoremap <Leader>sf :call NjnSearch(getcwd())<CR>
 nnoremap <Leader>j :call NjnSearch(getcwd())<CR>
+
+" Search Notesmine directory
+map <leader>nm :Rgrep --exclude=".git/*" PROMPT "*" $NOTESMINE_DIR<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
