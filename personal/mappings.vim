@@ -91,10 +91,15 @@ map <leader>r :FufMruFile<CR>
 
 function! NjnSearch(dir)
     echo a:dir
+    let l:searchdir = a:dir
+    if l:searchdir == ""
+        let l:searchdir = getcwd()
+    endif
+
     if has("win32")
-        exe "Rgrep PROMPT \"*\" " . shellescape(a:dir)
+        exe "Rgrep PROMPT \"*\" " . shellescape(l:searchdir)
     else
-        exe "Rgrep PROMPT * " . shellescape(a:dir)
+        exe "Rgrep PROMPT * " . shellescape(l:searchdir)
     endif
 endfunction
 
@@ -107,8 +112,8 @@ map <leader>nm :Rgrep --exclude=".git/*" PROMPT "*" $NOTESMINE_DIR<CR>
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :call NjnSearch(expand('%:h'))<CR>
-nnoremap <Leader>ss :call NjnSearch(expand('%:h'))<CR>
+nnoremap <Leader>sh :call NjnSearch(expand('%:h:p'))<CR>
+nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'))<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
