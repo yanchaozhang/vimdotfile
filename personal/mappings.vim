@@ -303,4 +303,8 @@ if !hasmapto('<Plug>BufKillBundo')
   nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
 endif
 
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 " vim: fdm=marker
