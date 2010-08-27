@@ -251,6 +251,9 @@ let NERDTreeIgnore=['\.class', '\~$']
 " Put a space after comments, like // foo instead of //foo
 let NERDSpaceDelims=1
 let NERDCreateDefaultMappings=0
+
+" Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " }}}2
 
 " MiniBufExplorer (defunct) {{{2
@@ -302,6 +305,8 @@ if filereadable(s:vim_dir . "/personal/vimrc.local")
     exe "so " . s:vim_dir . "/personal/vimrc.local"
 endif
 "}}}
-" vim: fdm=marker
 
-set bg=dark
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+" vim: fdm=marker
