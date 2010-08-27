@@ -49,9 +49,6 @@ imap <F2> <ESC>:BufExplorer<CR>
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" Search Notesmine directory
-map <leader>nm :Rgrep --exclude=".git/*" PROMPT * ~/Documents/notesmine-org<CR>
-
 " Git Gui (mnemonic - (n)ate (v)ersion control :-/
 map <leader>nv :!git gui &<CR>
 
@@ -92,23 +89,37 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
-" Recursive find-in-files (Think "f"ind in "f"iles)
-nnoremap <Leader>sf :Rgrep PROMPT * .<CR>
-nnoremap <Leader>j :Rgrep PROMPT * .<CR>
+function! NjnSearch(dir)
+    echo a:dir
+    let l:searchdir = a:dir
+    if l:searchdir == ""
+        let l:searchdir = getcwd()
+    endif
+
+    if has("win32")
+        exe "Rgrep PROMPT \"*\" " . shellescape(l:searchdir)
+    else
+        exe "Rgrep PROMPT * " . shellescape(l:searchdir)
+    endif
+endfunction
+
+nnoremap <Leader>sf :call NjnSearch(getcwd())<CR>
+nnoremap <Leader>j :call NjnSearch(getcwd())<CR>
+
+" Search Notesmine directory
+map <leader>nm :Rgrep --exclude=".git/*" PROMPT "*" $NOTESMINE_DIR<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
-nnoremap <Leader>ss :exe "Rgrep PROMPT * " . shellescape(expand('%:h'))<CR>
+nnoremap <Leader>sh :call NjnSearch(expand('%:h:p'))<CR>
+nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'))<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
 
-
 " Grails recursive find-in-files, defaulting to groovy, gsp files
 nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
-
 
 " Use F9 for running stuff
 " See the related ftplugin files
@@ -292,4 +303,8 @@ if !hasmapto('<Plug>BufKillBundo')
   nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
 endif
 
+" Use CTRL-S for saving, also in Insert mode
+noremap <C-S> :update<CR>
+vnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
 " vim: fdm=marker
