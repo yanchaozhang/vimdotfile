@@ -297,13 +297,11 @@ autocmd BufNewFile * call LoadTemplate(expand('%:e'))
 
 " Other Config Files {{{1
 "" ------------- Source other configfiles -------------
-" First entry in runtimepath is the user's local vim dir
-" according to the steps detailed in :help runtimepath
-exe "so " . g:vim_dir . "/personal/menus.vim"
-exe "so " . g:vim_dir . "/personal/mappings.vim"
-exe "so " . g:vim_dir . "/personal/directory_shortcuts.vim"
-exe "so " . g:vim_dir . "/personal/functions.vim"
-exe "so " . g:vim_dir . "/personal/fonts_and_syntax.vim"
+runtime personal/menus.vim
+runtime personal/mappings.vim
+runtime personal/directory_shortcuts.vim
+runtime personal/functions.vim
+runtime personal/fonts_and_syntax.vim
 
 " Source vimrc.local if it exists.
 " doesn't interpolate the ~/
