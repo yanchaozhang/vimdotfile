@@ -103,9 +103,9 @@ set guitabtooltip=%N\ %F
 " Set directory for swap files.
 " see :h swap
 if has('win32')
-    set dir=c:\Temp\vimswapfiles
+    set dir=c:\Temp\vimswapfiles\\\\
 else
-    set dir=$HOME/tmp,/tmp
+    set dir=$HOME/tmp//,/tmp//
 endif
 
 function! MyStatusLine()
