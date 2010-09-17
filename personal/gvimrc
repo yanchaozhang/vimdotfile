@@ -10,8 +10,8 @@ set vb t_vb=
 
 " $HOME is necessary for some reason -- filereadable
 " doesn't interpolate the ~/
-if filereadable($HOME . "/.vim/personal/gvimrc.local")
-    so ~/.vim/personal/gvimrc.local
+if filereadable(g:vim_dir . "/personal/gvimrc.local")
+    exe "so " . g:vim_dir . "/personal/gvimrc.local"
 endif
 
 set novisualbell
