@@ -107,7 +107,7 @@ nnoremap <Leader>sf :call NjnSearch(getcwd())<CR>
 nnoremap <Leader>j :call NjnSearch(getcwd())<CR>
 
 " Search Notesmine directory
-map <leader>nm :Rgrep --exclude=".git/*" PROMPT "*" $NOTESMINE_DIR<CR>
+map <leader>nm :call NjnSearch($NOTESMINE_DIR)<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
