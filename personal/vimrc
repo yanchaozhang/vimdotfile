@@ -213,6 +213,7 @@ if has('win32')
     let Grep_Find_Path = 'c:\cygwin\bin\find'
     let Grep_Xargs_Path = 'c:\cygwin\bin\xargs'
     let Grep_Cygwin_Find = 1
+    let Grep_Null_Device = 'NUL'
 endif
 " }}}2
 
@@ -244,7 +245,7 @@ let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/)'
 " Don't ignore case.  If I type in "RC" I want to find stuff with
 " capital R and C in it.
 let g:FuzzyFinderOptions.Base.ignore_case = 1
-let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])target[/\\]'
+let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])target[/\\]|.*[/\\]$'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
 let g:fuf_modesDisable = ['mrucmd']
 
@@ -300,13 +301,15 @@ exe "so " . g:vim_dir . "/personal/menus.vim"
 exe "so " . g:vim_dir . "/personal/mappings.vim"
 exe "so " . g:vim_dir . "/personal/directory_shortcuts.vim"
 exe "so " . g:vim_dir . "/personal/functions.vim"
-exe "so " . g:vim_dir . "/personal/fonts_and_syntax.vim"
 
 " Source vimrc.local if it exists.
 " doesn't interpolate the ~/
 if filereadable(g:vim_dir . "/personal/vimrc.local")
     exe "so " . g:vim_dir . "/personal/vimrc.local"
 endif
+exe "so " . g:vim_dir . "/personal/fonts_and_syntax.vim"
+
+let Tlist_Ctags_Cmd="c:/tools/ctags/ctags.exe"
 "}}}
 " vim: fdm=marker
 
