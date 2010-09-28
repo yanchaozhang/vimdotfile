@@ -303,18 +303,15 @@ runtime personal/mappings.vim
 runtime personal/directory_shortcuts.vim
 runtime personal/functions.vim
 runtime personal/fonts_and_syntax.vim
-
 " Source vimrc.local if it exists.
-" doesn't interpolate the ~/
-if filereadable(g:vim_dir . "/personal/vimrc.local")
-    exe "so " . g:vim_dir . "/personal/vimrc.local"
-endif
-exe "so " . g:vim_dir . "/personal/fonts_and_syntax.vim"
+runtime personal/vimrc.local
 
 let Tlist_Ctags_Cmd="c:/tools/ctags/ctags.exe"
 "}}}
 
 " Use the same symbols as TextMate for tabstops and EOLs
-set listchars=tab:▸\ ,eol:¬
+if ! has("win32")
+    set listchars=tab:▸\ ,eol:¬
+endif
 
 " vim: fdm=marker
