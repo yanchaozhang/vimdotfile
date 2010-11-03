@@ -29,6 +29,19 @@ map Y y$
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
+" Dokuwiki to Markdown helpers
+
+func! DokuwikiToMarkDown()
+    exec "%s/^=\\{6}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{5}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{4}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{3}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{2}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{1}\\s*\\([^=]*\\)=*/# \\1/e"
+endfunc
+
+map <Leader>nd :call DokuwikiToMarkDown()<CR>
+
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e <ESC>:e %:p:h<CR>
@@ -71,8 +84,8 @@ map <leader>R :FufRenewCache<CR>
 
 
 " diffchanges.vim mappings {{{2
-nmap <unique> <leader>nd <Plug>DiffChangesDiffToggle
-nmap <unique> <leader>np <Plug>DiffChangesPatchToggle 
+" nmap <unique> <leader>nd <Plug>DiffChangesDiffToggle
+" nmap <unique> <leader>np <Plug>DiffChangesPatchToggle 
 " }}}2
 
 
