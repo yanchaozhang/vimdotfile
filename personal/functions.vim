@@ -291,14 +291,13 @@ nmap <silent> <F4> :call <SID>QFixToggle()<CR>
 " due to directory size, etc.
 function! s:SafeFuzzySearch(command)
     let curdir = getcwd()
-    if curdir == $HOME || curdir == "/" || curdir =~ "/Documents$" || curdir == $BASE_HOME
+    let dontSearch = [ $HOME, "/", "/Documents", $BASE_HOME, $HOMEDRIVE . $HOMEPATH ]
+    if index(dontSearch, getcwd(), 0, 1) != -1
         echo "You're in a big directory.  Aborting Fuzzy Search"
         return
     endif
     exe a:command
 endfunction
-
-
 
 nmap <silent> <leader>t :call <SID>SafeFuzzySearch("FufFile**/")<CR>
 
