@@ -327,3 +327,13 @@ endfunction
 " execute one of the user-defined commands in GetFavoriteCommands
 map <leader>nc :call fuf#callbackitem#launch('', 0, 'Run Command>', favoriteCommandListener, keys(g:njn_favCommands), 0)<CR>
 map <leader>a :call fuf#callbackitem#launch('', 0, 'Run Command>', favoriteCommandListener, keys(g:njn_favCommands), 0)<CR>
+
+function! DokuToOrg()
+    %s/\([^=]\{1}\)\(=\{3,}\s\)/\1\r\2/gc
+    %s/^=\{6}\s\+\(.*\)\s*=\{6}$/* \1/gce
+    %s/^=\{5}\s\+\(.*\)\s*=\{5}$/** \1/gce
+    %s/^=\{4}\s\+\(.*\)\s*=\{4}$/*** \1/gce
+    %s/^=\{3}\s\+\(.*\)\s*=\{3}$/**** \1/gce
+    %s/^=\{2}\s\+\(.*\)\s*=\{2}$/***** \1/gce
+    %s/^=\{1}\s\+\(.*\)\s*=\{1}$/****** \1/gce
+endfunction
