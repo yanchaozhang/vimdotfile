@@ -187,13 +187,18 @@ These are some shortcuts/handy mappings that I have.
 
 
 # Color Schemes
+http://stackoverflow.com/questions/524585/what-is-your-favorite-colorscheme-for-programming-in-vim
 
-Favorite color schemes:
+Favorite color schemes (to sample the scheme, put cursor on the line and type
+"ayy@a")
 
 :colo moria
+:colo wombat
 :colo vividchalk
 :colo skittles_dark
 :colo vibrantink
+:colo slate
+
 
 New Color Schemes:
 :colo molokai
