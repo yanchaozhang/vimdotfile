@@ -1,6 +1,7 @@
 # This file is just my notes about favorite colorschemes
 
 ## Favorites
+ir_black
 wombat256
 elda!
 moria
