@@ -20,3 +20,8 @@ paintbox
 patrickgenpaul
 twilight
 github
+
+ir_black
+  When I switch buffers, the buffers are highlighted in a really nasty light-yellow
+wombat256
+  A bit too gray
