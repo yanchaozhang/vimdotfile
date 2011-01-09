@@ -336,3 +336,12 @@ function! DokuToOrg()
     %s/^=\{2}\s\+\(.*\)\s*=\{2}$/***** \1/gce
     %s/^=\{1}\s\+\(.*\)\s*=\{1}$/****** \1/gce
 endfunction
+
+function! NewBlog()
+    let title = input("Title:")
+    let filename = substitute(l:title, "\\s", "-", "g")
+    let l:filename = tolower(l:filename)
+    exe "e " . strftime("%F") . "-" . l:filename . ".md"
+    silent! execute "%s/@DATE@/" .  strftime("%F") . "/g"
+    silent! execute "%s/@TITLE@/" .  l:title . "/g"
+endfunction
