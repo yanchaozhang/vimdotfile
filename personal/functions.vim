@@ -337,6 +337,8 @@ function! DokuToOrg()
     %s/^=\{1}\s\+\(.*\)\s*=\{1}$/****** \1/gce
 endfunction
 
+map <Leader>no :call DokuwikiToOrg()<CR>
+
 function! NewBlog()
     let title = input("Title:")
     let filename = substitute(l:title, "\\s", "-", "g")
