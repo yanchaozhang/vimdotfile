@@ -17,7 +17,7 @@ map <unique> <silent> <leader>vs :e $SRC_DIR<CR>
 map <unique> <silent> <leader>vr :e $SRC_DIR/ruby<CR>
 
 " Bash 
-map <unique> <silent> <leader>vb :e $SRC_DIR/bash<CR>
+map <unique> <silent> <leader>vb :e $NATENEFF_DIR<CR>
 
 " Groovy 
 map <unique> <silent> <leader>vg :e $SRC_DIR/groovy<CR>

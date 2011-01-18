@@ -41,6 +41,8 @@ func! DokuwikiToMarkDown()
 endfunc
 
 map <Leader>nd :call DokuwikiToMarkDown()<CR>
+" Change current directory to this file's directory
+map <Leader>nh :cd %:h<CR><Bar>:echo "Dir is now: " . getcwd()<CR>
 
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
@@ -100,31 +102,37 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
-function! NjnSearch(dir)
-    echo a:dir
+function! NjnSearch(dir, default_to_word_under_cursor)
     let l:searchdir = a:dir
     if l:searchdir == ""
         let l:searchdir = getcwd()
     endif
 
-    if has("win32")
-        exe "Rgrep PROMPT \"*\" " . shellescape(l:searchdir)
+    if a:default_to_word_under_cursor
+        let l:promptOption = "PROMPT"
     else
-        exe "Rgrep PROMPT * " . shellescape(l:searchdir)
+        let l:promptOption = "PROMPTNODEFAULT"
+    endif
+    if has("win32")
+        exe "Rgrep " . l:promptOption . " \"*\" " . shellescape(l:searchdir)
+    else
+        exe "Rgrep " . l:promptOption . " * " . shellescape(l:searchdir)
     endif
 endfunction
 
-nnoremap <Leader>sf :call NjnSearch(getcwd())<CR>
-nnoremap <Leader>j :call NjnSearch(getcwd())<CR>
-
-" Search Notesmine directory
-map <leader>nm :call NjnSearch($NOTESMINE_DIR)<CR>
+nnoremap <Leader>sf :call NjnSearch(getcwd(), false)<CR>
+nnoremap <Leader>sF :call NjnSearch(getcwd(), true)<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :call NjnSearch(expand('%:h:p'))<CR>
-nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'))<CR>
+nnoremap <Leader>sh :call NjnSearch(expand('%:h:p'), 0)<CR>
+nnoremap <Leader>sH :call NjnSearch(expand('%:h:p'), -1)<CR>
+nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'), 0)<CR>
+nnoremap <Leader>sS :call NjnSearch(expand('%:h:p'), -1)<CR>
+
+" Search Notesmine directory
+nnoremap <Leader>nm :call NjnSearch($NOTESMINE_DIR)<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
