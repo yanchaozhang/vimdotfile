@@ -37,6 +37,7 @@ map <unique> <silent> <leader>vn :e $NOTESMINE_DIR<CR>
 " Personal
 map <unique> <silent> <leader>vo :e $ORG_DIR<CR>
 map <unique> <silent> <leader>vp :e $ORG_DIR<CR>
+map <silent> <leader>na :e $ORG_DIR/refile.org<CR>Go
 
 " Enrollio
 map <unique> <silent> <leader>ve :e $ENROLLIO_DIR<CR>
