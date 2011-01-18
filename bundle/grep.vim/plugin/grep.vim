@@ -514,12 +514,20 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
     endif
 
     " No pattern argument supplied? Get the identifier and file list from user
-    if pattern == 'PROMPT' || pattern == ""
-        let pattern = input("Search for pattern: ", expand("<cword>"))
-        if pattern == ""
-            return
+    " If PROMPTNODEFAULT is used, then don't use the word under the cursor as
+    " the default pattern to search for.
+    if match(pattern, 'PROMPT') != -1 || pattern == ""
+        let default_pattern = expand("<cword>")
+        if match(pattern, 'PROMPTNODEFAULT') != -1
+            let default_pattern = ""
         endif
+        let pattern = input("Search for pattern: ", default_pattern)
     endif
+
+    if pattern == ""
+        return
+    endif
+
     " Put shell escape on our pattern
     let pattern = g:Grep_Shell_Quote_Char . pattern . 
                     \ g:Grep_Shell_Quote_Char
