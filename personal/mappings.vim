@@ -41,8 +41,13 @@ func! DokuwikiToMarkDown()
 endfunc
 
 map <Leader>nd :call DokuwikiToMarkDown()<CR>
+
 " Change current directory to this file's directory
 map <Leader>nh :cd %:h<CR><Bar>:echo "Dir is now: " . getcwd()<CR>
+
+" Buflisted hack
+map <Leader>nl :set buflisted<CR>
+map <Leader>nb :set buflisted?<CR>
 
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
