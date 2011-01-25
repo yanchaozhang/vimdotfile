@@ -75,7 +75,8 @@ map <leader>nv :!git gui &<CR>
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
-map <leader>b :FufBuffer<CR>
+map <leader>bu :FufBuffer<CR>
+map <leader>y :FufBuffer<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
