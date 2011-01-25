@@ -137,7 +137,7 @@ nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'), 0)<CR>
 nnoremap <Leader>sS :call NjnSearch(expand('%:h:p'), -1)<CR>
 
 " Search Notesmine directory
-nnoremap <Leader>nm :call NjnSearch($NOTESMINE_DIR)<CR>
+nnoremap <Leader>nm :call NjnSearch($NOTESMINE_DIR, 0)<CR>
 
 " CD to this file's directry
 nnoremap <Leader>cd :cd %:h<CR>
