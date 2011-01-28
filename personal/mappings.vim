@@ -94,10 +94,6 @@ map <leader>R :FufRenewCache<CR>
 " nmap <unique> <leader>np <Plug>DiffChangesPatchToggle 
 " }}}2
 
-
-map <A-Left> :bp<CR>
-map <A-Right> :bn<CR>
-
 " Use F7 for bookmark files
 " map <F7> :FufBookmark<CR>
 map <F7> :e ~/.bookmarks<CR>
