@@ -122,8 +122,8 @@ function! NjnSearch(dir, default_to_word_under_cursor)
     endif
 endfunction
 
-nnoremap <Leader>sf :call NjnSearch(getcwd(), false)<CR>
-nnoremap <Leader>sF :call NjnSearch(getcwd(), true)<CR>
+nnoremap <Leader>sf :call NjnSearch(getcwd(), 0)<CR>
+nnoremap <Leader>sF :call NjnSearch(getcwd(), -1)<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
