@@ -309,9 +309,6 @@ nnoremap <leader>o :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir**/")<
 " recursion
 nnoremap <leader>. :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
 
-" Mnemonic: :e .
-nnoremap <leader>. :FufFileWithCurrentBufferDir<CR>
-
 let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
