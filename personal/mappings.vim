@@ -69,8 +69,8 @@ imap <F2> <ESC>:BufExplorer<CR>
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
-" Git Gui (mnemonic - (n)ate (v)ersion control :-/
-map <leader>nv :!git gui &<CR>
+" Git Gui (mnemonic - (n)ate (g)it gui
+map <leader>ng :!git gui &<CR>
 
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
