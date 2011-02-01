@@ -52,6 +52,8 @@ map <Leader>nb :set buflisted?<CR>
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
 map <leader>e <ESC>:e %:p:h<CR>
+map <leader>E <ESC>:e .<CR>
+
 " Map ,f to be save.  Should help.
 map <leader>f :w<CR>
 " Shortcut to quit (like Mac)
