@@ -334,7 +334,7 @@ function! DokuToOrg()
     %s/^=\{1}\s\+\(.*\)\s*=\{1}$/****** \1/gce
 endfunction
 
-map <Leader>no :call DokuwikiToOrg()<CR>
+map <Leader>no :call DokuToOrg()<CR>
 
 function! NewBlog()
     let title = input("Title:")
