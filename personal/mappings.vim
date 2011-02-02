@@ -301,30 +301,6 @@ map <leader>cv <Plug>CompView
 " map <leader>x :!tidy -xml -im --indent-spaces 4 --wrap 90 %<CR>
 " Use Control+Return in Quickfix window to preview
 map <C-Return> <CR><C-W>p
-" ----------------- BufKill Mappings ----------------
-" Used mainly so the plugin doesn't override <leader>b mapping
-if !hasmapto('<Plug>BufKillBun')
-  nmap <silent> <unique> <Leader>Bun <Plug>BufKillBun
-endif
-if !hasmapto('<Plug>BufKillBunBang')
-  nmap <silent> <unique> <Leader>!Bun <Plug>BufKillBunBang
-endif
-if !hasmapto('<Plug>BufKillBd')
-  nmap <silent> <unique> <Leader>Bd  <Plug>BufKillBd
-endif
-if !hasmapto('<Plug>BufKillBdBang')
-  nmap <silent> <unique> <Leader>!Bd  <Plug>BufKillBdBang
-endif
-if !hasmapto('<Plug>BufKillBw')
-  nmap <silent> <unique> <Leader>Bw  <Plug>BufKillBw
-endif
-if !hasmapto('<Plug>BufKillBwBang')
-  nmap <silent> <unique> <Leader>!Bw  <Plug>BufKillBwBang
-endif
-
-if !hasmapto('<Plug>BufKillBundo')
-  nmap <silent> <unique> <Leader>Bundo  <Plug>BufKillBundo
-endif
 
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S> :update<CR>
