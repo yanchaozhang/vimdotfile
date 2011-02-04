@@ -41,6 +41,8 @@ func! DokuwikiToMarkDown()
 endfunc
 
 map <Leader>nd :call DokuwikiToMarkDown()<CR>
+" Paste from outside vim
+map <Leader>np "*,p<CR>
 
 " Change current directory to this file's directory
 map <Leader>nh :cd %:h<CR><Bar>:echo "Dir is now: " . getcwd()<CR>
