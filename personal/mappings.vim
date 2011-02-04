@@ -297,6 +297,13 @@ noremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
+" Execute current line in ex
+map <Leader>ny 0y$:<C-R>"<CR>
+
+" Format paragraph
+map <F3> gqap
+
 map <F5> :! $SRC_DIR/scripts/killEjekyll.sh >> ~/tmp/ejekyll.log 2>&1<CR>
 map <S-F5> :! $SRC_DIR/scripts/sync_scripts/syncnateneff.sh<CR>
+
 " vim: fdm=marker
