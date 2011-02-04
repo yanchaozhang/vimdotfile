@@ -84,23 +84,11 @@ map <leader>y :FufBuffer<CR>
 " that fuzzy finder doesn't know about.
 map <leader>R :FufRenewCache<CR>
 
-" Tried this textmate version, but it sucks
-" because it puts dispatch.fcgi ahead of foo_controller.rb when I type "fb"
-" nnoremap <F3> :FufTextMate<CR>
-" See functions.vim for mapping of C-F3, which changes
-" the directory of the Fuzzy Finder's ";" shortcut
-
-
-" diffchanges.vim mappings {{{2
-" nmap <unique> <leader>nd <Plug>DiffChangesDiffToggle
-" nmap <unique> <leader>np <Plug>DiffChangesPatchToggle 
-" }}}2
-
-" Use F7 for bookmark files
-" map <F7> :FufBookmark<CR>
+" F7 = bookmark stuff
 map <F7> :e ~/.bookmarks<CR>
 map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to bookmarks file, idiot."<CR>
 
+" F8 Toggle menu bar
 nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
 " Fuzzy's Most-recently used
