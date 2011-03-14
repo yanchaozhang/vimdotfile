@@ -276,14 +276,16 @@ map <leader>xx :call <SID>XMLTidy()<CR>
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 function! s:QFixToggle()
-  if exists("g:qfix_win")
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+    copen
 endfunction
+    
 nmap <silent> <F4> :call <SID>QFixToggle()<CR>
 
 " Checks if current directory is $HOME or /, and cancels
