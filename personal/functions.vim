@@ -402,3 +402,18 @@ function! NjnSearch(dir, default_to_word_under_cursor, ... )
     endif
 endfunction
 
+function! NjnGetParentAndGrandparentDir(...)
+    if a:0 > 0
+        let filename = a:1
+    else
+        let filename = expand("%:p:h")
+    endif
+
+    if filename == ""
+        let filename = getcwd()
+    endif
+
+    let parentdir = fnamemodify(filename, ":t")
+    let grandparentdir = fnamemodify(filename, ":h:t")
+    return grandparentdir . '/' . parentdir
+endfunction
