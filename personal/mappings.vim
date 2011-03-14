@@ -96,23 +96,6 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
-function! NjnSearch(dir, default_to_word_under_cursor)
-    let l:searchdir = a:dir
-    if l:searchdir == ""
-        let l:searchdir = getcwd()
-    endif
-
-    if a:default_to_word_under_cursor
-        let l:promptOption = "PROMPT"
-    else
-        let l:promptOption = "PROMPTNODEFAULT"
-    endif
-    if has("win32")
-        exe "Rgrep " . l:promptOption . " \"*\" " . shellescape(l:searchdir)
-    else
-        exe "Rgrep " . l:promptOption . " * " . shellescape(l:searchdir)
-    endif
-endfunction
 
 nnoremap <Leader>sf :call NjnSearch(getcwd(), 0)<CR>
 nnoremap <Leader>sF :call NjnSearch(getcwd(), -1)<CR>

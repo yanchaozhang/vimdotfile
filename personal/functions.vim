@@ -377,3 +377,28 @@ if empty(getqflist())
         let s:prev_val = s:curr_val
     endfor
 endfunction
+
+function! NjnSearch(dir, default_to_word_under_cursor, ... )
+    let l:searchdir = a:dir
+    if l:searchdir == ""
+        let l:searchdir = getcwd()
+    endif
+
+    if a:0 > 0 
+        echo a:1
+    else
+        echo l:searchdir
+    endif
+
+    if a:default_to_word_under_cursor
+        let l:promptOption = "PROMPT"
+    else
+        let l:promptOption = "PROMPTNODEFAULT"
+    endif
+    if has("win32")
+        exe "Rgrep " . l:promptOption . " \"*\" " . shellescape(l:searchdir)
+    else
+        exe "Rgrep " . l:promptOption . " * " . shellescape(l:searchdir)
+    endif
+endfunction
+
