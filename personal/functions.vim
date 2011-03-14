@@ -311,6 +311,17 @@ nnoremap <leader>o :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir**/")<
 " recursion
 nnoremap <leader>. :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
 
+function! NjnToggleWrap()
+    if &fo =~ "a"
+        set fo-=a
+        echo "No more wrappy"
+    else
+        set fo+=a
+        echo "Wrappy Mode"
+    endif
+endfunction
+map <leader>nw :call NjnToggleWrap()<CR>
+
 let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
