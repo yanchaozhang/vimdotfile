@@ -326,6 +326,12 @@ let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
 let g:njn_favCommands['Git revert file'] = ":!git checkout -- %"
+let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
+let g:njn_favCommands['Search NOTESMINE Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
+let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($VIM_DIR, 0)"
+let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
+
+
 
 let favoriteCommandListener = {}
 
