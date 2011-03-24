@@ -276,14 +276,16 @@ map <leader>xx :call <SID>XMLTidy()<CR>
 
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 function! s:QFixToggle()
-  if exists("g:qfix_win")
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+    copen
 endfunction
+    
 nmap <silent> <F4> :call <SID>QFixToggle()<CR>
 
 " Checks if current directory is $HOME or /, and cancels
@@ -309,10 +311,27 @@ nnoremap <leader>o :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir**/")<
 " recursion
 nnoremap <leader>. :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
 
+function! NjnToggleWrap()
+    if &fo =~ "a"
+        set fo-=a
+        echo "No more wrappy"
+    else
+        set fo+=a
+        echo "Wrappy Mode"
+    endif
+endfunction
+map <leader>nw :call NjnToggleWrap()<CR>
+
 let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
 let g:njn_favCommands['Git revert file'] = ":!git checkout -- %"
+let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
+let g:njn_favCommands['Search NOTESMINE Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
+let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($VIM_DIR, 0)"
+let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
+
+
 
 let favoriteCommandListener = {}
 
@@ -343,4 +362,58 @@ function! NewBlog()
     exe "e " . strftime("%F") . "-" . l:filename . ".md"
     silent! execute "%s/@DATE@/" .  strftime("%F") . "/g"
     silent! execute "%s/@TITLE@/" .  l:title . "/g"
+endfunction
+
+function! QuickFixOpenAll()
+if empty(getqflist())
+        return
+    endif
+    let s:prev_val = ""
+    for d in getqflist()
+        let s:curr_val = bufname(d.bufnr)
+        if (s:curr_val != s:prev_val)
+            exec "edit " . s:curr_val
+        endif
+        let s:prev_val = s:curr_val
+    endfor
+endfunction
+
+function! NjnSearch(dir, default_to_word_under_cursor, ... )
+    let l:searchdir = a:dir
+    if l:searchdir == ""
+        let l:searchdir = getcwd()
+    endif
+
+    if a:0 > 0 
+        echo a:1
+    else
+        echo l:searchdir
+    endif
+
+    if a:default_to_word_under_cursor
+        let l:promptOption = "PROMPT"
+    else
+        let l:promptOption = "PROMPTNODEFAULT"
+    endif
+    if has("win32")
+        exe "Rgrep " . l:promptOption . " \"*\" " . shellescape(l:searchdir)
+    else
+        exe "Rgrep " . l:promptOption . " * " . shellescape(l:searchdir)
+    endif
+endfunction
+
+function! NjnGetParentAndGrandparentDir(...)
+    if a:0 > 0
+        let filename = a:1
+    else
+        let filename = expand("%:p:h")
+    endif
+
+    if filename == ""
+        let filename = getcwd()
+    endif
+
+    let parentdir = fnamemodify(filename, ":t")
+    let grandparentdir = fnamemodify(filename, ":h:t")
+    return grandparentdir . '/' . parentdir
 endfunction
