@@ -323,4 +323,6 @@ iabbrev lgro [Groovy](http://groovy.org)
 iabbrev leac [Earn-A-Computer](http://stlbyteworks.org/programs)
 iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
 
+set <F2>=OQ
+set <F5>=[15~
 " vim: fdm=marker
