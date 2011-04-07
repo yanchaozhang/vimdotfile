@@ -20,6 +20,10 @@ paintbox
 patrickgenpaul
 twilight
 github
+pyte
+  - too light/dreamy
+solarized
+  - too blurry/brown/whatever
 
 ir_black
   When I switch buffers, the buffers are highlighted in a really nasty light-yellow
