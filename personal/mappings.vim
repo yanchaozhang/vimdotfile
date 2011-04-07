@@ -96,16 +96,14 @@ nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 " Fuzzy's Most-recently used
 map <leader>r :FufMruFile<CR>
 
-nnoremap <Leader>sf :call NjnSearch(getcwd(), 0, NjnGetParentAndGrandparentDir(getcwd()))<CR>
-nnoremap <Leader>sF :call NjnSearch(getcwd(), -1, NjnGetParentAndGrandparentDir(getcwd()))<CR>
+nnoremap <Leader>s :call NjnSearch(getcwd(), 0, NjnGetParentAndGrandparentDir(getcwd()))<CR>
+nnoremap <Leader>S :call NjnSearch(getcwd(), -1, NjnGetParentAndGrandparentDir(getcwd()))<CR>
 
 " Recursive search in this file/buffer's current directory
 " TODO: Create a function that checks for verboten directories such as "/" and
 " "~" so that I don't have to kill the find processes.
-nnoremap <Leader>sh :call NjnSearch(expand('%:h:p'), 0, NjnGetParentAndGrandparentDir())<CR>
-nnoremap <Leader>sH :call NjnSearch(expand('%:h:p'), -1, NjnGetParentAndGrandparentDir())<CR>
-nnoremap <Leader>ss :call NjnSearch(expand('%:h:p'), 0, NjnGetParentAndGrandparentDir())<CR>
-nnoremap <Leader>sS :call NjnSearch(expand('%:h:p'), -1, NjnGetParentAndGrandparentDir())<CR>
+nnoremap <Leader>. :call NjnSearch(expand('%:h:p'), 0, NjnGetParentAndGrandparentDir())<CR>
+nnoremap <Leader>> :call NjnSearch(expand('%:h:p'), -1, NjnGetParentAndGrandparentDir())<CR>
 
 " Search Notesmine directory
 nnoremap <Leader>nm :call NjnSearch($NOTESMINE_DIR, 0)<CR>
