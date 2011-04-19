@@ -307,9 +307,9 @@ nmap <silent> <leader>t :call <SID>SafeFuzzySearch("FufFile**/")<CR>
 " mnemonic - Like "Open", which usually defaults to current dir.
 " nnoremap <leader>o :FufFile <C-r>=expand('%:~:.')[:-1-len(expand('%:~:.:t'))]<CR><CR>
 nnoremap <leader>o :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir**/")<CR>
-" Leader + "." only searches in current buffer's dir by default, no
+" Leader + "O" only searches in current buffer's dir by default, no
 " recursion
-nnoremap <leader>. :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
+nnoremap <leader>O :call <SID>SafeFuzzySearch("FufFileWithCurrentBufferDir")<CR>
 
 function! NjnToggleWrap()
     if &fo =~ "a"
