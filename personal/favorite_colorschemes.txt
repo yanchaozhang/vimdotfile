@@ -1,10 +1,17 @@
 # This file is just my notes about favorite colorschemes
 
 ## Favorites
+#
+### Light
+mac_classic
+moria (Use :Colo light command to make light background)
+peaksea
+
+### Dark
+moria
 ir_black
 wombat256
 elda!
-moria
 macvim
 vividchalk
 vibrantink
@@ -24,6 +31,15 @@ pyte
   - too light/dreamy
 solarized
   - too blurry/brown/whatever
+
+nuvola
+  - html tags are orange
+
+sienna
+  - orange tags / keywords too sharp, background too stark white
+
+chela_light
+  - too blue keywords
 
 ir_black
   When I switch buffers, the buffers are highlighted in a really nasty light-yellow
