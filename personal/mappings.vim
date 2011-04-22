@@ -182,6 +182,7 @@ map <leader>cc <plug>NERDCommenterAlignLeft
 map <leader>cl <plug>NERDCommenterAlignLeft
 map <leader>cu <plug>NERDCommenterUncomment
 map <leader>ci <plug>NERDCommenterToggle
+map <leader>D :tabc<CR>
 
 " Window Mappings {{{2
 " Window up/down are same as up/down in Vim
@@ -285,5 +286,9 @@ map <F3> gqap
 
 map <F5> :! $SRC_DIR/scripts/killEjekyll.sh >> ~/tmp/ejekyll.log 2>&1<CR>
 map <S-F5> :! $SRC_DIR/scripts/sync_scripts/syncnateneff.sh<CR>
+
+map <leader>4 :tabe %<CR>
+imap <leader>4 <C-O>:tabe %<CR>
+
 
 " vim: fdm=marker
