@@ -245,7 +245,14 @@ let g:fuf_mrufile_exclude = '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/)'
 " Don't ignore case.  If I type in "RC" I want to find stuff with
 " capital R and C in it.
 let g:FuzzyFinderOptions.Base.ignore_case = 1
-let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|(^|[/\\])_site[/\\]|(^|[/\\])target[/\\]|.*[/\\]$'
+let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$'
+\ . '|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+\ . '|(^|[/\\])_site[/\\]'
+\ . '|(^|[/\\])assets[/\\]'
+\ . '|(^|[/\\])target[/\\]'
+\ . '|(^|[/\\])external_resources[/\\]'
+\ . '|(^|[/\\])plugins[/\\]'
+\ . '|.*[/\\]$'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
 let g:fuf_modesDisable = ['mrucmd']
 
