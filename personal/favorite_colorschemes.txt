@@ -9,17 +9,21 @@ peaksea
 
 ### Dark
 moria
-ir_black
+freya
 wombat256
+earendel
+ir_black
+vibrantink
 elda!
 macvim
 vividchalk
-vibrantink
 koeher_njn
 lucius
 
 ## Potential
-jellybeans -- Current filename bar needs to stand out more.
+jellybeans 
+  -- Current filename bar needs to stand out more.
+  -- Decent, though!
 
 ## Colors I've tried.....
 asmanian_blood
