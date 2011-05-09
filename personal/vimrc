@@ -202,7 +202,7 @@ if s:os =~ "Darwin"
 endif
 
 " For grep.vim, tell it to ignore .svn directories and log files
-let Grep_Skip_Dirs = '.svn log vendor .git .hg'
+let Grep_Skip_Dirs = '.svn log vendor .git .hg plugins external_resources'
 " Ignore case, and don't process Binary filez.
 let Grep_Default_Options = '-i -I'
 " Just default the grep filelist to groovy, gsp and js files
