@@ -80,7 +80,7 @@ map <leader>ng :!git gui &<CR>
 " ============= Fuzzy Bindings ===========
 " Map <leader>bu to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
-map <leader>bu :FufBuffer<CR>
+map <leader>b :FufBuffer<CR>
 map <leader>y :FufBuffer<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
@@ -284,9 +284,6 @@ map <Leader>ny 0y$:<C-R>"<CR>
 
 " Format paragraph
 map <F3> gqap
-
-map <F5> :! $SRC_DIR/scripts/killEjekyll.sh >> ~/tmp/ejekyll.log 2>&1<CR>
-map <S-F5> :! $SRC_DIR/scripts/sync_scripts/syncnateneff.sh<CR>
 
 map <leader>4 :tabe %<CR>
 imap <leader>4 <C-O>:tabe %<CR>
