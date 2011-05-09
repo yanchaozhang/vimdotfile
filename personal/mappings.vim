@@ -21,6 +21,7 @@ endfunc
 " fix -- however, it's experimental.
 inoremap <Esc> <Esc>`^
 nn <Leader>p :call PasteNewLine()<CR>
+nn <Leader>v "*P<CR>
 
 " Map Y to act like C and D
 map Y y$
