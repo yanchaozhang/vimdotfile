@@ -1,7 +1,7 @@
 # This file is just my notes about favorite colorschemes
 
 ## Favorites
-#
+
 ### Light
 mac_classic
 moria (Use :Colo light command to make light background)
@@ -14,7 +14,6 @@ freya
 wombat256
 earendel
 ir_black
-vibrantink
 elda!
 macvim
 vividchalk
@@ -25,6 +24,8 @@ lucius
 jellybeans 
   -- Current filename bar needs to stand out more.
   -- Decent, though!
+vibrantink 
+  -- fuzzy finder search results suck
 
 ## Colors I've tried.....
 asmanian_blood
