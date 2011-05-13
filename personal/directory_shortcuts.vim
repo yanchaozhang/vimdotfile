@@ -46,4 +46,4 @@ map <unique> <silent> <f6>e :e $ENROLLIO_DIR<CR>
 map <unique> <silent> <f6>w :e ~/.wmii<CR>
 
 " Super serial
-map <unique> <silent> <f6>m :e $SUPER_SERIAL_SECRET_DIR<CR>
+map <unique> <silent> <f6>c :e $SUPER_SERIAL_SECRET_DIR<CR>
