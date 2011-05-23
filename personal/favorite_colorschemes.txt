@@ -37,6 +37,7 @@ pyte
   - too light/dreamy
 solarized
   - too blurry/brown/whatever
+  rastafari - too light green
 
 nuvola
   - html tags are orange
