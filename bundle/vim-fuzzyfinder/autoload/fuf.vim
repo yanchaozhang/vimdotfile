@@ -259,10 +259,10 @@ function fuf#enumExpandedDirsEntries(dir, exclude)
   let entries = fuf#glob(a:dir . '*') + fuf#glob(a:dir . '.*')
   " removes "*/." and "*/.."
   call filter(entries, 'v:val !~ ''\v(^|[/\\])\.\.?$''')
-  call map(entries, 'fuf#makePathItem(v:val, "", 1)')
   if len(a:exclude)
-    call filter(entries, 'v:val.word !~ a:exclude')
+    call filter(entries, 'v:val !~ a:exclude')
   endif
+  call map(entries, 'fuf#makePathItem(v:val, "", 1)')
   return entries
 endfunction
 
