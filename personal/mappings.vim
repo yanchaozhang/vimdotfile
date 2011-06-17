@@ -113,7 +113,7 @@ nnoremap <Leader>nm :call NjnSearch($NOTESMINE_DIR, 0)<CR>
 nnoremap <Leader>cd :cd %:h<CR>
 
 " Grails recursive find-in-files, defaulting to groovy, gsp files
-nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy .<CR>
+nnoremap <Leader>gf :Rgrep PROMPT *.gsp\ *.groovy\ *.js\ *.css .<CR>
 
 " Use F9 for running stuff
 " See the related ftplugin files
