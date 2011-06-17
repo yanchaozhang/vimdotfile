@@ -323,7 +323,7 @@ endfunction
 map <leader>nw :call NjnToggleWrap()<CR>
 
 let g:njn_favCommands = {}
-let g:njn_favCommands['Close all buffers'] = ":bufdo :bw"
+let g:njn_favCommands['Close all buffers'] = ":execute 'Bufonly'|:bd"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
 let g:njn_favCommands['Git revert file'] = ":!git checkout -- %"
 let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
@@ -340,7 +340,6 @@ function favoriteCommandListener.onComplete(item, method)
 endfunction
 
 " execute one of the user-defined commands in GetFavoriteCommands
-map <leader>nc :call fuf#callbackitem#launch('', 0, 'Run Command>', favoriteCommandListener, keys(g:njn_favCommands), 0)<CR>
 map <leader>a :call fuf#callbackitem#launch('', 0, 'Run Command>', favoriteCommandListener, keys(g:njn_favCommands), 0)<CR>
 
 function! DokuToOrg()
