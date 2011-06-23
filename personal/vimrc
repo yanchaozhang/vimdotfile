@@ -332,4 +332,6 @@ iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
 
 set <F2>=OQ
 set <F5>=[15~
+
+let g:ragtag_global_maps=1
 " vim: fdm=marker
