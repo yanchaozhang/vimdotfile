@@ -50,7 +50,7 @@ map <Leader>nh :cd %:h<CR><Bar>:echo "Dir is now: " . getcwd()<CR>
 
 " Buflisted hack
 map <Leader>nl :set buflisted<CR>
-map <Leader>nb :set buflisted?<CR>
+
 
 " -------------- Tool Shortcuts (Opening Tools, etc) --------------
 " Hexplore means to open it in the upper left new window
@@ -287,6 +287,9 @@ map <F3> gqap
 
 map <leader>4 :tabe %<CR>
 imap <leader>4 <C-O>:tabe %<CR>
+
+map <space> :LustyBufferExplorer<CR>
+map <Leader>nb :LustyBufferGrep<CR>
 
 
 " vim: fdm=marker
