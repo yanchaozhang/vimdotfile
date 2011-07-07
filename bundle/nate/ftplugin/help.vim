@@ -1,4 +1,4 @@
-  " Place this file in $VIMHOME/ftplugin directory so that
+  " Place this file in $VIMHOME/ftplugin/help.vim directory so that
   " vim uses this file for help file mappings only
 nmap <buffer> <BS> <C-T>
 nmap <buffer> <CR> <C-]>
