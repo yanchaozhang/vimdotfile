@@ -15,7 +15,7 @@ function! s:SaneColors()
     " " Tame down cursorline
     " " Defaults in Gvim are obnoxious pink
     if exists("g:colors_name")
-        if g:colors_name == "koehler"
+        if g:colors_name == "koehler" || g:colors_name == "vibrantink"
             hi clear Pmenu
             hi link  Pmenu Normal
         elseif g:colors_name == "moria"
