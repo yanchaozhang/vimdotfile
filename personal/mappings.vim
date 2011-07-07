@@ -288,8 +288,5 @@ map <F3> gqap
 map <leader>4 :tabe %<CR>
 imap <leader>4 <C-O>:tabe %<CR>
 
-map <space> :LustyBufferExplorer<CR>
-map <Leader>nb :LustyBufferGrep<CR>
-
 
 " vim: fdm=marker
