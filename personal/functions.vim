@@ -351,6 +351,8 @@ function! DokuToOrg()
     %s/^=\{3}\s\+\(.*\)\s*=\{3}$/**** \1/gce
     %s/^=\{2}\s\+\(.*\)\s*=\{2}$/***** \1/gce
     %s/^=\{1}\s\+\(.*\)\s*=\{1}$/****** \1/gce
+    " Replace asterisk-lists with dash lists
+    %s/^\(\s\+\)\*/\1-/gc
 endfunction
 
 map <Leader>no :call DokuToOrg()<CR>
