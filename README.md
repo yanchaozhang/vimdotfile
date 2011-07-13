@@ -5,6 +5,8 @@ These are my vim dotfiles.  There are many like it, but these are mine.
 
 # Installation
 
+## Backup your Vim Stuff
+
   - I recommend that you backup/move your existing Vim settings:
     - *nix systems:
 
@@ -23,6 +25,8 @@ These are my vim dotfiles.  There are many like it, but these are mine.
     >move _gvimrc   _gvimrc.bak
     >move vimfiles  vimfiles.bak
     ```
+
+## Install my Vim Stuff
 
   - Clone this repository or download it using the "Download Source" button on GitHub.
     - Unzip the source if necessary
