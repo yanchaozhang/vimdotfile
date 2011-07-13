@@ -8,17 +8,17 @@ These are my vim dotfiles.  There are many like it, but these are mine.
   - I recommend that you backup/move your existing Vim settings:
     - *nix systems:
 
-      cd $HOME
-      mv .vimrc   .vimrc.bak
-      mv .gvimrc .gvimrc.bak
-      mv .vim    .vim.bak
+      >cd $HOME
+      >mv .vimrc   .vimrc.bak
+      >mv .gvimrc .gvimrc.bak
+      >mv .vim    .vim.bak
 
     - Windows systems:
 
-      cd %HOME%
-      move _vimrc    _vimrc.bak
-      move _gvimrc   _gvimrc.bak
-      move vimfiles  vimfiles.bak
+      >cd %HOME%
+      >move _vimrc    _vimrc.bak
+      >move _gvimrc   _gvimrc.bak
+      >move vimfiles  vimfiles.bak
 
   - Clone this repository or download it using the "Download Source" button on GitHub.
     - Unzip the source if necessary
