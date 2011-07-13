@@ -2,12 +2,9 @@
 " append all bundles in the runtimepath to the runtimepath
 " This is a hack mentioned here:
 " http://github.com/tpope/vim-pathogen/issues/issue/2
-verbose 5
 filetype off
 let g:vim_dir = split(&rtp, ",")[0]
-" echo g:vim_dir
 let s:bundles = tr(globpath(g:vim_dir, 'bundle/*/'), "\n", ',')
-" echo s:bundles
 if has("win32")
     let s:bundles = tr(s:bundles, "\\", "/")
 endif
