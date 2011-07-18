@@ -288,5 +288,9 @@ map <F3> gqap
 map <leader>4 :tabe %<CR>
 imap <leader>4 <C-O>:tabe %<CR>
 
+" Presentation mode, use :hi clear to go back to
+" normal fold highlighting
+map <leader>np :hi Folded term=standout ctermfg=4 ctermbg=7 guifg=LightGrey guibg=bg<CR>
+
 
 " vim: fdm=marker
