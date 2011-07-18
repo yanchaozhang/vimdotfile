@@ -42,7 +42,7 @@ set backspace=indent,eol,start
 " Folding -----------
 autocmd FileType gsp set foldmethod=indent
 " Set fold level to something sensible
-set foldlevelstart=2
+" set foldlevelstart=2
 " However, don't enable folding by default
 set nofoldenable
 
