@@ -85,7 +85,7 @@ map <leader>y :FufBuffer<CR>
 
 " Renew cache in Fuzzy Finder -- use this when there's new files
 " that fuzzy finder doesn't know about.
-map <leader>R :FufRenewCache<CR>
+map <leader>q :FufRenewCache<CR>
 
 " F7 = bookmark stuff
 map <F7> :e ~/.bookmarks<CR>
@@ -94,8 +94,11 @@ map <S-F7> :!echo % >> ~/.bookmarks<CR><Bar>:echo "Saved " . expand("%") . " to 
 " F8 Toggle menu bar
 nnoremap <F8> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
-" Fuzzy's Most-recently used
-map <leader>r :FufMruFile<CR>
+" Fuzzy's Most-recently used - just discovered
+" MruFileInCwd -- this might narrow the list, and avoid opening
+" same-named files from different directories.
+map <leader>R :FufMruFile<CR>
+map <leader>r :FufMruFileInCwd<CR>
 
 nnoremap <Leader>s :call NjnSearch(getcwd(), 0, NjnGetParentAndGrandparentDir(getcwd()))<CR>
 nnoremap <Leader>S :call NjnSearch(getcwd(), -1, NjnGetParentAndGrandparentDir(getcwd()))<CR>
