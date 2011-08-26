@@ -147,6 +147,7 @@ function fuf#openBuffer(bufNr, mode, reuse)
         \   s:OPEN_TYPE_VSPLIT  : 'vertical %ssbuffer',
         \   s:OPEN_TYPE_TAB     : 'tab %ssbuffer'     ,
         \ }[a:mode], a:bufNr)
+  setlocal buflisted
 endfunction
 
 "
@@ -161,6 +162,7 @@ function fuf#openFile(path, mode, reuse)
           \   s:OPEN_TYPE_VSPLIT  : 'vsplit ' ,
           \   s:OPEN_TYPE_TAB     : 'tabedit ',
           \ }[a:mode] . fnameescape(fnamemodify(a:path, ':~:.'))
+    setlocal buflisted
   endif
 endfunction
 
