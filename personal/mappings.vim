@@ -295,5 +295,9 @@ imap <leader>4 <C-O>:tabe %<CR>
 " normal fold highlighting
 map <leader>np :hi Folded term=standout ctermfg=4 ctermbg=7 guifg=LightGrey guibg=bg<CR>
 
+function! NjnBreakHtmlLine()
+   exe "s/></></g"
+endfunction
+map <leader>nb call njnBreakHtmlLine()
 
 " vim: fdm=marker
