@@ -334,4 +334,9 @@ set <F2>=OQ
 set <F5>=[15~
 
 let g:ragtag_global_maps=1
+
+" JSLint Options
+" Highlighting is unreadable for jslint :-(
+let g:JSLintHighlightErrorLine=0
+
 " vim: fdm=marker
