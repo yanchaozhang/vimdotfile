@@ -249,8 +249,8 @@ let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$'
 \ . '|(^|[/\\])assets[/\\]'
 \ . '|(^|[/\\])target[/\\]'
 \ . '|(^|[/\\])external_resources[/\\]'
-\ . '|(^|[/\\])plugins[/\\]'
 \ . '|.*[/\\]$'
+" \ . '|(^|[/\\])plugins[/\\]'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
 let g:fuf_modesDisable = ['mrucmd']
 
