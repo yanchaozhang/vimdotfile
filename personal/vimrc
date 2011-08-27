@@ -327,8 +327,9 @@ iabbrev lgra [Grails](http://grails.org)
 iabbrev lgro [Groovy](http://groovy.org)
 iabbrev leac [Earn-A-Computer](http://stlbyteworks.org/programs)
 iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
-iabbrev <lt>g #+begin_src groovy
-            \<CR>#+end_src
+
+iabbrev nsc <script src="text/javascript"><CR></script>
+iabbrev njq $(function() {<CR>});
 
 set <F2>=OQ
 set <F5>=[15~

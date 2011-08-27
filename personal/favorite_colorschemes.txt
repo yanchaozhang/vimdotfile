@@ -8,6 +8,7 @@ moria (Use :Colo light command to make light background)
 peaksea
 
 ### Dark
+jellybeans 
 xoria256 is kinda cool
 moria
 freya
@@ -21,7 +22,6 @@ koeher_njn
 lucius
 
 ## Potential
-jellybeans 
   -- Current filename bar needs to stand out more.
   -- Decent, though!
 vibrantink 
