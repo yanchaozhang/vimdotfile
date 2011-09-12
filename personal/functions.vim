@@ -331,6 +331,7 @@ let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
 let g:njn_favCommands['Search NOTES Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
 let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($LOCAL_VIM_DIR, 0)"
 let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
+let g:njn_favCommands['Tabularize |'] = ":Tabularize \/\|"
 
 
 
