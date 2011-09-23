@@ -75,7 +75,9 @@ imap <F2> <ESC>:BufExplorer<CR>
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
 " Git Gui (mnemonic - (n)ate (g)it gui
-map <leader>ng :!git gui &<CR>
+map <leader>ng :silent ! git gui &<CR>
+map <leader>nl :silent ! gitk % &<CR>
+map <F3> :silent ! git gui &<CR>
 
 " ============= Fuzzy Bindings ===========
 " Map <leader>b to be the fuzzy version of BufExplorer
@@ -284,9 +286,6 @@ inoremap <C-S> <C-O>:update<CR>
 
 " Execute current line in ex
 map <Leader>ny 0y$:<C-R>"<CR>
-
-" Format paragraph
-map <F3> gqap
 
 map <leader>4 :tabe %<CR>
 imap <leader>4 <C-O>:tabe %<CR>
