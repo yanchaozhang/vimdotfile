@@ -331,7 +331,12 @@ iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
 iabbrev nsc <script src="text/javascript"><CR></script>
 iabbrev njq $(function() {<CR>});
 
-set <F2>=OQ
+
+if $TERM != "rxvt-unicode"
+    set <F2>=OQ
+else
+    set <S-F5>=[28~
+endif
 set <F5>=[15~
 
 let g:ragtag_global_maps=1
