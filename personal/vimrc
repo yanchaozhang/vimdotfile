@@ -249,8 +249,8 @@ let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$'
 \ . '|(^|[/\\])assets[/\\]'
 \ . '|(^|[/\\])target[/\\]'
 \ . '|(^|[/\\])external_resources[/\\]'
-\ . '|(^|[/\\])plugins[/\\]'
 \ . '|.*[/\\]$'
+" \ . '|(^|[/\\])plugins[/\\]'
 let g:FuzzyFinderOptions.Base.enumerating_limit = 40
 let g:fuf_modesDisable = ['mrucmd']
 
@@ -331,8 +331,18 @@ iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
 iabbrev nsc <script src="text/javascript"><CR></script>
 iabbrev njq $(function() {<CR>});
 
-set <F2>=OQ
+
+if $TERM != "rxvt-unicode"
+    set <F2>=OQ
+else
+    set <S-F5>=[28~
+endif
 set <F5>=[15~
 
 let g:ragtag_global_maps=1
+
+" JSLint Options
+" Highlighting is unreadable for jslint :-(
+let g:JSLintHighlightErrorLine=0
+
 " vim: fdm=marker
