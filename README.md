@@ -224,3 +224,11 @@ Tried these plugins:
 
   - closetag.vim
   - that one html filetype plugin that I erased
+  - jslint 
+    jslint was a bit obtrusive.  It would overwrite the contents of the quickfix window when I went to a .js file
+
+
+
+
+
+
