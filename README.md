@@ -217,3 +217,10 @@ New Color Schemes:
 
 <C-N>   Go to next buffer (:bn)
 <C-P>   Go to previous buffer (:bn)
+
+# Plugins
+
+Tried these plugins:
+
+  - closetag.vim
+  - that one html filetype plugin that I erased
