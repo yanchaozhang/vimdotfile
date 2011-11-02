@@ -41,6 +41,8 @@ function! s:SaneColors()
         hi link  Pmenu Normal
         hi clear PmenuSel
         hi link  PmenuSel Visual
+        hi link  PmenuSel Visual
+        hi Visual ctermfg=0
     endif
 
     " hi CursorLine   guibg=#222222
