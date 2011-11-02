@@ -217,3 +217,18 @@ New Color Schemes:
 
 <C-N>   Go to next buffer (:bn)
 <C-P>   Go to previous buffer (:bn)
+
+# Plugins
+
+Tried these plugins:
+
+  - closetag.vim
+  - that one html filetype plugin that I erased
+  - jslint 
+    jslint was a bit obtrusive.  It would overwrite the contents of the quickfix window when I went to a .js file
+
+
+
+
+
+
