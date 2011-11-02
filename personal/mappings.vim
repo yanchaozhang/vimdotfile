@@ -30,6 +30,7 @@ map Y y$
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
+map <Leader>nd :FufBookmarkDir<CR>
 
 " Paste from outside vim
 map <Leader>np "*,p<CR>
