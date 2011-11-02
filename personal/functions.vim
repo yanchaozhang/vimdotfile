@@ -322,6 +322,16 @@ function! NjnToggleWrap()
 endfunction
 map <leader>nw :call NjnToggleWrap()<CR>
 
+" Dokuwiki to Markdown helpers
+func! DokuwikiToMarkDown()
+    exec "%s/^=\\{6}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{5}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{4}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{3}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{2}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{1}\\s*\\([^=]*\\)=*/# \\1/e"
+endfunc
+
 let g:njn_favCommands = {}
 let g:njn_favCommands['Close all buffers'] = ":execute 'Bufonly'|:bd"
 let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
