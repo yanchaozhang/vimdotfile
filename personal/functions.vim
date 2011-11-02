@@ -341,8 +341,11 @@ let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
 let g:njn_favCommands['Search NOTES Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
 let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($LOCAL_VIM_DIR, 0)"
 let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
-
-
+let g:njn_favCommands['Dokuwiki To Markdown'] = ":call DokuwikiToMarkDown()"
+let g:njn_favCommands['Go to Directory Bookmark'] = ":FufBookmarkDir"
+let g:njn_favCommands['Add Directory to Bookmark'] = ":FufBookmarkDirAdd"
+let g:njn_favCommands['Go to File Bookmarks'] = ":FufBookmarkFile"
+let g:njn_favCommands['Add File to Bookmarks'] = ":FufBookmarkFileAdd"
 
 let favoriteCommandListener = {}
 
