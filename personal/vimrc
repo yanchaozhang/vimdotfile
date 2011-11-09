@@ -319,7 +319,7 @@ if ! has("win32")
     set listchars=tab:▸\ ,eol:¬
 endif
 
-iabbrev ilor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+iabbrev llor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 iabbrev llin [](http://.org)
 iabbrev lbyt [Byteworks](http://stlbyteworks.org)
 iabbrev lenr [Enrollio](http://enrollio.org)
@@ -328,8 +328,8 @@ iabbrev lgro [Groovy](http://groovy.org)
 iabbrev leac [Earn-A-Computer](http://stlbyteworks.org/programs)
 iabbrev lsrc [Source](https://github.com/NathanNeff/enrollio)
 
-iabbrev nsc <script src="text/javascript"><CR></script>
-iabbrev njq $(function() {<CR>});
+iabbrev ljs <script type="text/javascript"><CR></script>
+iabbrev ljq $(function() {<CR>});
 
 
 if $TERM != "rxvt-unicode"
