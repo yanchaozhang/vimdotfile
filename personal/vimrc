@@ -345,4 +345,6 @@ let g:ragtag_global_maps=1
 " Highlighting is unreadable for jslint :-(
 let g:JSLintHighlightErrorLine=0
 
+" Don't whine about no ruby if it's not installed
+let g:LustyExplorerSuppressRubyWarning = 1
 " vim: fdm=marker

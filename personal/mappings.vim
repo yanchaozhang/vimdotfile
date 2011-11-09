@@ -30,18 +30,8 @@ map Y y$
 " Mnemonic: (h)ighlight (s)earch
 map <leader>hs :set hlsearch!<Enter>
 
-" Dokuwiki to Markdown helpers
+map <Leader>nd :FufBookmarkDir<CR>
 
-func! DokuwikiToMarkDown()
-    exec "%s/^=\\{6}\\s*\\([^=]*\\)=*/# \\1/e"
-    exec "%s/^=\\{5}\\s*\\([^=]*\\)=*/# \\1/e"
-    exec "%s/^=\\{4}\\s*\\([^=]*\\)=*/# \\1/e"
-    exec "%s/^=\\{3}\\s*\\([^=]*\\)=*/# \\1/e"
-    exec "%s/^=\\{2}\\s*\\([^=]*\\)=*/# \\1/e"
-    exec "%s/^=\\{1}\\s*\\([^=]*\\)=*/# \\1/e"
-endfunc
-
-map <Leader>nd :call DokuwikiToMarkDown()<CR>
 " Paste from outside vim
 map <Leader>np "*,p<CR>
 

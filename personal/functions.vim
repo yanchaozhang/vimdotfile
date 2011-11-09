@@ -322,17 +322,32 @@ function! NjnToggleWrap()
 endfunction
 map <leader>nw :call NjnToggleWrap()<CR>
 
-let g:njn_favCommands = {}
-let g:njn_favCommands['Close all buffers'] = ":execute 'Bufonly'|:bd"
-let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
-let g:njn_favCommands['Git revert file'] = ":!git checkout -- %"
-let g:njn_favCommands['Git Gui'] = ":!git gui"
-let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
-let g:njn_favCommands['Search NOTES Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
-let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($LOCAL_VIM_DIR, 0)"
-let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
-let g:njn_favCommands['Tabularize |'] = ":Tabularize \/\|"
+" Dokuwiki to Markdown helpers
+func! DokuwikiToMarkDown()
+    exec "%s/^=\\{6}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{5}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{4}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{3}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{2}\\s*\\([^=]*\\)=*/# \\1/e"
+    exec "%s/^=\\{1}\\s*\\([^=]*\\)=*/# \\1/e"
+endfunc
 
+let g:njn_favCommands = {}
+
+let g:njn_favCommands['Add Directory to Bookmark'] = ":FufBookmarkDirAdd"
+let g:njn_favCommands['Add File to Bookmarks'] = ":FufBookmarkFileAdd"
+let g:njn_favCommands['Close all buffers'] = ":execute 'Bufonly'|:bd"
+let g:njn_favCommands['Dokuwiki To Markdown'] = ":call DokuwikiToMarkDown()"
+let g:njn_favCommands['Git Gui'] = ":!git gui"
+let g:njn_favCommands['Git revert file'] = ":!git checkout -- %"
+let g:njn_favCommands['Go to Directory Bookmark'] = ":FufBookmarkDir"
+let g:njn_favCommands['Go to File Bookmarks'] = ":FufBookmarkFile"
+let g:njn_favCommands['Search NOTES Dir'] = ":call NjnSearch($NOTESMINE_DIR, 0)"
+let g:njn_favCommands['Search ORG Dir'] = ":call NjnSearch($ORG_DIR, 0)"
+let g:njn_favCommands['Search VIM Dir'] = ":call NjnSearch($LOCAL_VIM_DIR, 0)"
+let g:njn_favCommands['Show key mappings'] = ":ReadEx :map"
+let g:njn_favCommands['Tabularize |'] = ":Tabularize \/\|"
+let g:njn_favCommands['Wrap Text'] = ":call NjnToggleWrap()"
 
 
 let favoriteCommandListener = {}
