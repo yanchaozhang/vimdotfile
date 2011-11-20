@@ -69,6 +69,9 @@ map <leader>ng :silent ! git gui &<CR>
 map <leader>nl :silent ! gitk % &<CR>
 map <F3> :silent ! git gui &<CR>
 
+" Favorite Bookmarks
+map <F1> :FufBookmarkDir<CR>
+
 " ============= Fuzzy Bindings ===========
 " Map <leader>b to be the fuzzy version of BufExplorer
 " Mnemonic: Fuzzy (B)uffer
