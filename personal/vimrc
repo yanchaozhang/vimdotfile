@@ -252,7 +252,7 @@ let g:fuf_file_exclude = '\v\~$|\.(o|png|PNG|JPG|class|CLASS|jpg|exe|bak|swp)$'
 \ . '|(^|[/\\])external_resources[/\\]'
 \ . '|.*[/\\]$'
 " \ . '|(^|[/\\])plugins[/\\]'
-let g:FuzzyFinderOptions.Base.enumerating_limit = 40
+let g:fuf_enumeratingLimit = 15
 let g:fuf_modesDisable = ['mrucmd']
 
 " }}}2
