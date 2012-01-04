@@ -122,9 +122,7 @@ function! MyStatusLine()
 endfunction
 
 " Status Line
-" The %= means right-align.  The %Y means filetype
-" set statusline=%F%m%r%h%w\ (%l\,\ %v)%=%Y\
-set laststatus=2
+set laststatus=1
 set statusline=%!MyStatusLine()
 " Show a pending Vim command like "c" or "d" under the status bar
 set showcmd
