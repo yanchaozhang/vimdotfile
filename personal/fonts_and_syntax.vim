@@ -14,26 +14,30 @@ function! s:SaneColors()
     " hi link Folded  Normal
     " " Tame down cursorline
     " " Defaults in Gvim are obnoxious pink
-    if exists("g:colors_name")
-        if g:colors_name == "koehler" || g:colors_name == "vibrantink"
+    if has("gui_running")
+        if exists("g:colors_name")
+            if g:colors_name == "koehler" || g:colors_name == "vibrantink"
+                hi clear Pmenu
+                hi link  Pmenu Normal
+            elseif g:colors_name == "moria"
+                hi clear Pmenu
+                hi link  Pmenu Normal
+                hi clear PmenuSel
+                hi link  PmenuSel Visual
+            elseif g:colors_name == "railscasts"
+                hi clear Pmenu
+                hi link  Pmenu Normal
+            elseif g:colors_name == "vividchalk"
+                hi clear Pmenu
+                hi link  Pmenu Normal
+            elseif g:colors_name == "patrickgenpaul"
+                hi clear Pmenu
+                hi link  Pmenu Normal
+            endif
+        else
             hi clear Pmenu
-            hi link  Pmenu Normal
-        elseif g:colors_name == "moria"
-            hi clear Pmenu
-            hi link  Pmenu Normal
-            hi clear PmenuSel
-            hi link  PmenuSel Visual
-        elseif g:colors_name == "railscasts"
-            hi clear Pmenu
-            hi link  Pmenu Normal
-        elseif g:colors_name == "vividchalk"
-            hi clear Pmenu
-            hi link  Pmenu Normal
-        elseif g:colors_name == "patrickgenpaul"
-            hi clear Pmenu
-            hi link  Pmenu Normal
         endif
-    elseif !has("gui_running")
+    else
         " We're in a terminal.
         " Knock off that lame default hot pink Pmenu
         " that's used to highlight fuzzy finder matches
@@ -41,8 +45,7 @@ function! s:SaneColors()
         hi link  Pmenu Normal
         hi clear PmenuSel
         hi link  PmenuSel Visual
-        hi link  PmenuSel Visual
-        hi Visual ctermfg=0
+        " hi Visual ctermfg=0
     endif
 
     " hi CursorLine   guibg=#222222
