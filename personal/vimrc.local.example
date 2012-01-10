@@ -1,3 +1,3 @@
-if has("gui") == 0
+if has("gui_running") == 0
     set bg=dark
 endif
