@@ -274,6 +274,24 @@ function! s:XMLTidy()
 endfunction
 map <leader>xx :call <SID>XMLTidy()<CR>
 
+function! s:XMLCheck()
+    let file_name=expand("%")
+    let tidycmd='tidy -errors -xml -q ' . file_name
+    let output_list=split(system(tidycmd), "\\n")
+    echo output_list
+    let error_list=[]
+    for line in output_list
+        call add(error_list, file_name . " " . line)
+    endfor
+
+    let old_errorformat = &errorformat
+    set errorformat=%f\ line\ %l\ column\ %v\ -\ %m
+    cex error_list
+    set errorformat=old_errorformat
+    botright copen
+endfunction
+map <leader>xc :call <SID>XMLCheck()<CR>
+
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
 function! s:QFixToggle()
     for i in range(1, winnr('$'))
