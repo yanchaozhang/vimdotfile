@@ -19,7 +19,8 @@ endfunc
 
 " Fix for the wayward cursor, with a simpler
 " fix -- however, it's experimental.
-inoremap <Esc> <Esc>`^
+" Remapping <Esc> messes with arrow keys in Vim
+" inoremap <Esc> <Esc>`^
 nn <Leader>p :call PasteNewLine()<CR>
 nn <Leader>v "*P<CR>
 
