@@ -259,7 +259,6 @@ map <leader>nn :set buflisted<CR>
 :cnoremap <C-E> <End>
 " XML Tidy commands
 " ,xc = check XML (no overwrite)
-map <leader>xc :cex system('tidy -errors -xml -indent --indent-spaces 4 --wrap 90 ' . expand("%"))<CR>
 " ,xf and ,xx = format XML (overwrite)
 map <leader>xf :w!<CR>ggdG<BAR>:r!tidy -quiet -xml -indent --indent-spaces 4 --wrap 90 % <CR>ggdd:w!<CR>
 " ,xx 
