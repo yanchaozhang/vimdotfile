@@ -4,9 +4,12 @@ endif
 let njn_ruby_loaded = 1
 set foldmethod=syntax
 let ruby_fold=1
+
 " Avoid showing a bunch of dashes and the number of lines folded:
 setlocal fillchars=fold:\  foldtext=getline(v:foldstart)
 nmap <buffer> <F5> :w<CR>:!ruby %<CR>
+imap <buffer> <F5> <C-O>:w<Bar>:!ruby %<CR>
+
 nmap <buffer> <F9> :w<CR>:call NjnRunRubyInQuickFix()<CR>
 
 " Shamelessly copied from ,',p
