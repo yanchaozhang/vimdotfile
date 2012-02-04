@@ -71,7 +71,7 @@ map <leader>ng :silent ! git gui &<CR>
 map <leader>nk :silent ! gitk % &<CR>
 map <F3> :silent ! git gui &<CR>
 " Find rebase/merge conflicts
-map <leader>r /HEAD\\|>>>>\\|<<<</<CR>
+map <leader>nr /HEAD\\|>>>>\\|<<<</<CR>
 
 
 " Favorite Bookmarks
