@@ -65,10 +65,14 @@ imap <F2> <ESC>:BufExplorer<CR>
 " NERD Tree
 map <leader>nt :execute 'NERDTreeToggle ' . getcwd()<CR>
 
+" Git mappings
 " Git Gui (mnemonic - (n)ate (g)it gui
 map <leader>ng :silent ! git gui &<CR>
-map <leader>nl :silent ! gitk % &<CR>
+map <leader>nk :silent ! gitk % &<CR>
 map <F3> :silent ! git gui &<CR>
+" Find rebase/merge conflicts
+map <leader>r /HEAD\\|>>>>\\|<<<</<CR>
+
 
 " Favorite Bookmarks
 map <F1> :FufBookmarkDir<CR>
