@@ -347,3 +347,8 @@ let g:JSLintHighlightErrorLine=0
 " Don't whine about no ruby if it's not installed
 let g:LustyExplorerSuppressRubyWarning = 1
 " vim: fdm=marker
+
+
+" for go programming languagen 
+syntax on
+
